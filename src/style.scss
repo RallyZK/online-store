@@ -1,0 +1,18 @@
+$main-font: Roboto, sans-serif;
+$blue: #1A6DFF;
+$light-blue: #8AB4FF;
+$purple: #C822FF;
+$light-purple: #E492FF;
+$pink: #F942E6;
+$grey: #b8b6b6;
+
+body {
+  font-family: $main-font;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
