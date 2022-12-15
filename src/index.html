@@ -19,56 +19,14 @@
     <div class="wrapper header-wr">
       <h1 class="header__title">Shopify</h1>
       <div class="header__cart-wrapper">
-        <span class="header__cart-wrapper__sum">$ 750</span>        
+        <span class="header__cart-wrapper__sum">$ 750</span>
         <span class="header__cart-wrapper__items-count">3</span>
         <button class="header__cart-wrapper__cart-btn"></button>
       </div>
   </header>
   <main>
     <div class="wrapper">
-    
-      <div class="goods">
-        <div class="goods__sort-wr">
-          <div class="goods__sort-wr__item">
-            <div class="goods__sort-wr__view-wr">
-              <button class="goods__sort-wr__btn list-view"></button>
-              <button class="goods__sort-wr__btn grid-view"></button>
-            </div>
-            <select class="goods__sort-wr__select">
-              <option class="goods__sort-wr__select-item">Sort by</option>
-              <option class="goods__sort-wr__select-item">price (low to hight)</option>
-              <option class="goods__sort-wr__select-item">price (hight to low)</option>
-              <option class="goods__sort-wr__select-item">rating (low to hight)</option>
-              <option class="goods__sort-wr__select-item">rating (hight to low)</option>
-            </select>
-            <h4 class="goods__sort-wr__found-title">Found:&nbsp;<span>100</span></h4>
-          </div>
-          <div class="goods__sort-wr__item">
-            <div class="goods__sort-wr__search-wr">
-              <input class="goods__sort-wr__search-wr__input" type="text" placeholder="Search">
-              <button class="goods__sort-wr__search-wr__btn"></button>
-            </div>
-            
-          </div>
-        </div>
-        <div class="goods__goods-container">
-          <div class="goods__item">
-            <img class="goods__item__img">
-            <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
-            <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
-              technology A12 Bionic chip with ...</h6>
-            <div class="goods__item__wrapper">
-              <span class="goods__item__rating">4.5</span>
-              <div class="goods__item__price-wrapper">
-                <span class="goods__item__price">$ 750</span>
-                <button class="goods__item__add-to-cart-btn">Buy</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="filters">
+      <section class="filters">
         <div class="filters__item categories">
           <h5 class="filters__item__title">Categories</h5>
           <ul class="filters__item__ul">
@@ -123,22 +81,66 @@
         </div>
         <button class="filters__btn reset-filter-btn">Reset filters</button>
         <button class="filters__btn copy-link-btn">Copy link</button>
-      </div>      
-    </div>
+      </section>
+      <section class="goods">
+        <div class="goods__sort-wr">
+          <div class="goods__sort-wr__item">
+            <div class="goods__sort-wr__view-wr">
+              <button class="goods__sort-wr__btn list-view"></button>
+              <button class="goods__sort-wr__btn grid-view"></button>
+            </div>
+            <select class="goods__sort-wr__select">
+              <option class="goods__sort-wr__select-item">Sort by</option>
+              <option class="goods__sort-wr__select-item">price (low to hight)</option>
+              <option class="goods__sort-wr__select-item">price (hight to low)</option>
+              <option class="goods__sort-wr__select-item">rating (low to hight)</option>
+              <option class="goods__sort-wr__select-item">rating (hight to low)</option>
+            </select>
+            <h4 class="goods__sort-wr__found-title">Found:&nbsp;<span>100</span></h4>
+          </div>
+          <div class="goods__sort-wr__item">
+            <div class="goods__sort-wr__search-wr">
+              <input class="goods__sort-wr__search-wr__input" type="text" placeholder="Search">
+              <button class="goods__sort-wr__search-wr__btn"></button>
+            </div>
 
+          </div>
+        </div>
+        <div class="goods__goods-container">
+          <div class="goods__item">
+            <img class="goods__item__img">
+            <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
+            <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
+              technology A12 Bionic chip with ...</h6>
+            <div class="goods__item__wrapper">
+              <span class="goods__item__rating">4.5</span>
+              <div class="goods__item__price-wrapper">
+                <span class="goods__item__price">$ 750</span>
+                <button class="goods__item__add-to-cart-btn">Buy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
   <footer class="footer footer-wr">
     <div class="wrapper">
       <ul class="footer__ul">
         <li class="footer__li">
-          <a href="https://github.com/RallyZK" target="_blank"><img class="footer__logo-gh"
-              src="./assets/icons/github-white.png" alt="GitHub logo"></a>
-          <a href="https://github.com/IliasovDamir" target="_blank"><img class="footer__logo-gh"
-              src="./assets/icons/github-white.png" alt="GitHub logo"></a>
+          <a href="https://github.com/RallyZK" target="_blank">
+            <img class="footer__logo-gh" src="./assets/icons/github-white.png" alt="GitHub logo">
+          </a>
+          <a href="https://github.com/IliasovDamir" target="_blank">
+            <img class="footer__logo-gh" src="./assets/icons/github-white.png" alt="GitHub logo">
+          </a>
         </li>
         <li class="footer__li">Shopify・2022</li>
-        <li class="footer__li"><a href="https://rs.school/js/" target="_blank"><img class="footer__logo-rs"
-              src="./assets/icons/rs_school_js_logo_White.png" alt="RSSchool logo"></a></li>
+        <li class="footer__li">
+          <a href="https://rs.school/js/" target="_blank">
+            <img class="footer__logo-rs" src="./assets/icons/rs_school_js_logo_White.png" alt="RSSchool logo">
+          </a>
+        </li>
       </ul>
     </div>
   </footer>
