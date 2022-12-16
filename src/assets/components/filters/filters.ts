@@ -7,10 +7,6 @@ window.onload = function () {
   slideFour();
 };
 
-slideOne();
-slideTwo();
-slideThree();
-slideFour();
 // document.addEventListener('DOMContentLoaded', () => {
 //   slideOne();
 //   slideTwo();
@@ -18,36 +14,39 @@ slideFour();
 //   slideFour();
 // });
 
-let sliderOne = document.getElementById('slider-1');
-let sliderTwo = document.getElementById('slider-2');
-let sliderThree = document.getElementById('slider-3');
-let sliderFour = document.getElementById('slider-4');
+let sliderOne: HTMLInputElement | null = document.querySelector('#slider-1');
+let sliderTwo : HTMLInputElement | null = document.querySelector('#slider-2');
+let sliderThree : HTMLInputElement | null = document.querySelector('#slider-3');
+let sliderFour: HTMLInputElement | null  = document.querySelector('#slider-4');
 
-let displayValOne = document.getElementById('rangeOneValue');
-let displayValTwo = document.getElementById('rangeTwoValue');
-let displayValThree = document.getElementById('rangeThreeValue');
-let displayValFour = document.getElementById('rangeFourValue');
+let displayValOne: HTMLElement | null = document.querySelector('#rangeOneValue');
+let displayValTwo: HTMLElement | null= document.querySelector('#rangeTwoValue');
+let displayValThree: HTMLElement | null = document.querySelector('#rangeThreeValue');
+let displayValFour: HTMLElement | null = document.querySelector('#rangeFourValue');
 
 const minGap = 0;
-let sliderTrack1 = document.getElementById('sliderTrack-1');
-let sliderTrack2 = document.getElementById('sliderTrack-2');
+let sliderTrack1: HTMLElement | null  = document.querySelector('#sliderTrack-1');
+let sliderTrack2: HTMLElement | null  = document.querySelector('#sliderTrack-2');
 
-function searchMaxPrice() {
+function searchMaxPrice(): number {
   let maxPriceArr = catalog.products.map((el) => el.price).sort((a, b) => b - a);
   return maxPriceArr[0];
 }
 
-let sliderMaxValue1 = searchMaxPrice();
-let sliderMaxValue3 = 5;
-(displayValTwo as HTMLElement).innerHTML = sliderMaxValue1.toString();
-(sliderOne as HTMLInputElement).max = sliderMaxValue1.toString();
-(sliderTwo as HTMLInputElement).max = (sliderOne as HTMLInputElement).max;
+let sliderMaxValue1: number = searchMaxPrice();
+let sliderMaxValue3: number= 5;
+if (displayValTwo) displayValTwo.innerHTML = sliderMaxValue1.toString();
+if (sliderOne) sliderOne.max = sliderMaxValue1.toString();
+if (sliderTwo) sliderTwo.max = (sliderOne as HTMLInputElement).max;
 
-let sliderOneValue = (sliderOne as HTMLInputElement).value;
-let sliderTwoValue = (sliderTwo as HTMLInputElement).value;
-let sliderThreeValue = (sliderThree as HTMLInputElement).value;
-let sliderFourValue = (sliderFour as HTMLInputElement).value;
-console.log('dsfddddddd', sliderOneValue);
+let sliderOneValue: string;
+if (sliderOne) sliderOneValue = sliderOne.value;
+let sliderTwoValue: string;
+if (sliderTwo) sliderTwoValue = sliderTwo.value;
+let sliderThreeValue: string;
+if (sliderThree) sliderThreeValue = sliderThree.value;
+let sliderFourValue: string;
+if (sliderFour) sliderFourValue = sliderFour.value;
 
 function slideOne() {
   if (parseInt(sliderTwoValue) - parseInt(sliderOneValue) <= minGap) {
@@ -82,10 +81,10 @@ function slideFour() {
 }
 
 function fillColor() {
-  const percent1 = (parseInt(sliderOneValue) / sliderMaxValue1) * 100;
-  const percent2 = (parseInt(sliderTwoValue) / sliderMaxValue1) * 100;
-  const percent3 = (parseInt(sliderThreeValue) / sliderMaxValue3) * 100;
-  const percent4 = (parseInt(sliderFourValue) / sliderMaxValue3) * 100;
+  const percent1: number = (parseInt(sliderOneValue) / sliderMaxValue1) * 100;
+  const percent2: number = (parseInt(sliderTwoValue) / sliderMaxValue1) * 100;
+  const percent3: number = (parseInt(sliderThreeValue) / sliderMaxValue3) * 100;
+  const percent4: number = (parseInt(sliderFourValue) / sliderMaxValue3) * 100;
   if (sliderTrack1) {
     sliderTrack1.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
   }
