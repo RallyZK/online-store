@@ -280,58 +280,6 @@ body {
   background-image: url('./assets/icons/menu-cube-black2.png');
 }
 
-.filters {
-  width: 250px;
-  display: flex;
-  flex-direction: column;  
-  margin-right: 10px;
-
-  &__item {
-    border: 1px solid $grey;
-    border-radius: 2px;
-    margin-bottom: 10px;
-    overflow-y: auto;
-
-    &__title {
-      font-size: 16px;
-      text-align: center;
-      vertical-align: middle;
-      margin: 0 auto;
-      background-color: $grey;
-      border-radius: 1px;
-      height: 23px;
-    }
-
-    &__ul {
-      margin: 5px 0;
-      padding: 0 5px;
-      list-style-type: none;
-    }
-
-    &__li {
-      display: flex;
-      justify-content: space-between;
-      height: 20px;
-      cursor: pointer;
-
-      p {
-        margin: 0;
-      }
-    }
-  }
-
-  &__btn {
-    border: none;
-    background-color: $grey;
-    border-radius: 5px;
-    margin-bottom: 7px;
-    font-weight: 600;
-    font-size: 16px;
-    height: 30px;
-    cursor: pointer;
-  }
-}
-
 .burger-menu-btn {
   border: none;
   background-color: $grey;

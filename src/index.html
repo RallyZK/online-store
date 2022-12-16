@@ -70,15 +70,25 @@
             </li>
           </ul>
         </div>
-        <div class="filters__item__ranges prices">
+        <div class="filters__ranges-container">
           <h5 class="filters__item__title">Price</h5>
-          <input type="range" min="0" max="100" class="filters__item__range prices-range">
-          <input type="range" min="0" max="100" class="filters__item__range prices-range">
+          <div class="filters__slider-track" id="sliderTrack-1"></div>
+          <input type="range" min="0" max="100" value="0" id="slider-1" oninput="slideOne()">
+          <input type="range" min="0" max="100" value="100" id="slider-2" oninput="slideTwo()">
+          <div class="filters__value">
+            <span id="rangeOneValue">0</span>
+            <span id="rangeTwoValue">100</span>
+          </div>
         </div>
-        <div class="filters__item__ranges rating">
+        <div class="filters__ranges-container">
           <h5 class="filters__item__title">Rating</h5>
-          <input type="range" min="0" max="100" class="filters__item__range rating-range">
-          <input type="range" min="0" max="100" class="filters__item__range rating-range">
+          <div class="filters__slider-track" id="sliderTrack-2"></div>
+          <input type="range" min="0" max="5" value="0" id="slider-3" oninput="slideThree()">
+          <input type="range" min="0" max="5" value="5" id="slider-4" oninput="slideFour()">
+          <div class="filters__value">
+            <span id="rangeThreeValue">0</span>
+            <span id="rangeFourValue">100</span>
+          </div>
         </div>
         <button class="filters__btn reset-filter-btn">Reset filters</button>
         <button class="filters__btn copy-link-btn">Copy link</button>

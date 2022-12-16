@@ -1,25 +1,25 @@
-const path = require("path")
-const HTMLWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-console.log('----------------------------------------------')
+console.log('----------------------------------------------');
 
-const isDev = process.env.NODE_ENV === 'development'
-const isProd = !isDev
-console.log('isDev: ', isDev)
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
+console.log('isDev: ', isDev);
 
 const optimization = () => {
   const config = {
     splitChunks: {
-      chunks: 'all'
-    }
-  }
-  return config
-}
+      chunks: 'all',
+    },
+  };
+  return config;
+};
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`
+const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`);
 
 module.exports = {
   //context: path.resolve(__dirname, 'src'),
@@ -37,10 +37,10 @@ module.exports = {
   optimization: optimization(),
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'src')
+      directory: path.resolve(__dirname, 'src'),
     },
     port: 9000,
-    open: true
+    open: true,
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -57,8 +57,8 @@ module.exports = {
     //   ]
     // }),
     new MiniCssExtractPlugin({
-      filename: filename('css')
-    })
+      filename: filename('css'),
+    }),
   ],
   module: {
     rules: [
@@ -67,33 +67,33 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {}
+            options: {},
           },
           'css-loader',
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
         test: /\.(png|jpeg|jpg|svg|gif|ico)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/images/[name][ext]'
-        }
+          filename: 'assets/images/[name][ext]',
+        },
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/fonts/[name][ext]'
-        }
+          filename: 'assets/fonts/[name][ext]',
+        },
       },
       {
         test: /\.(ogg|mp3|wav|mpeg|mpg)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/audio/[name][ext]'
-        }
-      }
-    ]
-  }
-}
+          filename: 'assets/audio/[name][ext]',
+        },
+      },
+    ],
+  },
+};
