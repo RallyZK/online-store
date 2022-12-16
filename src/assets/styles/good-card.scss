@@ -1,0 +1,88 @@
+.good-card {
+  display: flex;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #000;
+
+  &__left-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__second-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__photo-min {
+    display: block;
+    border: 1px solid #000;
+    border-radius: 7px;
+    margin: 10px 0;
+    width: 100px;
+    height: 70px;
+  }
+
+  &__photo-max {
+    display: block;
+    border: 1px solid #000;
+    border-radius: 7px;
+    margin: 10px;
+    width: 250px;
+    height: 200px;
+  }
+
+  & p {
+    margin: 5px 0;
+  }
+
+  &__btns-container {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__btn {
+    width: 120px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px 0;
+    height: 45px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    background-size: 300% 100%;
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);        
+  }
+
+
+}
+
+// <div class="good-card">
+//           
+//           <div class="good-card__left-row">
+//             <img class="good-cars__photo-min" src="./assets/icons/shopify.png">
+//             <img class="good-cars__photo-min" src="./assets/icons/shopify.png">
+//             <img class="good-cars__photo-min" src="./assets/icons/shopify.png">
+//           </div>
+//           <div class="good-card__second-row">
+//             <img class="good-cars__photo-max" src="./assets/icons/shopify.png">
+//           </div>
+//           <div  class="good-card__third-row">
+//             <h2 class="good-card__title">Apple 14 Pro</h2>
+//             <h2 class="good-card__description">An apple mobile which is nothing like apple</h2>
+//             <p class="good-card__discountPercentage">Discount percentage: 12</p>
+//             <p class="good-card__rating">Rating: 12</p>
+//             <p class="good-card__stock">Stock: 12</p>
+//             <p class="good-card__brand">Brand: 12</p>
+//             <p class="good-card__category">Category: 12</p>
+//             <h2 class="good-card__price">$ 546</h2>
+//             <div class="good-card__btns-container">
+//               <button class="good-card__buy-now-btn">Buy now</button>
+//               <button class="good-card__add-to-cart-btn">Buy now</button>
+//             </div>
+//           </div>
