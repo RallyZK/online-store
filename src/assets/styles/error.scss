@@ -1,0 +1,34 @@
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;  
+
+  &__h2 {
+    font-size: 180px;
+    color: $pink;
+    margin: 0px;
+    text-shadow: $dark-grey 1px 0 10px;
+  }
+
+  &__h3 {
+    font-size: 40px;
+    margin-top: 0px; 
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  &__btn {
+    border: none;
+    cursor: pointer;
+    width: 250px;
+    height: 70px;
+    background-color: $grey;
+    border-radius: 55px;
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+  }
+}

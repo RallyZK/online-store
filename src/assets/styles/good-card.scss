@@ -1,0 +1,70 @@
+.good-card {
+  display: flex;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 auto;  
+
+  &__left-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__second-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__photo-min {
+    display: block;
+    border: 1px solid #000;
+    border-radius: 7px;
+    margin: 10px 0;
+    width: 100px;
+    height: 70px;
+    cursor: pointer;
+  }
+
+  &__photo-max {
+    display: block;
+    border: 1px solid #000;
+    border-radius: 7px;
+    margin: 10px;
+    width: 250px;
+    height: 200px;
+    cursor: pointer; 
+  }
+  
+
+  & p {
+    margin: 5px 0;
+  }
+
+  &__btns-container {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__btn {
+    width: 120px;
+    font-size: 16px;
+    font-weight: 400;    
+    cursor: pointer;
+    margin: 20px 0;
+    height: 45px;
+    text-align: center;
+    border: none;
+    border-radius: 30px;
+    background-size: 300% 100%;    
+    box-shadow: 4px 4px 5px rgba(122,122,122,0.5);      
+  }
+}
+
+.buy-now-btn {
+  background-color: $pink;
+}
+
+.add-to-cart-btn {
+  background-color: $blue;
+}
