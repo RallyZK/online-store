@@ -68,7 +68,7 @@
     margin: 0px;
     border: none;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 40px;
     background-color: $pink;
     width: 120px;
     height: 40px;
@@ -101,23 +101,3 @@
   gap: 75px;
   //justify-content: space-between;
 }
-
-
-
-// <form class="payment-page">
-//           <h2 class="payment-page__title">Personal page</h2>
-//           <input class="payment-page__input name" type="text">
-//           <input class="payment-page__input phone" type="number">
-//           <input class="payment-page__input adress" type="text">
-//           <input class="payment-page__input email" type="email">
-//           <h2 class="payment-page__title">Credit card details</h2>
-//           <div class="payment-page__card">
-//             <div class="payment-page__card__number-cont">
-//               <img class="payment-page__card__number-cont__img" src="./assets/icons/card-default.png">
-//               <input class="payment-page__input card-number" type="number">
-//             </div>
-//             <input class="payment-page__input cvv" type="number">
-//             <p>Valid: true</p>
-//           </div>          
-//           <p><input class="payment-page__confirm-btn" type="submit" value="Confirm"></p>
-//         </form>

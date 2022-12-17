@@ -49,16 +49,22 @@
   &__btn {
     width: 120px;
     font-size: 16px;
-    font-weight: 600;
-    color: #fff;
+    font-weight: 400;    
     cursor: pointer;
     margin: 20px 0;
     height: 45px;
     text-align: center;
     border: none;
-    border-radius: 10px;
-    background-size: 300% 100%;
-    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    border-radius: 30px;
+    background-size: 300% 100%;    
     box-shadow: 4px 4px 5px rgba(122,122,122,0.5);      
   }
+}
+
+.buy-now-btn {
+  background-color: $pink;
+}
+
+.add-to-cart-btn {
+  background-color: $blue;
 }
