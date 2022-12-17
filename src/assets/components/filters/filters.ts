@@ -39,7 +39,7 @@ function updateSliderOneMaxValue() {
   }
 }
 
-function slideOne() {
+function slideOne(): string | void {
   if (sliderOne && sliderTwo) {
     if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
       sliderOne.value = (parseInt(sliderTwo.value) - minGap).toString();
@@ -47,9 +47,10 @@ function slideOne() {
     if (displayValOne) displayValOne.textContent = sliderOne.value;
   }
   fillColor();
+  if (sliderOne) return sliderOne.value;
 }
 
-function slideTwo() {
+function slideTwo(): string | void {
   if (sliderOne && sliderTwo) {
     if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
       sliderTwo.value = (parseInt(sliderOne.value) + minGap).toString();
@@ -57,9 +58,10 @@ function slideTwo() {
     if (displayValTwo) displayValTwo.textContent = sliderTwo.value;
   }
   fillColor();
+  if (sliderTwo) return sliderTwo.value;
 }
 
-function slideThree() {
+function slideThree(): string | void {
   if (sliderThree && sliderFour) {
     if (Number(sliderFour.value) - Number(sliderThree.value) <= minGap) {
       sliderThree.value = (Number(sliderFour.value) - minGap).toString();
@@ -67,9 +69,10 @@ function slideThree() {
     if (displayValThree) displayValThree.textContent = sliderThree.value;
   }
   fillColor();
+  if (sliderThree) return sliderThree.value;
 }
 
-function slideFour() {
+function slideFour(): string | void {
   if (sliderThree && sliderFour) {
     if (Number(sliderFour.value) - Number(sliderThree.value) <= minGap) {
       sliderFour.value = (Number(sliderThree.value) + minGap).toString();
@@ -77,6 +80,7 @@ function slideFour() {
     if (displayValFour) displayValFour.textContent = sliderFour.value;
   }
   fillColor();
+  if (sliderFour) return sliderFour.value;
 }
 
 function fillColor() {
