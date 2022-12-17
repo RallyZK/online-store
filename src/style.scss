@@ -1,8 +1,133 @@
-@import './assets/styles/basic.scss';
-@import './assets/styles/good-card.scss';
-@import './assets/styles/cart.scss';
-@import './assets/styles/payment.scss';
-@import './assets/styles/error.scss';
 @import './assets/styles/additionals.scss';
+@import './assets/components/error/error.scss';
 @import './assets/styles/media.scss';
-@import './assets/components/filters/filters.scss'
+
+body {
+  font-family: $main-font;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  
+}
+
+.main-section { 
+  width: 100%;
+  display: flex; 
+}
+
+.header,
+.footer {
+  background-color: #000;
+  color: #fff;
+  height: 50px;
+}
+
+.header-wr,
+.footer-wr {
+  box-sizing: border-box;
+  height: 100%;
+  align-items: center;
+  padding: 0 15px;
+  flex-direction: row;
+}
+
+.header {  
+  margin-bottom: 15px;
+
+  &__title {
+    display: flex;
+    margin: 0;
+    color: $pink;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      display: block;
+      margin-right: 7px;
+      height: 36px;
+      width: 36px;
+      background-size: 36px 36px;
+      opacity: 1;
+      background-image: url('./assets/icons/shopify.png');
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+  }
+
+  &__cart-wrapper {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+
+    &__sum {
+      margin-right: 10px;
+      margin-right: 10px;
+    }
+
+    &__items-count {
+      display: block;
+      height: 20px;
+      width: 20px;
+      background-color: $pink;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      margin-right: 5px;
+    }
+
+    &__cart-btn {
+      cursor: pointer;
+      width: 35px;
+      height: 35px;
+      border: none;
+      background-size: 100% 100%;
+      background-color: transparent;
+      background-image: url('./assets/icons/card2.png');
+      background-repeat: no-repeat;      
+    }
+  }
+
+}
+
+.footer {
+
+  margin-top: 10px;
+
+  &__ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__li {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+
+
+  &__li:first-child {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__logo-gh {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__logo-rs {
+    width: 60px;
+    height: 20px;
+  }
+}
+
+.main {
+  position: relative;
+}

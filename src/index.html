@@ -24,105 +24,78 @@
         <span class="header__cart-wrapper__items-count">3</span>
         <button class="header__cart-wrapper__cart-btn"></button>
       </div>
+    </div>
   </header>
   <main class="main">
     <div class="wrapper">
-
-    <section class="main-section">  
-
-      <section class="filters">
-        <div class="filters__item categories">
-          <h5 class="filters__item__title">Categories</h5>
-          <ul class="filters__item__ul">
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-          </ul>
-        </div>
-        <div class="filters__item brands">
-          <h5 class="filters__item__title">Brands</h5>
-          <ul class="filters__item__ul">
-            <li class="filters__item__li">
-              <p class="filters__item__name">Apple</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-          </ul>
-        </div>
-        <div class="filters__ranges-container">
-          <h5 class="filters__item__title">Price</h5>
-          <div class="filters__slider-track" id="sliderTrack-1"></div>
-          <input type="range" min="0" max="100" value="0" step="1" id="slider-1" onchange="slideOne()">
-          <input type="range" min="0" max="100" value="100" step="1" id="slider-2" onchange="slideTwo()">
-          <div class="filters__value">
-            <span id="rangeOneValue">0</span>
-            <span id="rangeTwoValue">100</span>
+      <section class="main-section">
+        <section class="filters">
+          <div class="filters__item categories">
+            <h5 class="filters__item__title">Categories</h5>
+            <ul class="filters__item__ul">
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+            </ul>
           </div>
-        </div>
-        <div class="filters__ranges-container">
-          <h5 class="filters__item__title">Rating</h5>
-          <div class="filters__slider-track" id="sliderTrack-2"></div>
-          <input type="range" min="0" max="5" value="0" step="0.1" id="slider-3" onchange="slideThree()">
-          <input type="range" min="0" max="5" value="5" step="0.1" id="slider-4" onchange="slideFour()">
-          <div class="filters__value">
-            <span id="rangeThreeValue">0</span>
-            <span id="rangeFourValue">5</span>
+          <div class="filters__item brands">
+            <h5 class="filters__item__title">Brands</h5>
+            <ul class="filters__item__ul">
+              <li class="filters__item__li">
+                <p class="filters__item__name">Apple</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+            </ul>
           </div>
-        </div>
-        <button class="filters__btn reset-filter-btn">Reset filters</button>
-        <button class="filters__btn copy-link-btn">Copy link</button>
-      </section>
-      <section class="goods">
-        <div class="goods__sort-wr">
-          <div class="goods__sort-wr__item">
-            
-            <select class="goods__sort-wr__select">
-              <option class="goods__sort-wr__select-item">Sort by</option>
-              <option class="goods__sort-wr__select-item">price (low to hight)</option>
-              <option class="goods__sort-wr__select-item">price (hight to low)</option>
-              <option class="goods__sort-wr__select-item">rating (low to hight)</option>
-              <option class="goods__sort-wr__select-item">rating (hight to low)</option>
-            </select>
-            <h4 class="goods__sort-wr__found-title">Found:&nbsp;<span>100</span></h4>
-
-          </div>
-          <div class="filters__item__ranges prices">
+          <div class="filters__ranges-container">
             <h5 class="filters__item__title">Price</h5>
-            <input type="range" min="0" max="100" class="filters__item__range prices-range">
-            <input type="range" min="0" max="100" class="filters__item__range prices-range">
+            <div class="filters__slider-track" id="sliderTrack-1"></div>
+            <input type="range" min="0" max="100" value="0" step="1" id="slider-1" onchange="slideOne()">
+            <input type="range" min="0" max="100" value="100" step="1" id="slider-2" onchange="slideTwo()">
+            <div class="filters__value">
+              <span id="rangeOneValue">0</span>
+              <span id="rangeTwoValue">100</span>
+            </div>
           </div>
-          <div class="filters__item__ranges rating">
+          <div class="filters__ranges-container">
             <h5 class="filters__item__title">Rating</h5>
-            <input type="range" min="0" max="100" class="filters__item__range rating-range">
-            <input type="range" min="0" max="100" class="filters__item__range rating-range">
+            <div class="filters__slider-track" id="sliderTrack-2"></div>
+            <input type="range" min="0" max="5" value="0" step="0.1" id="slider-3" onchange="slideThree()">
+            <input type="range" min="0" max="5" value="5" step="0.1" id="slider-4" onchange="slideFour()">
+            <div class="filters__value">
+              <span id="rangeThreeValue">0</span>
+              <span id="rangeFourValue">5</span>
+            </div>
           </div>
           <button class="filters__btn reset-filter-btn">Reset filters</button>
           <button class="filters__btn copy-link-btn">Copy link</button>
         </section>
+
         <section class="goods">
           <div class="goods__sort-wr">
             <div class="goods__sort-wr__item">
@@ -253,12 +226,12 @@
       <section class="good-card">
         <div class="good-card">
           <div class="good-card__left-row">
-            <img class="good-card__photo-min" src="./assets/icons/shopify.png">
-            <img class="good-card__photo-min" src="./assets/icons/shopify.png">
-            <img class="good-card__photo-min" src="./assets/icons/shopify.png">
+            <img class="good-card__photo-min" src="./assets/icons/shopify.png" alt="good-photo">
+            <img class="good-card__photo-min" src="./assets/icons/shopify.png" alt="good-photo">
+            <img class="good-card__photo-min" src="./assets/icons/shopify.png" alt="good-photo">
           </div>
           <div class="good-card__second-row">
-            <img class="good-card__photo-max" src="./assets/icons/shopify.png">
+            <img class="good-card__photo-max" src="./assets/icons/shopify.png" alt="good-photo">
           </div>
           <div class="good-card__third-row">
             <h2 class="good-card__title">Apple 14 Pro</h2>
@@ -284,7 +257,7 @@
           </div>
           <ol class="cart-list__good-card">
             <li class="cart-list__good-card__li">
-              <img class="cart-list__good-card__img" src="./assets/icons/shopify.png">
+              <img class="cart-list__good-card__img" src="./assets/icons/shopify.png" alt="good-photo">
               <div class="cart-list__good-card__item">
                 <h2 class="cart-list__good-card__item__title">Apple 14 Pro</h2>
                 <h3 class="cart-list__good-card__item__description">An apple mobile which is nothing like apple</h3>
@@ -302,7 +275,7 @@
               </div>
             </li>
             <li class="cart-list__good-card__li">
-              <img class="cart-list__good-card__img" src="./assets/icons/shopify.png">
+              <img class="cart-list__good-card__img" src="./assets/icons/shopify.png" alt="good-photo">
               <div class="cart-list__good-card__item">
                 <h2 class="cart-list__good-card__item__title">Apple 14 Pro</h2>
                 <h3 class="cart-list__good-card__item__description">An apple mobile which is nothing like apple</h3>
@@ -320,7 +293,7 @@
               </div>
             </li>
             <li class="cart-list__good-card__li">
-              <img class="cart-list__good-card__img" src="./assets/icons/shopify.png">
+              <img class="cart-list__good-card__img" src="./assets/icons/shopify.png"  alt="good-photo">
               <div class="cart-list__good-card__item">
                 <h2 class="cart-list__good-card__item__title">Apple 14 Pro</h2>
                 <h3 class="cart-list__good-card__item__description">An apple mobile which is nothing like apple</h3>
@@ -375,7 +348,7 @@
           <h2 class="payment-page__title">Credit card details</h2>
           <div class="payment-page__card">
             <div class="payment-page__card__number-cont">
-              <img class="payment-page__card__number-cont__img" src="./assets/icons/card-default.png">
+              <img class="payment-page__card__number-cont__img" src="./assets/icons/card-default.png"  alt="card">
               <label title="Must contain 16 characters, only numbers allowed" class="payment-page__label">
                 <input class="payment-page__input card-number" type="number" placeholder="Card number">
               </label>

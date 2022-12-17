@@ -1,0 +1,12 @@
+@import '../../styles/additionals.scss';
+.burger-menu-btn {
+  border: none;
+  background-color: $grey;
+  width: 30px;
+  height: 30px;
+  background-image: url('../../icons/menu-burger-white.png');
+  background-size: contain;
+  background-color: transparent;
+  cursor: pointer;
+  display: none;
+}

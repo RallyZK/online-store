@@ -1,4 +1,6 @@
 import catalog from '../catalog';
+import './filters.scss';
+import './burger.scss';
 
 window.onload = function () {
   updateSliderOneMaxValue();
