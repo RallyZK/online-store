@@ -74,22 +74,9 @@ setCubeBtn!.addEventListener('click', () => {
 const goodsSortSelect: HTMLInputElement | null = document.querySelector('.goods__sort-wr__select');
 
 goodsSortSelect!.addEventListener('change', () => {
-  let n: string;
-  n = goodsSortSelect!.value;
+  let n: string = goodsSortSelect!.value;
   sortGoodsArray(catalogArr, n);
 })
-
-
-
-// вспом функции
-
-function createElements(className: string, tag: string, parentclassName: HTMLElement, inner: string): HTMLElement {
-  const el: HTMLElement = document.createElement(tag);
-  el.className = className;
-  el.innerHTML = inner;
-  parentclassName.appendChild(el);
-  return el;
-}
 
 function sortGoodsArray(arr: IGoodsItem[], n: string) {
   if (n === '0') {
@@ -119,6 +106,53 @@ function sortGoodsArray(arr: IGoodsItem[], n: string) {
   } 
   renderCatalog(arr);
 }
+
+const searchInput: HTMLInputElement | null = document.querySelector('.goods__sort-wr__search-wr__input');
+const searchBtn: HTMLElement | null = document.querySelector('.goods__sort-wr__search-wr__btn');
+const itemsCount: HTMLElement | null = document.querySelector('.items-count');
+
+
+searchInput!.addEventListener('keypress', () => {
+  let str: string = searchInput!.value;
+  searchGoods(catalogArr, str);
+})
+
+searchBtn!.addEventListener('click', () => {
+  let str: string = searchInput!.value;
+  searchGoods(catalogArr, str);
+})
+
+function searchGoods (arr: IGoodsItem[], searchText: string) {
+  searchText = searchText.toLowerCase();
+  const searchArr = arr.filter((el) => {
+    if (el.title.toLowerCase().includes(searchText)    
+    || el.description.toLowerCase().includes(searchText)
+    || el.price.toString().includes(searchText)
+    || el.rating.toString().includes(searchText)
+    || el.stock.toString().includes(searchText)
+    || el.brand.toLowerCase().includes(searchText)
+    || el.category.toLowerCase().includes(searchText))
+    return el
+  })
+  itemsCount!.innerHTML = `${searchArr.length}`;
+  renderCatalog(searchArr);
+}
+
+
+
+
+
+// вспом функции
+
+function createElements(className: string, tag: string, parentclassName: HTMLElement, inner: string): HTMLElement {
+  const el: HTMLElement = document.createElement(tag);
+  el.className = className;
+  el.innerHTML = inner;
+  parentclassName.appendChild(el);
+  return el;
+}
+
+
 
 
 
