@@ -8,7 +8,13 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;  
+}
+
+.main-section { 
+  width: 100%;
+  display: flex; 
 }
 
 .header,
@@ -24,9 +30,10 @@ body {
   height: 100%;
   align-items: center;
   padding: 0 15px;
+  flex-direction: row;
 }
 
-.header {
+.header {  
   margin-bottom: 15px;
 
   &__title {
@@ -123,7 +130,7 @@ body {
   position: relative;
 }
 
-.goods {
+.goods {  
   width: calc(100% - 15px - 250px);
   display: flex;
   flex-direction: column;
@@ -280,7 +287,7 @@ body {
   background-image: url('./assets/icons/menu-cube-black2.png');
 }
 
-.filters {
+.filters {  
   width: 250px;
   display: flex;
   flex-direction: column;  

@@ -27,189 +27,191 @@
   </header>
   <main class="main">
     <div class="wrapper">
-      <section class="filters display-none">
-        <div class="filters__item categories">
-          <h5 class="filters__item__title">Categories</h5>
-          <ul class="filters__item__ul">
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-            <li class="filters__item__li">
-              <p class="filters__item__name">Phones</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-          </ul>
-        </div>
-        <div class="filters__item brands">
-          <h5 class="filters__item__title">Brands</h5>
-          <ul class="filters__item__ul">
-            <li class="filters__item__li">
-              <p class="filters__item__name">Apple</p>
-              <p class="filters__item__stock">5/5</p>
-            </li>
-          </ul>
-        </div>
-        <div class="filters__item__ranges prices">
-          <h5 class="filters__item__title">Price</h5>
-          <input type="range" min="0" max="100" class="filters__item__range prices-range">
-          <input type="range" min="0" max="100" class="filters__item__range prices-range">
-        </div>
-        <div class="filters__item__ranges rating">
-          <h5 class="filters__item__title">Rating</h5>
-          <input type="range" min="0" max="100" class="filters__item__range rating-range">
-          <input type="range" min="0" max="100" class="filters__item__range rating-range">
-        </div>
-        <button class="filters__btn reset-filter-btn">Reset filters</button>
-        <button class="filters__btn copy-link-btn">Copy link</button>
+      <section class="main-section">
+        <section class="filters">
+          <div class="filters__item categories">
+            <h5 class="filters__item__title">Categories</h5>
+            <ul class="filters__item__ul">
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+              <li class="filters__item__li">
+                <p class="filters__item__name">Phones</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+            </ul>
+          </div>
+          <div class="filters__item brands">
+            <h5 class="filters__item__title">Brands</h5>
+            <ul class="filters__item__ul">
+              <li class="filters__item__li">
+                <p class="filters__item__name">Apple</p>
+                <p class="filters__item__stock">5/5</p>
+              </li>
+            </ul>
+          </div>
+          <div class="filters__item__ranges prices">
+            <h5 class="filters__item__title">Price</h5>
+            <input type="range" min="0" max="100" class="filters__item__range prices-range">
+            <input type="range" min="0" max="100" class="filters__item__range prices-range">
+          </div>
+          <div class="filters__item__ranges rating">
+            <h5 class="filters__item__title">Rating</h5>
+            <input type="range" min="0" max="100" class="filters__item__range rating-range">
+            <input type="range" min="0" max="100" class="filters__item__range rating-range">
+          </div>
+          <button class="filters__btn reset-filter-btn">Reset filters</button>
+          <button class="filters__btn copy-link-btn">Copy link</button>
+        </section>
+        <section class="goods">
+          <div class="goods__sort-wr">
+            <div class="goods__sort-wr__item">
+
+              <select class="goods__sort-wr__select">
+                <option class="goods__sort-wr__select-item">Sort by</option>
+                <option class="goods__sort-wr__select-item">price (low to hight)</option>
+                <option class="goods__sort-wr__select-item">price (hight to low)</option>
+                <option class="goods__sort-wr__select-item">rating (low to hight)</option>
+                <option class="goods__sort-wr__select-item">rating (hight to low)</option>
+              </select>
+              <h4 class="goods__sort-wr__found-title">Found:&nbsp;<span class="items-count">100</span></h4>
+            </div>
+
+            <div class="goods__sort-wr__item">
+              <div class="goods__sort-wr__search-wr">
+                <input class="goods__sort-wr__search-wr__input" type="text" placeholder="Search">
+                <button class="goods__sort-wr__search-wr__btn"></button>
+              </div>
+              <div class="goods__sort-wr__view-wr">
+                <button class="goods__sort-wr__btn list-view"></button>
+                <button class="goods__sort-wr__btn grid-view"></button>
+              </div>
+            </div>
+
+          </div>
+          <div class="goods__goods-container cube-cont">
+
+            <div class="goods__item cube-item">
+              <div class="goods__item__img"></div>
+              <div class="goods__item__description">
+                <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
+                <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
+                  technology A12 Bionic chip with ...</h6>
+                <div class="goods__item__wrapper">
+                  <span class="goods__item__rating">4.5</span>
+                  <div class="goods__item__price-wrapper">
+                    <span class="goods__item__price">$ 750</span>
+                    <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="goods__item cube-item">
+              <div class="goods__item__img"></div>
+              <div class="goods__item__description">
+                <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
+                <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
+                  technology A12 Bionic chip with ...</h6>
+                <div class="goods__item__wrapper">
+                  <span class="goods__item__rating">4.5</span>
+                  <div class="goods__item__price-wrapper">
+                    <span class="goods__item__price">$ 750</span>
+                    <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="goods__item cube-item">
+              <div class="goods__item__img"></div>
+              <div class="goods__item__description">
+                <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
+                <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
+                  technology A12 Bionic chip with ...</h6>
+                <div class="goods__item__wrapper">
+                  <span class="goods__item__rating">4.5</span>
+                  <div class="goods__item__price-wrapper">
+                    <span class="goods__item__price">$ 750</span>
+                    <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="goods__item cube-item">
+              <div class="goods__item__img"></div>
+              <div class="goods__item__description">
+                <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
+                <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
+                  technology A12 Bionic chip with ...</h6>
+                <div class="goods__item__wrapper">
+                  <span class="goods__item__rating">4.5</span>
+                  <div class="goods__item__price-wrapper">
+                    <span class="goods__item__price">$ 750</span>
+                    <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="goods__item cube-item">
+              <div class="goods__item__img"></div>
+              <div class="goods__item__description">
+                <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
+                <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
+                  technology A12 Bionic chip with ...</h6>
+                <div class="goods__item__wrapper">
+                  <span class="goods__item__rating">4.5</span>
+                  <div class="goods__item__price-wrapper">
+                    <span class="goods__item__price">$ 750</span>
+                    <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="goods__item cube-item">
+              <div class="goods__item__img"></div>
+              <div class="goods__item__description">
+                <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
+                <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
+                  technology A12 Bionic chip with ...</h6>
+                <div class="goods__item__wrapper">
+                  <span class="goods__item__rating">4.5</span>
+                  <div class="goods__item__price-wrapper">
+                    <span class="goods__item__price">$ 750</span>
+                    <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
       </section>
-      <section class="goods display-none">
-        <div class="goods__sort-wr">
-          <div class="goods__sort-wr__item">
-
-            <select class="goods__sort-wr__select">
-              <option class="goods__sort-wr__select-item">Sort by</option>
-              <option class="goods__sort-wr__select-item">price (low to hight)</option>
-              <option class="goods__sort-wr__select-item">price (hight to low)</option>
-              <option class="goods__sort-wr__select-item">rating (low to hight)</option>
-              <option class="goods__sort-wr__select-item">rating (hight to low)</option>
-            </select>
-            <h4 class="goods__sort-wr__found-title">Found:&nbsp;<span class="items-count">100</span></h4>
-          </div>
-
-          <div class="goods__sort-wr__item">
-            <div class="goods__sort-wr__search-wr">
-              <input class="goods__sort-wr__search-wr__input" type="text" placeholder="Search">
-              <button class="goods__sort-wr__search-wr__btn"></button>
-            </div>
-            <div class="goods__sort-wr__view-wr">
-              <button class="goods__sort-wr__btn list-view"></button>
-              <button class="goods__sort-wr__btn grid-view"></button>
-            </div>
-          </div>
-
-        </div>
-        <div class="goods__goods-container cube-cont">
-
-          <div class="goods__item cube-item">
-            <div class="goods__item__img"></div>
-            <div class="goods__item__description">
-              <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
-              <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
-                technology A12 Bionic chip with ...</h6>
-              <div class="goods__item__wrapper">
-                <span class="goods__item__rating">4.5</span>
-                <div class="goods__item__price-wrapper">
-                  <span class="goods__item__price">$ 750</span>
-                  <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="goods__item cube-item">
-            <div class="goods__item__img"></div>
-            <div class="goods__item__description">
-              <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
-              <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
-                technology A12 Bionic chip with ...</h6>
-              <div class="goods__item__wrapper">
-                <span class="goods__item__rating">4.5</span>
-                <div class="goods__item__price-wrapper">
-                  <span class="goods__item__price">$ 750</span>
-                  <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="goods__item cube-item">
-            <div class="goods__item__img"></div>
-            <div class="goods__item__description">
-              <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
-              <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
-                technology A12 Bionic chip with ...</h6>
-              <div class="goods__item__wrapper">
-                <span class="goods__item__rating">4.5</span>
-                <div class="goods__item__price-wrapper">
-                  <span class="goods__item__price">$ 750</span>
-                  <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="goods__item cube-item">
-            <div class="goods__item__img"></div>
-            <div class="goods__item__description">
-              <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
-              <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
-                technology A12 Bionic chip with ...</h6>
-              <div class="goods__item__wrapper">
-                <span class="goods__item__rating">4.5</span>
-                <div class="goods__item__price-wrapper">
-                  <span class="goods__item__price">$ 750</span>
-                  <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="goods__item cube-item">
-            <div class="goods__item__img"></div>
-            <div class="goods__item__description">
-              <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
-              <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
-                technology A12 Bionic chip with ...</h6>
-              <div class="goods__item__wrapper">
-                <span class="goods__item__rating">4.5</span>
-                <div class="goods__item__price-wrapper">
-                  <span class="goods__item__price">$ 750</span>
-                  <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="goods__item cube-item">
-            <div class="goods__item__img"></div>
-            <div class="goods__item__description">
-              <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4>
-              <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
-                technology A12 Bionic chip with ...</h6>
-              <div class="goods__item__wrapper">
-                <span class="goods__item__rating">4.5</span>
-                <div class="goods__item__price-wrapper">
-                  <span class="goods__item__price">$ 750</span>
-                  <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-      <section class="good-card display-none">
+      <section class="good-card">
         <div class="good-card">
           <div class="good-card__left-row">
             <img class="good-card__photo-min" src="./assets/icons/shopify.png">
@@ -235,7 +237,7 @@
           </div>
         </div>
       </section>
-      <section class="cart display-none">
+      <section class="cart">
         <div class="cart-list">
           <div class="cart-list__first-row">
             <h2 class="cart-list__title">Products in cart</h2>
@@ -335,8 +337,7 @@
           <div class="payment-page__card">
             <div class="payment-page__card__number-cont">
               <img class="payment-page__card__number-cont__img" src="./assets/icons/card-default.png">
-              <label title="Must contain 16 characters, only numbers allowed"
-                class="payment-page__label">
+              <label title="Must contain 16 characters, only numbers allowed" class="payment-page__label">
                 <input class="payment-page__input card-number" type="number" placeholder="Card number">
               </label>
             </div>
@@ -348,7 +349,7 @@
                 <input class="payment-page__input cvv" type="number" placeholder="CVV">
               </label>
             </div>
-            <p>Valid: true</p>
+            <p>Valid:</p>
           </div>
           <p><input class="payment-page__confirm-btn" type="submit" value="Confirm"></p>
         </form>

@@ -23,6 +23,7 @@
     margin: 10px 0;
     width: 100px;
     height: 70px;
+    cursor: pointer;
   }
 
   &__photo-max {
@@ -32,7 +33,9 @@
     margin: 10px;
     width: 250px;
     height: 200px;
+    cursor: pointer; 
   }
+  
 
   & p {
     margin: 5px 0;
@@ -55,6 +58,7 @@
     border: none;
     border-radius: 10px;
     background-size: 300% 100%;
-    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);        
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    box-shadow: 4px 4px 5px rgba(122,122,122,0.5);      
   }
 }
