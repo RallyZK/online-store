@@ -1,4 +1,4 @@
-@import '../../styles/additionals.scss';
+@import '../../assets/styles/additionals.scss';
 
 .goods {  
   width: calc(100% - 15px - 250px);
@@ -50,7 +50,7 @@
         height: 16px;
         width: 16px;
         background-size: 100% 100%;
-        background-image: url('../../icons/search.png');
+        background-image: url('../../assets/icons/search.png');
         background-repeat: no-repeat;
         border: none;
         background-color: transparent;
@@ -86,7 +86,7 @@
     &__img {
       width: 200px;
       height: 200px;
-      background-image: url('../../icons/shopify.png');
+      background-image: url('../../assets/icons/shopify.png');
       background-size: 100% 100%;
       background-repeat: no-repeat;      
       cursor: pointer;
@@ -124,7 +124,7 @@
         width: 18px;
         background-size: 100% 100%;
         opacity: 0.9;
-        background-image: url('../../icons/star.png');
+        background-image: url('../../assets/icons/star.png');
         background-repeat: no-repeat;
       }
     }
@@ -149,12 +149,12 @@
 
 .list-view {
   background-size: 117% 130%;
-  background-image: url('../../icons/menu-list-black.png');
+  background-image: url('../../assets/icons/menu-list-black.png');
 }
 
 .grid-view {
   background-size: 88% 88%;
-  background-image: url('../../icons/menu-cube-black2.png');
+  background-image: url('../../assets/icons/menu-cube-black2.png');
 }
 
 

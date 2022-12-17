@@ -1,4 +1,4 @@
-import catalog from '../catalog';
+import catalog from '../../assets/catalog';
 import './filters.scss';
 import './burger.scss';
 
