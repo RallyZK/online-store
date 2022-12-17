@@ -19,19 +19,6 @@ interface IGoodsItem {
 type viewType = 'cube' | 'list';
 let view: viewType = 'cube';
 
-function createElements(className: string, tag: string, parentclassName: HTMLElement, inner: string): HTMLElement {
-  const el: HTMLElement = document.createElement(tag);
-  el.className = className;
-  el.innerHTML = inner;
-  parentclassName.appendChild(el);
-  return el;
-}
-
-function shuffle(array: IGoodsItem[]) {
-  array.sort(() => Math.random() - 0.5);
-  return array;
-}
-
 const catalogArr: IGoodsItem[] = catalog.products;
 const goodsContainer: HTMLElement | null = document.querySelector('.goods__goods-container');
 let goodsItem: HTMLElement | null;
@@ -45,62 +32,93 @@ let goodsItemPriceWrapper: HTMLElement | null;
 let goodsItemPrice: HTMLElement | null;
 let goodsItemAddToCartBtn: HTMLElement | null;
 
-function renderCatalog(): void {
+function renderCatalog(arr: IGoodsItem[]): void {
   if (goodsContainer) {
     goodsContainer.innerHTML = '';
     const img = new Image();
-    for (let i = 0; i < catalogArr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       goodsItem = createElements(`goods__item ${view}-item`, 'div', goodsContainer, '');
       goodsItemImg = createElements('goods__item__img', 'div', goodsItem, '');
-      goodsItemImg.style.backgroundImage = `url(${catalogArr[i].thumbnail})`;
+      goodsItemImg.style.backgroundImage = `url(${arr[i].thumbnail})`;
       goodsItemDescription = createElements(`goods__item__description ${view}-desc`, 'div', goodsItem, '');
-      goodsItemTitle = createElements('goods__item__title', 'h4', goodsItemDescription, `${catalogArr[i].title}`);
-      goodsItemSubtitle = createElements(`goods__item__subtitle ${view}-subtit`, 'h6', goodsItemDescription, `${catalogArr[i].description}`);
+      goodsItemTitle = createElements('goods__item__title', 'h4', goodsItemDescription, `${arr[i].title}`);
+      goodsItemSubtitle = createElements(`goods__item__subtitle ${view}-subtit`, 'h6', goodsItemDescription, `${arr[i].description}`);
       goodsItemWrapper = createElements('goods__item__wrapper', 'div', goodsItemDescription, '');
-      goodsItemRating = createElements('goods__item__rating', 'span', goodsItemWrapper, `${catalogArr[i].rating}`);
+      goodsItemRating = createElements('goods__item__rating', 'span', goodsItemWrapper, `${arr[i].rating}`);
       goodsItemPriceWrapper = createElements('goods__item__price-wrapper', 'div', goodsItemWrapper, '');
-      goodsItemPrice = createElements('goods__item__price', 'span', goodsItemPriceWrapper, `$ ${catalogArr[i].price}`);
+      goodsItemPrice = createElements('goods__item__price', 'span', goodsItemPriceWrapper, `$ ${arr[i].price}`);
       goodsItemAddToCartBtn = createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'buy');
-      
-    }     
-  }  
+
+    }
+  }
 }
-renderCatalog()
+renderCatalog(catalogArr)
 
 const setListBtn: HTMLButtonElement | null = document.querySelector('.list-view');
 const setCubeBtn: HTMLButtonElement | null = document.querySelector('.grid-view');
 
 setListBtn!.addEventListener('click', () => {
   view = 'list';
-  renderCatalog();
+  renderCatalog(catalogArr);
   goodsContainer!.classList.remove('cube-cont');
   goodsContainer!.classList.add('list-cont');
-  //goodsItemDescription!.classList.add('list-desc');
 })
 
 setCubeBtn!.addEventListener('click', () => {
   view = 'cube';
-  renderCatalog();
+  renderCatalog(catalogArr);
   goodsContainer!.classList.add('cube-cont');
-  goodsContainer!.classList.remove('list-cont');  
-  //goodsItemDescription!.classList.remove('list-desc');
+  goodsContainer!.classList.remove('list-cont');
+})
+
+const goodsSortSelect: HTMLInputElement | null = document.querySelector('.goods__sort-wr__select');
+
+goodsSortSelect!.addEventListener('change', () => {
+  let n: string;
+  n = goodsSortSelect!.value;
+  sortGoodsArray(catalogArr, n);
 })
 
 
-// <div class="goods__goods-container cube-cont">
 
-// <div class="goods__item cube-item"> +
-//   <div class="goods__item__img"></div> +
-//   <div class="goods__item__description"> +
-//     <h4 class="goods__item__title">Phone One X 10 Red 256Gb</h4> +
-//     <h6 class="goods__item__subtitle">SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
-//       technology A12 Bionic chip with ...</h6>+
-//     <div class="goods__item__wrapper">+
-//       <span class="goods__item__rating">4.5</span>+
-//       <div class="goods__item__price-wrapper">+
-//         <span class="goods__item__price">$ 750</span>+
-//         <button class="goods__item__add-to-cart-btn cube-btn">Buy</button>
-//       </div>
-//     </div>
-//   </div>
-// </div>
+// вспом функции
+
+function createElements(className: string, tag: string, parentclassName: HTMLElement, inner: string): HTMLElement {
+  const el: HTMLElement = document.createElement(tag);
+  el.className = className;
+  el.innerHTML = inner;
+  parentclassName.appendChild(el);
+  return el;
+}
+
+function sortGoodsArray(arr: IGoodsItem[], n: string) {
+  if (n === '0') {
+    arr.sort((a, b) => a.price - b.price);
+  } else if (n === '1') {
+    arr.sort((a, b) => b.price - a.price);
+  } else if (n === '2') {
+    arr.sort((a, b) => {
+      if (a.title < b.title) return -1;
+      if (a.title > b.title) return 1;
+      if (a.title === b.title) {
+        if (a.description < b.description) return -1;
+        if (a.description > b.description) return 1;
+      }
+      return 0;
+    });
+  } else if (n === '3') {
+    arr.sort((a, b) => {
+      if (a.title > b.title) return -1;
+      if (a.title < b.title) return 1;
+      if (a.title === b.title) {
+        if (a.description > b.description) return -1;
+        if (a.description < b.description) return 1;
+      }
+      return 0;
+    });
+  } 
+  renderCatalog(arr);
+}
+
+
+
