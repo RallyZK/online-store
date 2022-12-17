@@ -1,10 +1,10 @@
 @media (max-width: 1450px) {
 
-  .goods__item__img {
-    width: 150px;
+  .goods__item__img {    
     height: 150px;
   }
 }
+
 
 @media (max-width: 1024px) {
 
@@ -73,6 +73,16 @@
 
 }
 
+@media (max-width: 910px) {
+
+  .goods {
+
+    &__goods-container {
+      grid-template-columns: repeat(2, 50%);
+    }
+  }
+}
+
 @media (max-width: 768px) {
 
   .goods {
@@ -86,8 +96,7 @@
 
     &__item {
 
-      &__img {
-        width: 110px;
+      &__img {        
         height: 110px;
       }
 
@@ -183,8 +192,16 @@
 
 @media (max-width: 425px) {
 
-  .goods__goods-container {
-    grid-template-columns: repeat(2, 50%);
+  .goods {
+
+    &__item {
+      &__title {
+        font-size: 14px;
+      }
+      &__subtitle {
+        font-size: 10px;
+      }
+    }
   }
 
   .good-card {
