@@ -96,7 +96,7 @@ const catalog = {
       discountPercentage: 11.02,
       rating: 4.57,
       stock: 83,
-      brand: 'APPle',
+      brand: 'Apple',
       category: 'laptops',
       thumbnail: 'https://i.dummyjson.com/data/products/6/thumbnail.png',
       images: [
@@ -189,7 +189,7 @@ const catalog = {
       discountPercentage: 8.4,
       rating: 4.26,
       stock: 65,
-      brand: 'Impression of Acqua Di Gio',
+      brand: 'Acqua Di Gio',
       category: 'fragrances',
       thumbnail: 'https://i.dummyjson.com/data/products/11/thumbnail.jpg',
       images: [
@@ -1681,7 +1681,7 @@ const catalog = {
       discountPercentage: 13.63,
       rating: 4.04,
       stock: 115,
-      brand: 'METRO 70cc Motorcycle - MR70',
+      brand: 'METRO Motorcycle',
       category: 'motorcycle',
       thumbnail: 'https://i.dummyjson.com/data/products/91/thumbnail.jpg',
       images: [
