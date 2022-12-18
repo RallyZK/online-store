@@ -57,6 +57,7 @@ function renderCategory() {
   for (let key in categories) {
     if (filtersItemUlCategory) {
       filtersItemLiCategory = createElements('filters__item__li', 'li', filtersItemUlCategory, '');
+      filtersItemLiCategory.setAttribute('item-category', `${key}`);
       filtersItemPNameCategory = createElements('filters__item__name', 'p', filtersItemLiCategory, `${key[0].toUpperCase()}${key.slice(1, key.length)}`);
       filtersItemPStockCategory = createElements('filters__item__stock', 'p', filtersItemLiCategory, '');
       filtersSpanCurStockCategory = createElements('filters__category-span', 'span', filtersItemPStockCategory, `${categories[key]}`);
@@ -79,6 +80,7 @@ function renderBrands() {
   for (let key in brands) {
     if (filtersItemUlBrands) {
       filtersItemLiBrands = createElements('filters__item__li', 'li', filtersItemUlBrands, '');
+      filtersItemLiBrands.setAttribute('item-brand', `${key}`);
       filtersItemPNameBrands = createElements('filters__item__name', 'p', filtersItemLiBrands, `${key[0].toUpperCase()}${key.slice(1, key.length)}`);
       filtersItemPStockBrands = createElements('filters__item__stock', 'p', filtersItemLiBrands, '');
       filtersSpanCurStockBrands = createElements('filters__brands-span', 'span', filtersItemPStockBrands, `${brands[key]}`);

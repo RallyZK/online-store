@@ -1,6 +1,7 @@
 import catalog from '../../assets/catalog';
 import './filters.scss';
 import './burger.scss';
+import { filters } from '../sort/sort';
 
 window.onload = function () {
   updateSliderOneMaxValue();
@@ -32,13 +33,14 @@ function searchMaxPrice(): number {
 let sliderMaxValue1: number = searchMaxPrice();
 let sliderMaxValue3: number = 5;
 
-function updateSliderOneMaxValue() {
+export function updateSliderOneMaxValue() {
   if (displayValTwo) displayValTwo.textContent = sliderMaxValue1.toString();
   if (sliderOne) sliderOne.max = sliderMaxValue1.toString();
   if (sliderTwo) {
     sliderTwo.max = sliderMaxValue1.toString();
     sliderTwo.value = sliderMaxValue1.toString();
   }
+  return sliderMaxValue1
 }
 
 export function slideOne(): string | void {
@@ -100,17 +102,25 @@ function fillColor() {
 
 if (sliderOne)
   sliderOne.onchange = () => {
+    //filters.minPrice = Number(slideOne());
     slideOne();
+    //console.log(filters)
   };
 if (sliderTwo)
   sliderTwo.onchange = () => {
+    //filters.maxPrice = Number(slideTwo());
     slideTwo();
+    //console.log(filters)
   };
 if (sliderThree)
   sliderThree.onchange = () => {
+    //filters.minRating = Number(slideThree());
     slideThree();
+    //console.log(filters)
   };
 if (sliderFour)
   sliderFour.onchange = () => {
+    //filters.maxRating = Number(slideFour());
     slideFour();
+    //console.log(filters)
   };
