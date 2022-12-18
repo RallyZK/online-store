@@ -41,7 +41,7 @@ function updateSliderOneMaxValue() {
   }
 }
 
-function slideOne(): string | void {
+export function slideOne(): string | void {
   if (sliderOne && sliderTwo) {
     if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
       sliderOne.value = (parseInt(sliderTwo.value) - minGap).toString();
@@ -52,7 +52,7 @@ function slideOne(): string | void {
   if (sliderOne) return sliderOne.value;
 }
 
-function slideTwo(): string | void {
+export function slideTwo(): string | void {
   if (sliderOne && sliderTwo) {
     if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
       sliderTwo.value = (parseInt(sliderOne.value) + minGap).toString();
@@ -63,7 +63,7 @@ function slideTwo(): string | void {
   if (sliderTwo) return sliderTwo.value;
 }
 
-function slideThree(): string | void {
+export function slideThree(): string | void {
   if (sliderThree && sliderFour) {
     if (Number(sliderFour.value) - Number(sliderThree.value) <= minGap) {
       sliderThree.value = (Number(sliderFour.value) - minGap).toString();
@@ -74,7 +74,7 @@ function slideThree(): string | void {
   if (sliderThree) return sliderThree.value;
 }
 
-function slideFour(): string | void {
+export function slideFour(): string | void {
   if (sliderThree && sliderFour) {
     if (Number(sliderFour.value) - Number(sliderThree.value) <= minGap) {
       sliderFour.value = (Number(sliderThree.value) + minGap).toString();
