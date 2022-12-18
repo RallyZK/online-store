@@ -82,26 +82,35 @@
     box-sizing: border-box;
     padding: 8px;
     width: 100%;
+    margin-bottom: 20px;
 
     &__img {
       width: 200px;
-      height: 200px;
+      height: 170px;
       background-image: url('../../assets/icons/shopify.png');
-      background-size: 100% 100%;
+      background-size: auto 100%;
+      background-position: center center;
       background-repeat: no-repeat;      
       cursor: pointer;
-      margin: 0 auto 10px auto;
+      //margin: 0 auto 10px auto;
+      border-radius: 10px;      
     }
 
     &__title {
       margin: 3px 0;
+      height: 38px;
+      font-size: 18px;
+      margin-bottom: 10px;
     }
 
     &__subtitle {
-      font-size: 14px;
-      color: $grey;
+      box-sizing: border-box;
+      padding-right: 5px;
+      font-size: 12px;
+      color: $dark-grey;
       margin: 3px 0;
       font-weight: 300;
+      height: 85px;
     }
 
     &__wrapper {
@@ -137,12 +146,17 @@
       font-size: 20px;
     }
 
-    &__add-to-cart-btn {      
+    &__add-to-cart-btn {         
       border: none;
       border-radius: 5px;
       cursor: pointer;
       background-color: $pink;
-      text-transform: uppercase;
+      text-transform: uppercase;      
+      border-radius: 10px;          
+      vertical-align: center;
+      &:hover{
+        font-weight: 600;        
+      }
     }
   }
 }
@@ -163,15 +177,30 @@
 .list-cont {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 // для .goods__item 
 .list-item {
   flex-direction: row;
 }
 // для .goods__item__add-to-cart-btn 
-.list-btn {
-  width: 80px;
-  height: 35px;
+.list-btn {  
+  width: 70px;
+  height: 30px; 
+}
+// для goods__item__description
+.list-desc {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 200px);
+  height: 150px;
+  justify-content: space-between;
+  margin-left: 15px; 
+  align-items: stretch;
+}
+
+.list-subtit {
+  height: auto;
 }
 
 // вариант раскладки квадратиками 
@@ -187,7 +216,7 @@
 }
 // для .goods__item__add-to-cart-btn
 .cube-btn {
-  width: 50px;
-  height: 25px;
+  width: 70px;
+  height: 30px;
 }
 
