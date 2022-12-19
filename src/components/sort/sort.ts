@@ -1,35 +1,10 @@
 import './sort.scss';
 import '../../assets/styles/media.scss';
+import * as types from '../types';
 import catalog from '../../assets/catalog';
 import { slideOne, slideTwo, slideThree, slideFour, updateSliderOneMaxValue, sliderTwo, sliderThree, sliderFour, sliderOne } from '../filters/filters';
-import { categories } from '../variables';
 
-interface IFilters {
-  category: string[];
-  brand: string[];
-  minPrice: number | boolean;
-  maxPrice: number | boolean;
-  minRating: number | boolean;
-  maxRating: number | boolean;
-  sortBy: string | boolean;
-  contains: string | boolean;
-}
-
-interface IGoodsItem {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
-
-export const filters: IFilters = {
+export const filters: types.IFilters = {
   category: [],
   brand: [],
   minPrice: Number(slideOne()),
@@ -37,15 +12,15 @@ export const filters: IFilters = {
   minRating: Number(slideThree()),
   maxRating: Number(slideFour()),
   sortBy: false,
-  contains: false,
-};
-
+  contains: '',
+}
+  
 // рендер всех товаров
 
 type viewType = 'cube' | 'list';
 let view: viewType = 'cube';
 
-let catalogArr: IGoodsItem[] = catalog.products;
+let catalogArr: types.IGoodsItem[] = catalog.products;
 
 const goodsContainer: HTMLElement | null = document.querySelector('.goods__goods-container');
 const itemsCount: HTMLElement | null = document.querySelector('.items-count');
@@ -60,7 +35,7 @@ let goodsItemPriceWrapper: HTMLElement | null;
 let goodsItemPrice: HTMLElement | null;
 let goodsItemAddToCartBtn: HTMLElement | null;
 
-function renderCatalog(arr: IGoodsItem[]): void {
+function renderCatalog(arr: types.IGoodsItem[]): void {
   if (goodsContainer) {
     goodsContainer.innerHTML = '';
     const img = new Image();
@@ -110,7 +85,7 @@ if (sliderFour)
     console.log('filers:::', filters);
   };
 
-let currentGoodsArray: IGoodsItem[] = catalogArr;
+let currentGoodsArray: types.IGoodsItem[] = catalogArr;
 
 export function updateAllFilters() {
   const arr = sortGoodsArray(catalogArr, n);
@@ -142,7 +117,8 @@ setCubeBtn!.addEventListener('click', () => {
 // фильтр по вариантам сортировки
 
 const goodsSortSelect: HTMLInputElement | null = document.querySelector('.goods__sort-wr__select');
-let n: string;
+let n: string | null;
+
 goodsSortSelect!.addEventListener('change', () => {
   n = goodsSortSelect!.value;
   filters.sortBy = n;
@@ -175,19 +151,13 @@ if (categoriesUl) {
 categoriesLiArr!.forEach((el: Element, key: number, parent: NodeListOf<Element>): void => {
   el.addEventListener('click', () => {
     const selectedCategory = el.getAttribute('item-category') as string;
-    if (!filters.category.includes(selectedCategory)) filters.category.push(selectedCategory);
-    updateAllFilters();
-    console.log(filters);
-    //getGoodsBySelectedCategories(catalogArr, filters.category);
-  });
-});
-
-function getGoodsBySelectedCategories(arr: IGoodsItem[], selectedCategories: string[]) {
-  if (selectedCategories.length === 0) return arr;
-  const sortArr = arr.filter((el: IGoodsItem) => selectedCategories.includes(el.category));
-  return sortArr;
-}
-
+    if (!filters.category.includes(selectedCategory)) filters.category.push(selectedCategory)
+    else filters.category = filters.category.filter((el) => el !== selectedCategory)
+    updateAllFilters();    
+    el.classList.toggle('selected-filter');
+  })
+})
+   
 // фильтр по брендам товаров
 
 const brandsUl: HTMLElement | null = document.querySelector('.brands');
@@ -199,22 +169,34 @@ if (brandsUl) {
 brandsLiArr!.forEach((el: Element, key: number, parent: NodeListOf<Element>): void => {
   el.addEventListener('click', () => {
     const selectedBrand = el.getAttribute('item-brand') as string;
-    if (!filters.brand.includes(selectedBrand)) filters.brand.push(selectedBrand);
+    if (filters.brand.includes(selectedBrand)) filters.brand = filters.brand.filter((el) => el !== selectedBrand)
+    else filters.brand.push(selectedBrand);    
     updateAllFilters();
-    console.log(filters);
-    //getGoodsBySelectedFilters(catalogArr, filters.brand);
-  });
-});
+    el.classList.toggle('selected-filter'); 
+  })
+})
 
-function getGoodsBySelectedFilters(arr: IGoodsItem[], selectedBrands: string[]) {
-  if (selectedBrands.length === 0) return arr;
-  const sortArr = arr.filter((el: IGoodsItem) => selectedBrands.includes(el.brand));
-  return sortArr;
-}
 
 // фильтр по выставленным ценам
 
-console.log(filters);
+
+// сброс всех фильтров
+
+const resetFiltersBtn: HTMLElement | null = document.querySelector('.reset-filter-btn');
+
+resetFiltersBtn?.addEventListener('click', () => {
+  currentGoodsArray = catalog.products;
+  n = null;
+  searchFrase = '';  
+  filters.contains = '';
+  filters.brand = [];
+  filters.category = [];
+  categoriesLiArr?.forEach(el => el.classList.remove('selected-filter'));
+  brandsLiArr?.forEach(el => el.classList.remove('selected-filter'));
+  updateAllFilters();
+  renderCatalog(currentGoodsArray);
+})
+
 
 // вспом функции
 
@@ -226,7 +208,8 @@ function createElements(className: string, tag: string, parentclassName: HTMLEle
   return el;
 }
 
-function sortGoodsArray(arr: IGoodsItem[], n: string) {
+function sortGoodsArray(arr: types.IGoodsItem[], n: string | null) {
+  if (n === null) return arr;
   if (n === '0') {
     arr.sort((a, b) => a.price - b.price);
   } else if (n === '1') {
@@ -259,7 +242,9 @@ function sortGoodsArray(arr: IGoodsItem[], n: string) {
   return arr;
 }
 
-function searchGoods(arr: IGoodsItem[], searchFrase: string) {
+
+function searchGoods(arr: types.IGoodsItem[], searchFrase: string) {
+
   if (searchFrase === '') return arr;
   searchFrase = searchFrase.toLowerCase();
   const searchArr = arr.filter((el) => {
@@ -276,6 +261,18 @@ function searchGoods(arr: IGoodsItem[], searchFrase: string) {
   });
   itemsCount!.innerHTML = `${searchArr.length}`;
   return searchArr;
+}
+
+function getGoodsBySelectedCategories(arr: types.IGoodsItem[], selectedCategories: string[]) {
+  if (selectedCategories.length === 0) return arr;
+  const sortArr = arr.filter((el: types.IGoodsItem) => selectedCategories.includes(el.category));
+  return sortArr;
+}
+
+function getGoodsBySelectedFilters(arr: types.IGoodsItem[], selectedBrands: string[]) {
+  if (selectedBrands.length === 0) return arr;
+  const sortArr = arr.filter((el: types.IGoodsItem) => selectedBrands.includes(el.brand));
+  return sortArr;
 }
 
 window.addEventListener('hashchange', () => {
