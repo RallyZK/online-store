@@ -1,7 +1,7 @@
 import catalog from '../../assets/catalog';
 import './filters.scss';
 import './burger.scss';
-import { filters } from '../sort/sort';
+import { filters, updateAllFilters } from '../sort/sort';
 
 window.onload = function () {
   updateSliderOneMaxValue();
@@ -11,10 +11,10 @@ window.onload = function () {
   slideFour();
 };
 
-let sliderOne: HTMLInputElement | null = document.querySelector('#slider-1');
-let sliderTwo: HTMLInputElement | null = document.querySelector('#slider-2');
-let sliderThree: HTMLInputElement | null = document.querySelector('#slider-3');
-let sliderFour: HTMLInputElement | null = document.querySelector('#slider-4');
+export let sliderOne: HTMLInputElement | null = document.querySelector('#slider-1');
+export let sliderTwo: HTMLInputElement | null = document.querySelector('#slider-2');
+export let sliderThree: HTMLInputElement | null = document.querySelector('#slider-3');
+export let sliderFour: HTMLInputElement | null = document.querySelector('#slider-4');
 
 let displayValOne: HTMLElement | null = document.querySelector('#rangeOneValue');
 let displayValTwo: HTMLElement | null = document.querySelector('#rangeTwoValue');
@@ -30,17 +30,24 @@ function searchMaxPrice(): number {
   return maxPriceArr[0];
 }
 
+function searchMinPrice(): number {
+  let maxPriceArr = catalog.products.map((el) => el.price).sort((a, b) => a - b);
+  return maxPriceArr[0];
+}
+
+// let sliderMinValue1: number = searchMinPrice();
 let sliderMaxValue1: number = searchMaxPrice();
 let sliderMaxValue3: number = 5;
 
 export function updateSliderOneMaxValue() {
+  // if (displayValOne) displayValOne.textContent = sliderMinValue1.toString();
   if (displayValTwo) displayValTwo.textContent = sliderMaxValue1.toString();
   if (sliderOne) sliderOne.max = sliderMaxValue1.toString();
   if (sliderTwo) {
     sliderTwo.max = sliderMaxValue1.toString();
     sliderTwo.value = sliderMaxValue1.toString();
   }
-  return sliderMaxValue1
+  return sliderMaxValue1;
 }
 
 export function slideOne(): string | void {
@@ -95,32 +102,24 @@ function fillColor() {
     const percent3: number = (Number(sliderThree.value) / sliderMaxValue3) * 100;
     const percent4: number = (Number(sliderFour.value) / sliderMaxValue3) * 100;
 
-    sliderTrack1.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
-    sliderTrack2.style.background = `linear-gradient(to right, #dadae5 ${percent3}% , #3264fe ${percent3}% , #3264fe ${percent4}%, #dadae5 ${percent4}%)`;
+    sliderTrack1.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3482a1 ${percent1}% , #3482a1 ${percent2}%, #dadae5 ${percent2}%)`;
+    sliderTrack2.style.background = `linear-gradient(to right, #dadae5 ${percent3}% , #3482a1 ${percent3}% , #3482a1 ${percent4}%, #dadae5 ${percent4}%)`;
   }
 }
 
-if (sliderOne)
-  sliderOne.onchange = () => {
-    //filters.minPrice = Number(slideOne());
-    slideOne();
-    //console.log(filters)
-  };
-if (sliderTwo)
-  sliderTwo.onchange = () => {
-    //filters.maxPrice = Number(slideTwo());
-    slideTwo();
-    //console.log(filters)
-  };
-if (sliderThree)
-  sliderThree.onchange = () => {
-    //filters.minRating = Number(slideThree());
-    slideThree();
-    //console.log(filters)
-  };
-if (sliderFour)
-  sliderFour.onchange = () => {
-    //filters.maxRating = Number(slideFour());
-    slideFour();
-    //console.log(filters)
-  };
+// if (sliderOne)
+//   sliderOne.onchange = () => {
+//     slideOne();
+//   };
+// if (sliderTwo)
+//   sliderTwo.onchange = () => {
+//     slideTwo();
+//   };
+// if (sliderThree)
+//   sliderThree.onchange = () => {
+//     slideThree();
+//   };
+// if (sliderFour)
+//   sliderFour.onchange = () => {
+//     slideFour();
+//   };
