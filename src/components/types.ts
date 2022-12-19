@@ -15,10 +15,10 @@ export interface IGoodsItem {
 export interface IFilters {
   category: string[],
   brand: string[],
-  minPrice: number | boolean,
-  maxPrice: number | boolean,
-  minRating: number | boolean,
-  maxRating: number | boolean,
+  minPrice: number,
+  maxPrice: number,
+  minRating: number,
+  maxRating: number,
   sortBy: string | boolean,
   contains: string | boolean,
 }
