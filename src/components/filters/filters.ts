@@ -25,12 +25,12 @@ const minGap = 0;
 let sliderTrack1: HTMLElement | null = document.querySelector('#sliderTrack-1');
 let sliderTrack2: HTMLElement | null = document.querySelector('#sliderTrack-2');
 
-function searchMaxPrice(): number {
+export function searchMaxPrice(): number {
   let maxPriceArr = catalog.products.map((el) => el.price).sort((a, b) => b - a);
   return maxPriceArr[0];
 }
 
-function searchMinPrice(): number {
+export function searchMinPrice(): number {
   let maxPriceArr = catalog.products.map((el) => el.price).sort((a, b) => a - b);
   return maxPriceArr[0];
 }
@@ -58,7 +58,7 @@ export function slideOne(): string | void {
     if (displayValOne) displayValOne.textContent = sliderOne.value;
   }
   fillColor();
-  if (sliderOne) return sliderOne.value;
+  //if (sliderOne) return sliderOne.value;
 }
 
 export function slideTwo(): string | void {
@@ -69,7 +69,7 @@ export function slideTwo(): string | void {
     if (displayValTwo) displayValTwo.textContent = sliderTwo.value;
   }
   fillColor();
-  if (sliderTwo) return sliderTwo.value;
+  //if (sliderTwo) return sliderTwo.value;
 }
 
 export function slideThree(): string | void {
@@ -80,7 +80,7 @@ export function slideThree(): string | void {
     if (displayValThree) displayValThree.textContent = sliderThree.value;
   }
   fillColor();
-  if (sliderThree) return sliderThree.value;
+  //if (sliderThree) return sliderThree.value;
 }
 
 export function slideFour(): string | void {
@@ -91,7 +91,7 @@ export function slideFour(): string | void {
     if (displayValFour) displayValFour.textContent = sliderFour.value;
   }
   fillColor();
-  if (sliderFour) return sliderFour.value;
+  //if (sliderFour) return sliderFour.value;
 }
 
 function fillColor() {
