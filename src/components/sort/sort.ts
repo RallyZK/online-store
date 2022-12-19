@@ -2,7 +2,7 @@ import './sort.scss';
 import '../../assets/styles/media.scss';
 import * as types from '../types';
 import catalog from '../../assets/catalog';
-import { slideOne, slideTwo, slideThree, slideFour, updateSliderOneMaxValue } from '../filters/filters';
+import { slideOne, slideTwo, slideThree, slideFour, updateSliderOneMaxValue, sliderTwo, sliderThree, sliderFour, sliderOne } from '../filters/filters';
 
 export const filters: types.IFilters = {
   category: [],
@@ -14,7 +14,7 @@ export const filters: types.IFilters = {
   sortBy: false,
   contains: '',
 }
-
+  
 // рендер всех товаров
 
 type viewType = 'cube' | 'list';
@@ -56,11 +56,38 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
     itemsCount!.innerHTML = `${arr.length}`;
   }
 }
-renderCatalog(catalogArr)
+renderCatalog(catalogArr);
+
+if (sliderOne)
+  sliderOne!.onchange = () => {
+    slideOne();
+    filters.minPrice = Number(sliderOne!.value);
+    //updateAllFilters();
+    console.log('filers:::', filters);
+  };
+
+if (sliderTwo)
+  sliderTwo.onchange = () => {
+    slideTwo();
+    filters.maxPrice = Number(sliderTwo!.value);
+    console.log('filers:::', filters);
+  };
+if (sliderThree)
+  sliderThree.onchange = () => {
+    slideThree();
+    filters.minRating = Number(sliderThree!.value);
+    console.log('filers:::', filters);
+  };
+if (sliderFour)
+  sliderFour.onchange = () => {
+    slideFour();
+    filters.maxRating = Number(sliderFour!.value);
+    console.log('filers:::', filters);
+  };
 
 let currentGoodsArray: types.IGoodsItem[] = catalogArr;
 
-function updateAllFilters() {
+export function updateAllFilters() {
   const arr = sortGoodsArray(catalogArr, n);
   const arr2 = searchGoods(arr, searchFrase);
   const arr3 = getGoodsBySelectedCategories(arr2, filters.category);
@@ -78,14 +105,14 @@ setListBtn!.addEventListener('click', () => {
   renderCatalog(currentGoodsArray);
   goodsContainer!.classList.remove('cube-cont');
   goodsContainer!.classList.add('list-cont');
-})
+});
 
 setCubeBtn!.addEventListener('click', () => {
   view = 'cube';
   renderCatalog(currentGoodsArray);
   goodsContainer!.classList.add('cube-cont');
   goodsContainer!.classList.remove('list-cont');
-})
+});
 
 // фильтр по вариантам сортировки
 
@@ -96,7 +123,7 @@ goodsSortSelect!.addEventListener('change', () => {
   n = goodsSortSelect!.value;
   filters.sortBy = n;
   updateAllFilters();
-})
+});
 
 // фильтр по поиску введенного слова
 
@@ -104,8 +131,8 @@ const searchInput: HTMLInputElement | null = document.querySelector('.goods__sor
 const searchBtn: HTMLElement | null = document.querySelector('.goods__sort-wr__search-wr__btn');
 let searchFrase: string = '';
 
-searchInput!.addEventListener('keypress', () => getGoodsBySearchFrase())
-searchBtn!.addEventListener('click', () => getGoodsBySearchFrase())
+searchInput!.addEventListener('keypress', () => getGoodsBySearchFrase());
+searchBtn!.addEventListener('click', () => getGoodsBySearchFrase());
 
 function getGoodsBySearchFrase() {
   searchFrase = searchInput!.value;
@@ -130,7 +157,7 @@ categoriesLiArr!.forEach((el: Element, key: number, parent: NodeListOf<Element>)
     el.classList.toggle('selected-filter');
   })
 })
-
+   
 // фильтр по брендам товаров
 
 const brandsUl: HTMLElement | null = document.querySelector('.brands');
@@ -148,6 +175,7 @@ brandsLiArr!.forEach((el: Element, key: number, parent: NodeListOf<Element>): vo
     el.classList.toggle('selected-filter'); 
   })
 })
+
 
 // фильтр по выставленным ценам
 
@@ -169,8 +197,8 @@ resetFiltersBtn?.addEventListener('click', () => {
   renderCatalog(currentGoodsArray);
 })
 
-// вспом функции
 
+// вспом функции
 
 function createElements(className: string, tag: string, parentclassName: HTMLElement, inner: string): HTMLElement {
   const el: HTMLElement = document.createElement(tag);
@@ -214,19 +242,23 @@ function sortGoodsArray(arr: types.IGoodsItem[], n: string | null) {
   return arr;
 }
 
+
 function searchGoods(arr: types.IGoodsItem[], searchFrase: string) {
+
   if (searchFrase === '') return arr;
   searchFrase = searchFrase.toLowerCase();
   const searchArr = arr.filter((el) => {
-    if (el.title.toLowerCase().includes(searchFrase)
-      || el.description.toLowerCase().includes(searchFrase)
-      || el.price.toString().includes(searchFrase)
-      || el.rating.toString().includes(searchFrase)
-      || el.stock.toString().includes(searchFrase)
-      || el.brand.toLowerCase().includes(searchFrase)
-      || el.category.toLowerCase().includes(searchFrase))
-      return el
-  })
+    if (
+      el.title.toLowerCase().includes(searchFrase) ||
+      el.description.toLowerCase().includes(searchFrase) ||
+      el.price.toString().includes(searchFrase) ||
+      el.rating.toString().includes(searchFrase) ||
+      el.stock.toString().includes(searchFrase) ||
+      el.brand.toLowerCase().includes(searchFrase) ||
+      el.category.toLowerCase().includes(searchFrase)
+    )
+      return el;
+  });
   itemsCount!.innerHTML = `${searchArr.length}`;
   return searchArr;
 }
@@ -243,13 +275,7 @@ function getGoodsBySelectedFilters(arr: types.IGoodsItem[], selectedBrands: stri
   return sortArr;
 }
 
-
 window.addEventListener('hashchange', () => {
   const hash = window.location.hash.slice(1);
-  console.log('hashchange', hash)
-})
-
-
-
-
-
+  console.log('hashchange', hash);
+});
