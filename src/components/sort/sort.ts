@@ -73,7 +73,7 @@ export function updateAllFilters() {
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
   currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
-  updateRangeInputs(currentGoodsArray);
+  //updateRangeInputs(currentGoodsArray);
   renderCatalog(currentGoodsArray);
 }
 
@@ -133,11 +133,12 @@ if (categoriesUl) {
 categoriesLiArr!.forEach((el: Element, key: number, parent: NodeListOf<Element>): void => {
   el.addEventListener('click', () => {
     const selectedCategory = el.getAttribute('item-category') as string;
-    if (!filters.category.includes(selectedCategory)) filters.category.push(selectedCategory)
-    else filters.category = filters.category.filter((el) => el !== selectedCategory)
+    if (!filters.category.includes(selectedCategory)) filters.category.push(selectedCategory);
+    else filters.category = filters.category.filter((el) => el !== selectedCategory);    
     updateAllFilters();
+    updateRangeInputs(currentGoodsArray);
     el.classList.toggle('selected-filter');
-    //updateRangeInputs(currentGoodsArray);
+    
   })
 })
 
@@ -152,11 +153,11 @@ if (brandsUl) {
 brandsLiArr!.forEach((el: Element, key: number, parent: NodeListOf<Element>): void => {
   el.addEventListener('click', () => {
     const selectedBrand = el.getAttribute('item-brand') as string;
-    if (filters.brand.includes(selectedBrand)) filters.brand = filters.brand.filter((el) => el !== selectedBrand)
-    else filters.brand.push(selectedBrand);
+    if (filters.brand.includes(selectedBrand)) filters.brand = filters.brand.filter((el) => el !== selectedBrand);
+    else filters.brand.push(selectedBrand);    
     updateAllFilters();
-    el.classList.toggle('selected-filter');
-    //updateRangeInputs(currentGoodsArray);
+    updateRangeInputs(currentGoodsArray);
+    el.classList.toggle('selected-filter');    
   })
 })
 
@@ -324,17 +325,15 @@ function updateRangeInputs(arr: types.IGoodsItem[]) {
     minCurrentRating = 0;
     maxCurrentRating = 5;
     filters.minPrice = minCurrentPrice;
-   filters.maxPrice = maxCurrentPrice;
-  filters.minRating = minCurrentRating;
-   filters.maxRating = maxCurrentRating; 
+    filters.maxPrice = maxCurrentPrice;
+    filters.minRating = minCurrentRating;
+    filters.maxRating = maxCurrentRating; 
   } else {
     minCurrentPrice = arr.map((el) => el.price).sort((a, b) => a - b)[0];
     maxCurrentPrice = arr.map((el) => el.price).sort((a, b) => b - a)[0];
     minCurrentRating = arr.map((el) => el.rating).sort((a, b) => a - b)[0];
     maxCurrentRating = arr.map((el) => el.rating).sort((a, b) => b - a)[0];    
   }
-
-  
 
   sliderOne!.value = minCurrentPrice.toString();
   sliderTwo!.value = maxCurrentPrice.toString();
