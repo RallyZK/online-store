@@ -89,4 +89,4 @@ function renderBrands() {
   }
 }
 renderBrands();
-console.log(brands);
+

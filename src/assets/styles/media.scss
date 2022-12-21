@@ -33,9 +33,6 @@
         margin: 0 auto 10px auto;
       }
     }
-
-
-
   }
 
   .goods__sort-wr__select,
@@ -43,34 +40,34 @@
     width: 82%;
   }
 
-  .good-card {
-    flex-direction: column;
-    align-items: center;
+  // .good-card {
+  //   flex-direction: column;
+  //   align-items: center;
 
-    &__title {
-      text-align: center;
-    }
+  //   &__title {
+  //     text-align: center;
+  //   }
 
-    &__price {
-      text-align: center;
-    }
+  //   &__price {
+  //     text-align: center;
+  //   }
 
-    &__left-row {
-      flex-direction: row;
-    }
+  //   &__left-row {
+  //     flex-direction: row;
+  //   }
 
-    &__photo-min {
-      margin: 0 10px;
-    }
+  //   &__photo-min {
+  //     margin: 0 10px;
+  //   }
 
-    &__second-row {
-      order: -1;
-    }
+  //   &__second-row {
+  //     order: -1;
+  //   }
 
-    &__btns-container {
-      justify-content: center;
-    }
-  }
+  //   &__btns-container {
+  //     justify-content: center;
+  //   }
+  // }
 
   .payment-page {
     width: 70%;
@@ -225,17 +222,17 @@
     }
   }
 
-  .good-card {
-    &__photo-min {
-      width: 80px;
-      height: 60px;
-    }
+  // .good-card {
+  //   &__photo-min {
+  //     width: 80px;
+  //     height: 60px;
+  //   }
 
-    &__photo-max {
-      width: 200px;
-      height: 170px;
-    }
-  }
+  //   &__photo-max {
+  //     width: 200px;
+  //     height: 170px;
+  //   }
+  // }
 
   .cart-summary {
     width: 100%;

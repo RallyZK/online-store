@@ -1,10 +1,14 @@
 @import '../../assets/styles/additionals.scss';
-
+.good-card-wr {
+  display: flex;
+  height: 75vh;
+}
 .good-card {
   display: flex;
   box-sizing: border-box;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;  
+  
 
   &__left-row {
     display: flex;
@@ -20,7 +24,7 @@
 
   &__photo-min {
     display: block;
-    border: 1px solid #000;
+    border: 1px solid rgb(221, 220, 220);
     border-radius: 7px;
     margin: 10px 0;
     width: 100px;
@@ -30,7 +34,7 @@
 
   &__photo-max {
     display: block;
-    border: 1px solid #000;
+    border: 1px solid rgb(221, 220, 220);
     border-radius: 7px;
     margin: 10px;
     width: 250px;
@@ -38,7 +42,6 @@
     cursor: pointer; 
   }
   
-
   & p {
     margin: 5px 0;
   }
@@ -69,4 +72,68 @@
 
 .add-to-cart-btn {
   background-color: $blue;
+}
+
+@media (max-width: 1024px) {
+  .good-card-wr {    
+    height: max-content;
+  }
+  
+  .good-card {
+    flex-direction: column;
+    align-items: center;
+    
+
+    &__title {
+      text-align: center;
+    }
+
+    &__price {
+      text-align: center;
+    }
+
+    &__left-row {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    &__photo-min {
+      margin: 0 10px;
+    }
+
+    &__second-row {
+      order: -1;
+    }
+
+    &__btns-container {
+      justify-content: center;
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+  .good-card {
+    width: 100%;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 425px) {
+
+  .good-card {
+    &__photo-min {
+      width: 80px;
+      height: 60px;
+    }
+
+    &__photo-max {
+      width: 200px;
+      height: 170px;
+    }
+  }
+
+  
+  
+
 }
