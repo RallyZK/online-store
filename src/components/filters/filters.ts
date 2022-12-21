@@ -1,7 +1,6 @@
 import catalog from '../../assets/catalog';
 import './filters.scss';
 import './burger.scss';
-import { filters, updateAllFilters } from '../sort/sort';
 
 window.onload = function () {
   updateSliderOneMaxValue();

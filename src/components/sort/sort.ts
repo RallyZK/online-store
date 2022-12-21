@@ -30,33 +30,23 @@ let currentGoodsArray: types.IGoodsItem[] = catalogArr;
 
 const goodsContainer: HTMLElement | null = document.querySelector('.goods__goods-container');
 const itemsCount: HTMLElement | null = document.querySelector('.items-count');
-let goodsItem: HTMLElement | null;
-let goodsItemImg: HTMLElement | null;
-let goodsItemDescription: HTMLElement | null;
-let goodsItemTitle: HTMLElement | null;
-let goodsItemSubtitle: HTMLElement | null;
-let goodsItemWrapper: HTMLElement | null;
-let goodsItemRating: HTMLElement | null;
-let goodsItemPriceWrapper: HTMLElement | null;
-let goodsItemPrice: HTMLElement | null;
-let goodsItemAddToCartBtn: HTMLElement | null;
 
 function renderCatalog(arr: types.IGoodsItem[]): void {
   if (goodsContainer) {
     goodsContainer.innerHTML = '';    
     for (let i = 0; i < arr.length; i++) {
-      goodsItem = createElements(`goods__item ${view}-item`, 'div', goodsContainer, '');
+      const goodsItem = createElements(`goods__item ${view}-item`, 'div', goodsContainer, '');
       goodsItem.setAttribute('item-id', `${arr[i].id}`);     
-      goodsItemImg = createElements('goods__item__img', 'div', goodsItem, '');
+      const goodsItemImg = createElements('goods__item__img', 'div', goodsItem, '');
       goodsItemImg.style.backgroundImage = `url(${arr[i].thumbnail})`;
-      goodsItemDescription = createElements(`goods__item__description ${view}-desc`, 'div', goodsItem, '');
-      goodsItemTitle = createElements('goods__item__title', 'h4', goodsItemDescription, `${arr[i].title[0].toUpperCase()}${arr[i].title.slice(1, arr[i].title.length)}`);
-      goodsItemSubtitle = createElements(`goods__item__subtitle ${view}-subtit`, 'h6', goodsItemDescription, `${arr[i].description}`);
-      goodsItemWrapper = createElements('goods__item__wrapper', 'div', goodsItemDescription, '');
-      goodsItemRating = createElements('goods__item__rating', 'span', goodsItemWrapper, `${arr[i].rating}`);
-      goodsItemPriceWrapper = createElements('goods__item__price-wrapper', 'div', goodsItemWrapper, '');
-      goodsItemPrice = createElements('goods__item__price', 'span', goodsItemPriceWrapper, `$ ${arr[i].price}`);
-      goodsItemAddToCartBtn = createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'buy');
+      const goodsItemDescription = createElements(`goods__item__description ${view}-desc`, 'div', goodsItem, '');
+      createElements('goods__item__title', 'h4', goodsItemDescription, `${arr[i].title[0].toUpperCase()}${arr[i].title.slice(1, arr[i].title.length)}`);
+      createElements(`goods__item__subtitle ${view}-subtit`, 'h6', goodsItemDescription, `${arr[i].description}`);
+      const goodsItemWrapper = createElements('goods__item__wrapper', 'div', goodsItemDescription, '');
+      createElements('goods__item__rating', 'span', goodsItemWrapper, `${arr[i].rating}`);
+      const goodsItemPriceWrapper = createElements('goods__item__price-wrapper', 'div', goodsItemWrapper, '');
+      createElements('goods__item__price', 'span', goodsItemPriceWrapper, `$ ${arr[i].price}`);
+      createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'buy');
     }
     itemsCount!.innerHTML = `${arr.length}`;
   }
@@ -64,9 +54,7 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
 }
 renderCatalog(catalogArr);
 
-console.log('filers:::', filters);
-
-export function updateAllFilters() {
+function updateAllFilters() {
   const arr = sortGoodsArray(catalogArr, n);
   const arr2 = searchGoods(arr, searchFrase);
   const arr3 = getGoodsBySelectedCategories(arr2, filters.category);
@@ -211,11 +199,11 @@ resetFiltersBtn?.addEventListener('click', () => {
   filters.brand = [];
   filters.category = [];
   filters.minPrice = searchMinPrice(),
-    filters.maxPrice = searchMaxPrice(),
-    filters.minRating = 0,
-    filters.maxRating = 5,
-    //updateAllFilters();
-    renderCatalog(catalog.products);
+  filters.maxPrice = searchMaxPrice(),
+  filters.minRating = 0,
+  filters.maxRating = 5,
+  //updateAllFilters();
+  renderCatalog(catalog.products);
   sliderOne!.value = searchMinPrice().toString();
   sliderTwo!.value = searchMaxPrice().toString();
   slideOne();
@@ -228,7 +216,6 @@ resetFiltersBtn?.addEventListener('click', () => {
   categoriesLiArr?.forEach(el => el.classList.remove('selected-filter'));
   brandsLiArr?.forEach(el => el.classList.remove('selected-filter'));
 })
-
 
 // вспом функции
 
@@ -274,7 +261,6 @@ function sortGoodsArray(arr: types.IGoodsItem[], n: string) {
   }
   return arr;
 }
-
 
 function searchGoods(arr: types.IGoodsItem[], searchFrase: string) {
 

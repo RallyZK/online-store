@@ -6,8 +6,9 @@ import { createElements } from '../sort/sort';
 export function getGoodsCard(arr: types.IGoodsItem[]): void {
   const logo: HTMLElement | null = document.querySelector('.header__title');
   logo?.addEventListener('click', () => {
-    mainSection?.classList.remove('display-none');
-    goodCardContainer?.classList.add('display-none');
+    mainSection!.classList.remove('display-none');
+    goodCardContainer!.classList.add('display-none');
+    goodCardContainer!.innerHTML = '';  
   })
 
   const mainSection: HTMLElement | null = document.querySelector('.main-section');
@@ -64,6 +65,5 @@ function changePhotosInGoodsCards() {
     const maxPhotoPath = (goodsPhotoMax as HTMLImageElement).src;
     (goodsPhotoMax as HTMLImageElement).src = miniPhotoPath;
     (el as HTMLImageElement).src = maxPhotoPath;
-  })
-  )
+  }))
 }
