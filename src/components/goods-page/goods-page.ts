@@ -1,7 +1,9 @@
 import './goods-page.scss';
 import * as types from '../types';
-import { createElements } from '../sort/sort';
+import { createElements} from '../sort/sort';
+import catalog from '../../assets/catalog';
 
+let catalogArr: types.IGoodsItem[] = catalog.products;
 
 export function getGoodsCard(arr: types.IGoodsItem[]): void {
   const logo: HTMLElement | null = document.querySelector('.header__title');
@@ -15,10 +17,8 @@ export function getGoodsCard(arr: types.IGoodsItem[]): void {
   const goodCardContainer: HTMLElement | null = document.querySelector('.good-card-wr');
   const goods: NodeListOf<Element> | null = document.querySelectorAll('.goods__item');
 
-  goods!.forEach(el => el.addEventListener('click', () => {
+  goods!.forEach((el, index) => el.addEventListener('click', () => {
 
-    const index: number = Number(el.getAttribute('item-id')) - 1;
-    console.log('index:::', index);
     mainSection?.classList.add('display-none');
     goodCardContainer?.classList.remove('display-none');
 

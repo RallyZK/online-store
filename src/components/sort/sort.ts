@@ -25,8 +25,8 @@ console.log(filters)
 
 let view: types.viewType = 'cube';
 
-let catalogArr: types.IGoodsItem[] = catalog.products;
-let currentGoodsArray: types.IGoodsItem[] = catalogArr;
+export let catalogArr: types.IGoodsItem[] = catalog.products;
+let currentGoodsArray: types.IGoodsItem[] = catalog.products;
 
 const goodsContainer: HTMLElement | null = document.querySelector('.goods__goods-container');
 const itemsCount: HTMLElement | null = document.querySelector('.items-count');
@@ -36,7 +36,7 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
     goodsContainer.innerHTML = '';    
     for (let i = 0; i < arr.length; i++) {
       const goodsItem = createElements(`goods__item ${view}-item`, 'div', goodsContainer, '');
-      goodsItem.setAttribute('item-id', `${arr[i].id}`);     
+      goodsItem.setAttribute('item-id', `${arr[i].id}`);
       const goodsItemImg = createElements('goods__item__img', 'div', goodsItem, '');
       goodsItemImg.style.backgroundImage = `url(${arr[i].thumbnail})`;
       const goodsItemDescription = createElements(`goods__item__description ${view}-desc`, 'div', goodsItem, '');
@@ -60,9 +60,10 @@ function updateAllFilters() {
   const arr3 = getGoodsBySelectedCategories(arr2, filters.category);
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
-  currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
+  currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);  
+  renderCatalog(currentGoodsArray);
+  getGoodsCard(currentGoodsArray);
   //updateRangeInputs(currentGoodsArray);
-  renderCatalog(currentGoodsArray); 
   console.log('filers:::', filters);
 }
 
@@ -101,6 +102,7 @@ const searchInput: HTMLInputElement | null = document.querySelector('.goods__sor
 const searchBtn: HTMLElement | null = document.querySelector('.goods__sort-wr__search-wr__btn');
 let searchFrase: string = filters.contains;
 
+searchInput!.focus();
 searchInput!.addEventListener('keypress', () => getGoodsBySearchFrase());
 searchBtn!.addEventListener('click', () => getGoodsBySearchFrase());
 
