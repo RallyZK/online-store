@@ -186,6 +186,14 @@
         font-size: 10px;
       }
 
+      &__rating {
+        font-size: 10px;
+      }
+
+      &__price {
+        font-size: 16px;
+      }
+
       &__img {
         width: 120px;
         height: 100px;        
@@ -196,6 +204,11 @@
   .cart-summary {
     width: 100%;
     margin: 0 auto;
+  }
+
+  .cart-list__title,
+  .cart-list__first-row p {
+    font-size: 20px;
   }
 
   .payment-page {

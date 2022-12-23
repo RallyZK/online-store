@@ -3,10 +3,6 @@ import '../../assets/styles/media.scss';
 import * as types from '../types';
 import catalog from '../../assets/catalog';
 import { slideOne, slideTwo, slideThree, slideFour, sliderTwo, sliderThree, sliderFour, sliderOne, searchMaxPrice, searchMinPrice } from '../filters/filters';
-import { getGoodsCard } from '../goods-page/goods-page';
-
-sliderOne!.value = searchMinPrice().toString();
-sliderTwo!.value = searchMaxPrice().toString();
 
 export const filters: types.IFilters = {
   category: [],
@@ -19,26 +15,35 @@ export const filters: types.IFilters = {
   contains: '',
   view: 'cube'
 }
-console.log(filters)
+console.log(sliderTwo!.value)
+
+sliderOne!.value = searchMinPrice().toString();
+sliderTwo!.value = searchMaxPrice().toString();
+console.log(sliderTwo!.value)
 
 // рендер всех товаров
 
 let view: types.viewType = 'cube';
 
 export let catalogArr: types.IGoodsItem[] = catalog.products;
-let currentGoodsArray: types.IGoodsItem[] = catalog.products;
+export let currentGoodsArray: types.IGoodsItem[] = catalog.products;
 
 const goodsContainer: HTMLElement | null = document.querySelector('.goods__goods-container');
 const itemsCount: HTMLElement | null = document.querySelector('.items-count');
 
 function renderCatalog(arr: types.IGoodsItem[]): void {
   if (goodsContainer) {
-    goodsContainer.innerHTML = '';    
+    goodsContainer.innerHTML = '';
     for (let i = 0; i < arr.length; i++) {
       const goodsItem = createElements(`goods__item ${view}-item`, 'div', goodsContainer, '');
       goodsItem.setAttribute('item-id', `${arr[i].id}`);
-      const goodsItemImg = createElements('goods__item__img', 'div', goodsItem, '');
-      goodsItemImg.style.backgroundImage = `url(${arr[i].thumbnail})`;
+
+      const testLink = createElements('', 'a', goodsItem, '');
+      (testLink as HTMLAnchorElement).href = `#id=${(arr[i].id).toString().padStart(3, '0')}`;
+      const goodsItemImg = createElements('goods__item__img', 'img', testLink, '');
+      (goodsItemImg as HTMLImageElement).src = `${arr[i].thumbnail}`;
+      (goodsItemImg as HTMLImageElement).alt = `${arr[i].title} Photo`;
+
       const goodsItemDescription = createElements(`goods__item__description ${view}-desc`, 'div', goodsItem, '');
       createElements('goods__item__title', 'h4', goodsItemDescription, `${arr[i].title[0].toUpperCase()}${arr[i].title.slice(1, arr[i].title.length)}`);
       createElements(`goods__item__subtitle ${view}-subtit`, 'h6', goodsItemDescription, `${arr[i].description}`);
@@ -50,22 +55,9 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
     }
     itemsCount!.innerHTML = `${arr.length}`;
   }
-  getGoodsCard(currentGoodsArray);
+  //getGoodsCard(currentGoodsArray);
 }
 renderCatalog(catalogArr);
-
-function updateAllFilters() {
-  const arr = sortGoodsArray(catalogArr, n);
-  const arr2 = searchGoods(arr, searchFrase);
-  const arr3 = getGoodsBySelectedCategories(arr2, filters.category);
-  const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
-  const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
-  currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);  
-  renderCatalog(currentGoodsArray);
-  getGoodsCard(currentGoodsArray);
-  //updateRangeInputs(currentGoodsArray);
-  console.log('filers:::', filters);
-}
 
 // варианты отображения товаров
 
@@ -80,20 +72,20 @@ function changeView(typeOfView: types.viewType, deleteTypeOfView: types.viewType
   filters.view = typeOfView;
   renderCatalog(currentGoodsArray);
   goodsContainer!.classList.add(`${typeOfView}-cont`);
-  goodsContainer!.classList.remove(`${deleteTypeOfView}-cont`);  
+  goodsContainer!.classList.remove(`${deleteTypeOfView}-cont`);
 }
 
 // фильтр по вариантам сортировки
 
 const goodsSortSelect: HTMLInputElement | null = document.querySelector('.goods__sort-wr__select');
-let n: string;
+let n: string = '0';
 
 goodsSortSelect!.addEventListener('change', sortCatalog);
 
 function sortCatalog() {
   n = goodsSortSelect!.value;
   filters.sortBy = n;
-  updateAllFilters();  
+  updateAllFilters();
 }
 
 // фильтр по поиску введенного слова
@@ -120,14 +112,14 @@ if (categoriesUl) {
   categoriesLiArr = categoriesUl.querySelectorAll('.filters__item__li');
 }
 
-categoriesLiArr!.forEach((el: Element, key: number, parent: NodeListOf<Element>): void => {
+categoriesLiArr!.forEach((el: Element): void => {
   el.addEventListener('click', () => {
     const selectedCategory = el.getAttribute('item-category') as string;
     if (!filters.category.includes(selectedCategory)) filters.category.push(selectedCategory);
     else filters.category = filters.category.filter((el) => el !== selectedCategory);
     //updateRangeInputs(currentGoodsArray);
     updateAllFilters();
-    el.classList.toggle('selected-filter');    
+    el.classList.toggle('selected-filter');
   })
 })
 
@@ -146,7 +138,7 @@ brandsLiArr!.forEach((el: Element, key: number, parent: NodeListOf<Element>): vo
     else filters.brand.push(selectedBrand);
     updateAllFilters();
     //updateRangeInputs(currentGoodsArray);
-    el.classList.toggle('selected-filter');    
+    el.classList.toggle('selected-filter');
   })
 })
 
@@ -160,31 +152,49 @@ function getCatalogByRating(arr: types.IGoodsItem[], minVal: number, maxVal: num
   return arr.filter((el) => el.rating >= minVal && el.rating <= maxVal);
 }
 
+
+function updateAllFilters() {
+  const arr = sortGoodsArray(catalogArr, n);
+  const arr2 = searchGoods(arr, searchFrase);
+  const arr3 = getGoodsBySelectedCategories(arr2, filters.category);
+  const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
+  const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
+  currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
+  renderCatalog(currentGoodsArray);
+  //getGoodsCard(currentGoodsArray);
+  //updateRangeInputs(currentGoodsArray);
+  //updateHash();
+  console.log('filers:::', filters);
+}
+//updateAllFilters()
+
+
 if (sliderOne)
   sliderOne!.onchange = () => {
     slideOne();
     filters.minPrice = Number(sliderOne!.value);
-    updateAllFilters();    
+    updateAllFilters();
   };
 
 if (sliderTwo)
   sliderTwo.onchange = () => {
     slideTwo();
     filters.maxPrice = Number(sliderTwo!.value);
-    updateAllFilters();    
+    updateAllFilters();
   };
 if (sliderThree)
   sliderThree.onchange = () => {
     slideThree();
     filters.minRating = Number(sliderThree!.value);
-    updateAllFilters();    
+    updateAllFilters();
   };
 if (sliderFour)
   sliderFour.onchange = () => {
     slideFour();
     filters.maxRating = Number(sliderFour!.value);
-    updateAllFilters();    
+    updateAllFilters();
   };
+
 
 
 // сброс всех фильтров
@@ -201,11 +211,11 @@ resetFiltersBtn?.addEventListener('click', () => {
   filters.brand = [];
   filters.category = [];
   filters.minPrice = searchMinPrice(),
-  filters.maxPrice = searchMaxPrice(),
-  filters.minRating = 0,
-  filters.maxRating = 5,
-  //updateAllFilters();
-  renderCatalog(catalog.products);
+    filters.maxPrice = searchMaxPrice(),
+    filters.minRating = 0,
+    filters.maxRating = 5,
+    //updateAllFilters();
+    renderCatalog(catalog.products);
   sliderOne!.value = searchMinPrice().toString();
   sliderTwo!.value = searchMaxPrice().toString();
   slideOne();
@@ -231,7 +241,7 @@ export function createElements(className: string, tag: string, parentclassName: 
 
 function sortGoodsArray(arr: types.IGoodsItem[], n: string) {
 
-  if (n === '0') return catalog.products;
+  if (n === '0') return arr;
   if (n === '1') {
     arr.sort((a, b) => a.price - b.price);
   } else if (n === '2') {

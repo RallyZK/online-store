@@ -83,8 +83,12 @@ body {
     &__cart-btn {
       cursor: pointer;
       width: 35px;
-      height: 35px;
-      border: none;
+      height: 35px;         
+    }
+
+    &__cart-link {      
+      width: 35px;
+      height: 35px;      
       background-size: 100% 100%;
       background-color: transparent;
       background-image: url('./assets/icons/card2.png');

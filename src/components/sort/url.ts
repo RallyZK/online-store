@@ -1,26 +1,39 @@
-
 import * as types from '../types';
 import { filters } from './sort';
+import { getCartPage, getErrorPage, getMainPage, getGoodCardFromUrl } from '../sort/navigation';
+
+window.addEventListener('hashchange', updateHash);
+window.onload = () => updateHash();
+
 
 function renderUrl (filters: types.IFilters): string {
   return Object.entries(filters).map(el => el.join('=')).join('&');  
- }
- 
- const params = new URLSearchParams(renderUrl(filters));
- const baseUrl = window.location.toString();
- const fullUrl = new URL('goods', baseUrl)
- fullUrl.search = params.toString();
+}
 
- console.log('params:::', params)
- console.log('baseUrl:::', baseUrl)
- console.log('fullUrl:::', fullUrl)
-
- window.addEventListener('hashchange', () => {
+export function updateHash (): void {
   const hash = window.location.hash.slice(1);
-  console.log('hashchange', hash);
-});
-
+  console.log('hash:::', hash);
+ // window.location.hash = renderUrl(filters);
+  if (hash === '') getMainPage();
+  else if (hash === 'cart') getCartPage();
+  else if (hash.length === 6 && hash.includes('id=')) getGoodCardFromUrl(hash);
+  else getErrorPage()
  
+}
+
+
+//  const params = new URLSearchParams(renderUrl(filters));
+//  const baseUrl = window.location.toString();
+//  const fullUrl = new URL('goods', baseUrl)
+//  fullUrl.search = params.toString();
+
+//  console.log('params:::', params)
+//  console.log('baseUrl:::', baseUrl)
+//  console.log('fullUrl:::', fullUrl)
+
+
+
+
  // function getDataFromUrl(stringFromUrl: string) {
  //   let res: types.IFilters;
  
