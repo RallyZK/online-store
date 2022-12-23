@@ -18,12 +18,13 @@
   }
 
   &__label {
-    width: 60%;    
+    width: 60%;
+    display: flex;
   }
 
   &__label-card {
     display: block;
-    width: auto;    
+    width: auto;
   }
 
   &__input {
@@ -47,12 +48,12 @@
     border: 1px solid $grey;
     border-radius: 15px;
     background-color: rgb(248, 229, 242);
-    box-shadow: 4px 4px 5px rgba(122,122,122,0.5);
+    box-shadow: 4px 4px 5px rgba(122, 122, 122, 0.5);
 
     &__number-cont {
       display: flex;
       justify-content: center;
-      align-items: center; 
+      align-items: center;
       width: 100%;
       margin: 15px auto 0px auto;
       height: 80px;
@@ -75,9 +76,13 @@
     width: 120px;
     height: 40px;
     font-size: 20px;
-    box-shadow: 4px 4px 5px rgba(122,122,122,0.5);
+    box-shadow: 4px 4px 5px rgba(122, 122, 122, 0.5);
   }
 
+}
+
+.valid-card {
+  background-color: rgb(198 239 204);
 }
 
 .card-number {
@@ -85,11 +90,22 @@
   width: 100%;
 }
 
-.valid-date {
+.valid-date-wr {
+  display: flex;
+
+  & span {
+    margin: 0 5px;
+    font-size: 20px;
+  }
+}
+
+.valid-mounth,
+.valid-year {
   display: block;
-  width: 100px;
   margin: 0;
+  width: 50px;  
   padding: 0 5px;
+  display: flex;
 }
 
 .cvv {
@@ -102,4 +118,28 @@
 .bottom-row {
   gap: 75px;
   //justify-content: space-between;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+.name-error,
+.phone-error,
+.adress-error,
+.email-error {      
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: -45px;
+  color: red;
+  font-size: 15px;
 }
