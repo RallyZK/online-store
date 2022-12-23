@@ -4,6 +4,9 @@ import * as types from '../types';
 import catalog from '../../assets/catalog';
 import { slideOne, slideTwo, slideThree, slideFour, sliderTwo, sliderThree, sliderFour, sliderOne, searchMaxPrice, searchMinPrice } from '../filters/filters';
 
+sliderOne!.value = searchMinPrice().toString();
+sliderTwo!.value = searchMaxPrice().toString();
+
 export const filters: types.IFilters = {
   category: [],
   brand: [],
@@ -15,11 +18,7 @@ export const filters: types.IFilters = {
   contains: '',
   view: 'cube'
 }
-console.log(sliderTwo!.value)
-
-sliderOne!.value = searchMinPrice().toString();
-sliderTwo!.value = searchMaxPrice().toString();
-console.log(sliderTwo!.value)
+console.log(filters)
 
 // рендер всех товаров
 
@@ -54,8 +53,7 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
       createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'buy');
     }
     itemsCount!.innerHTML = `${arr.length}`;
-  }
-  //getGoodsCard(currentGoodsArray);
+  }  
 }
 renderCatalog(catalogArr);
 
@@ -160,8 +158,7 @@ function updateAllFilters() {
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
   currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
-  renderCatalog(currentGoodsArray);
-  //getGoodsCard(currentGoodsArray);
+  renderCatalog(currentGoodsArray);  
   //updateRangeInputs(currentGoodsArray);
   //updateHash();
   console.log('filers:::', filters);
@@ -174,6 +171,7 @@ if (sliderOne)
     slideOne();
     filters.minPrice = Number(sliderOne!.value);
     updateAllFilters();
+    console.log('filers:::', filters);
   };
 
 if (sliderTwo)
@@ -181,18 +179,21 @@ if (sliderTwo)
     slideTwo();
     filters.maxPrice = Number(sliderTwo!.value);
     updateAllFilters();
+    console.log('filers:::', filters);
   };
 if (sliderThree)
   sliderThree.onchange = () => {
     slideThree();
     filters.minRating = Number(sliderThree!.value);
     updateAllFilters();
+    console.log('filers:::', filters);
   };
 if (sliderFour)
   sliderFour.onchange = () => {
     slideFour();
     filters.maxRating = Number(sliderFour!.value);
     updateAllFilters();
+    console.log('filers:::', filters);
   };
 
 
