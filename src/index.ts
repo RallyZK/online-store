@@ -1,5 +1,5 @@
 import './style.scss';
-import './components/cart/cart';
+import './components/cart/add-to-cart';
 import './components/filters/filters';
 import './components/filters/categories';
 import './components/filters/burger';

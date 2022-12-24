@@ -1,7 +1,7 @@
 import './goods-page.scss';
 import * as types from '../types';
 import { createElements } from '../sort/sort';
-import { addGoodsToCart } from '../cart/cart';
+import { addGoodsToCart } from '../cart/add-to-cart';
 
 export function renderGoodPage(el: types.IGoodsItem) {
   const mainSection: HTMLElement | null = document.querySelector('.main-section');

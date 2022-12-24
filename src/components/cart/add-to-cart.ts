@@ -1,7 +1,7 @@
 import './cart.scss';
 import * as types from '../types';
 import { catalogArr } from '../sort/sort';
-import { renderCartList } from '../cart/render-cart';
+import { renderCartList } from './render-cart';
 
 export let goodsInCart: types.IGoodInCart[] = [];
 const countItemsInCart: HTMLElement | null = document.querySelector('.header__cart-wrapper__items-count');
@@ -82,8 +82,7 @@ function updateTotalCartCount(): void {
   const totalSum = goodsInCart.reduce((acc: number, el) => {
     if (el.item) acc = acc + el.item.price;
     return acc;
-  }, 0)
-  console.log('totalSum:::', totalSum);
+  }, 0)  
 
   if (totalSum !== 0) {
     if (totalCartCount) {

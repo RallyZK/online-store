@@ -2,7 +2,7 @@ import './sort.scss';
 import '../../assets/styles/media.scss';
 import * as types from '../types';
 import catalog from '../../assets/catalog';
-import { addGoodsToCart } from '../cart/cart';
+import { addGoodsToCart } from '../cart/add-to-cart';
 import { slideOne, slideTwo, slideThree, slideFour, sliderTwo, sliderThree, sliderFour, sliderOne, searchMaxPrice, searchMinPrice } from '../filters/filters';
 
 
