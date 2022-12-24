@@ -1,13 +1,17 @@
 import catalog from '../../assets/catalog';
 import './filters.scss';
 import './burger.scss';
+import { updateHash } from '../sort/url';
 
 window.onload = function () {
+  //updateHash()
+
   updateSliderOneMaxValue();
   slideOne();
   slideTwo();
   slideThree();
   slideFour();
+  
 };
 
 export let sliderOne: HTMLInputElement | null = document.querySelector('#slider-1');
