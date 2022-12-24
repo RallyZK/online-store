@@ -1,13 +1,14 @@
 import './cart.scss';
 import * as types from '../types';
 import { catalogArr } from '../sort/sort';
+import { renderCartList } from '../cart/render-cart';
 
-let goodsInCart: types.IGoodInCart[] = [];
+export let goodsInCart: types.IGoodInCart[] = [];
 const countItemsInCart: HTMLElement | null = document.querySelector('.header__cart-wrapper__items-count');
 const totalCartCount: HTMLElement | null = document.querySelector('.header__cart-wrapper__sum');
 
 
-export function addGoodsToCart() {
+export function addGoodsToCart(): void {
   const addToCartButtons: NodeListOf<Element> | null = document.querySelectorAll('.goods__item__add-to-cart-btn');
   const addToCartBtn: HTMLElement | null = document.querySelector('.add-to-cart-btn');
 
@@ -18,7 +19,7 @@ export function addGoodsToCart() {
 }
 addGoodsToCart()
 
-function addItemToCart(el: Element) {
+function addItemToCart(el: Element): void {
   el.classList.toggle('goods-in-cart');
   
   if (el.innerHTML === 'Add to cart') {    
@@ -35,7 +36,7 @@ function addItemToCart(el: Element) {
   updateGoodsItemToCart(id);
 }
 
-function updateGoodsItemToCart(id: number) {
+function updateGoodsItemToCart(id: number): void {
 
   const goodItem: types.IGoodsItem = catalogArr.reduce((acc: types.IGoodsItem, el: types.IGoodsItem) => {
     if (el.id === id) {
@@ -57,6 +58,7 @@ function updateGoodsItemToCart(id: number) {
         item: goodItem,
       });
     }
+    renderCartList(goodsInCart);
     updateItemsCount();
     updateTotalCartCount();
     console.log('goodsInCart:::', goodsInCart);
@@ -70,13 +72,13 @@ function checkIsGoodInCart(id: number): Boolean {
   return false;
 }
 
-function updateItemsCount() {
+function updateItemsCount(): void {
   if (goodsInCart.length === 0) countItemsInCart?.classList.add('display-none');
   else countItemsInCart?.classList.remove('display-none');
   if (countItemsInCart) countItemsInCart.innerHTML = goodsInCart.length.toString();
 }
 
-function updateTotalCartCount() {
+function updateTotalCartCount(): void {
   const totalSum = goodsInCart.reduce((acc: number, el) => {
     if (el.item) acc = acc + el.item.price;
     return acc;
@@ -92,5 +94,6 @@ function updateTotalCartCount() {
     totalCartCount?.classList.add('display-none');
   }
 }
+
 
 
