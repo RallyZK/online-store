@@ -1,14 +1,17 @@
 import catalog from '../../assets/catalog';
 import './filters.scss';
 import './burger.scss';
-import { filters, updateAllFilters } from '../sort/sort';
+import { updateHash } from '../sort/url';
 
 window.onload = function () {
+  //updateHash()
+
   updateSliderOneMaxValue();
   slideOne();
   slideTwo();
   slideThree();
   slideFour();
+  
 };
 
 export let sliderOne: HTMLInputElement | null = document.querySelector('#slider-1');
@@ -53,7 +56,9 @@ export function updateSliderOneMaxValue() {
 export function slideOne(): string | void {
   if (sliderOne && sliderTwo) {
     if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+      console.log('sliderOne.value1:::', sliderOne.value);
       sliderOne.value = (parseInt(sliderTwo.value) - minGap).toString();
+      console.log('sliderOne.value2:::', sliderOne.value);
     }
     if (displayValOne) displayValOne.textContent = sliderOne.value;
   }
@@ -62,9 +67,13 @@ export function slideOne(): string | void {
 }
 
 export function slideTwo(): string | void {
+  console.log('slideTwo():::', 'slideTwo()');
   if (sliderOne && sliderTwo) {
+    console.log('sliderOne && sliderTwo:::', sliderTwo);
     if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+      console.log('sliderTwo.value1:::', sliderTwo.value);
       sliderTwo.value = (parseInt(sliderOne.value) + minGap).toString();
+      console.log('sliderTwo.value2:::', sliderTwo.value);
     }
     if (displayValTwo) displayValTwo.textContent = sliderTwo.value;
   }

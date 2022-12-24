@@ -19,9 +19,13 @@ export interface IFilters {
   maxPrice: number,
   minRating: number,
   maxRating: number,
-  sortBy: string | boolean,
-  contains: string | boolean,
+  sortBy: string,
+  contains: string,
+  view: viewType,
+  //[key: string]: string,
 }
+
+export type viewType = 'cube' | 'list';
 
 
 

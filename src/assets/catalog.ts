@@ -1400,7 +1400,7 @@ const catalog = {
     {
       id: 76,
       title: 'Silver Ring Set Women',
-      description: 'Jewelry Type:RingsCertificate Type:NonePlating:Silver PlatedShapeattern:noneStyle:CLASSICReligious',
+      description: 'Jewelry. Type: RingsCertificate, Type: NonePlating: Silver PlatedShapeattern: noneStyle: CLASSIC Religious',
       price: 70,
       discountPercentage: 13.57,
       rating: 4.61,

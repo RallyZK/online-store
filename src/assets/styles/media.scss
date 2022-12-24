@@ -7,7 +7,7 @@
 }
 
 
-@media (max-width: 1024px) {
+@media (max-width: 1124px) {
 
   .goods {
 
@@ -33,43 +33,11 @@
         margin: 0 auto 10px auto;
       }
     }
-
-
-
   }
 
   .goods__sort-wr__select,
   .goods__sort-wr__search-wr {
     width: 82%;
-  }
-
-  .good-card {
-    flex-direction: column;
-    align-items: center;
-
-    &__title {
-      text-align: center;
-    }
-
-    &__price {
-      text-align: center;
-    }
-
-    &__left-row {
-      flex-direction: row;
-    }
-
-    &__photo-min {
-      margin: 0 10px;
-    }
-
-    &__second-row {
-      order: -1;
-    }
-
-    &__btns-container {
-      justify-content: center;
-    }
   }
 
   .payment-page {
@@ -218,6 +186,14 @@
         font-size: 10px;
       }
 
+      &__rating {
+        font-size: 10px;
+      }
+
+      &__price {
+        font-size: 16px;
+      }
+
       &__img {
         width: 120px;
         height: 100px;        
@@ -225,21 +201,14 @@
     }
   }
 
-  .good-card {
-    &__photo-min {
-      width: 80px;
-      height: 60px;
-    }
-
-    &__photo-max {
-      width: 200px;
-      height: 170px;
-    }
-  }
-
   .cart-summary {
     width: 100%;
     margin: 0 auto;
+  }
+
+  .cart-list__title,
+  .cart-list__first-row p {
+    font-size: 20px;
   }
 
   .payment-page {

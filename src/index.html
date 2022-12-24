@@ -22,13 +22,14 @@
       <div class="header__cart-wrapper">
         <span class="header__cart-wrapper__sum">$ 750</span>
         <span class="header__cart-wrapper__items-count">3</span>
-        <button class="header__cart-wrapper__cart-btn"></button>
+        <!-- <button class="header__cart-wrapper__cart-btn"></button> -->
+        <a href="#cart" class="header__cart-wrapper__cart-link"><img class="header__cart-wrapper__cart-btn" src="./assets/icons/card2.png"></a>
       </div>
     </div>
   </header>
   <main class="main">
     <div class="wrapper">
-      <section class="main-section">
+      <section class="main-section" id="main-page">
         <section class="filters">
           <div class="filters__item">
             <h5 class="filters__item__title">Categories</h5>
@@ -66,13 +67,13 @@
           <div class="goods__sort-wr">
             <div class="goods__sort-wr__item">
               <select class="goods__sort-wr__select">
-                <option class="goods__sort-wr__select-item">Sort by</option>
-                <option class="goods__sort-wr__select-item" value="0">price (low to hight)</option>
-                <option class="goods__sort-wr__select-item" value="1">price (hight to low)</option>
-                <option class="goods__sort-wr__select-item" value="2">rating (low to hight)</option>
-                <option class="goods__sort-wr__select-item" value="3">rating (hight to low)</option>
-                <option class="goods__sort-wr__select-item" value="4">alphabet (A - Z)</option>
-                <option class="goods__sort-wr__select-item" value="5">alphabet (Z - A)</option>
+                <option class="goods__sort-wr__select-item" value="0">Sort by</option>
+                <option class="goods__sort-wr__select-item" value="1">price (low to hight)</option>
+                <option class="goods__sort-wr__select-item" value="2">price (hight to low)</option>
+                <option class="goods__sort-wr__select-item" value="3">rating (low to hight)</option>
+                <option class="goods__sort-wr__select-item" value="4">rating (hight to low)</option>
+                <option class="goods__sort-wr__select-item" value="5">alphabet (A - Z)</option>
+                <option class="goods__sort-wr__select-item" value="6">alphabet (Z - A)</option>
                
               </select>
               <h4 class="goods__sort-wr__found-title">Found:&nbsp;<span class="items-count">100</span></h4>
@@ -94,33 +95,9 @@
           </div>
         </section>
       </section>
-      <section class="good-card">
-        <div class="good-card">
-          <div class="good-card__left-row">
-            <img class="good-card__photo-min" src="./assets/icons/shopify.png" alt="good-photo">
-            <img class="good-card__photo-min" src="./assets/icons/shopify.png" alt="good-photo">
-            <img class="good-card__photo-min" src="./assets/icons/shopify.png" alt="good-photo">
-          </div>
-          <div class="good-card__second-row">
-            <img class="good-card__photo-max" src="./assets/icons/shopify.png" alt="good-photo">
-          </div>
-          <div class="good-card__third-row">
-            <h2 class="good-card__title">Apple 14 Pro</h2>
-            <h3 class="good-card__description">An apple mobile which is nothing like apple</h3>
-            <p class="good-card__discountPercentage">Discount percentage: 12</p>
-            <p class="good-card__rating">Rating: 4.5</p>
-            <p class="good-card__stock">Stock: 122</p>
-            <p class="good-card__brand">Brand: Apple</p>
-            <p class="good-card__category">Category: Phone</p>
-            <h2 class="good-card__price">$ 546</h2>
-            <div class="good-card__btns-container">
-              <button class="good-card__btn buy-now-btn">Buy now</button>
-              <button class="good-card__btn add-to-cart-btn">Add to cart</button>
-            </div>
-          </div>
-        </div>
+      <section class="good-card-wr display-none" id="good-page">        
       </section>
-      <section class="cart">
+      <section class="cart display-none" id="cart-page">
         <div class="cart-list">
           <div class="cart-list__first-row">
             <h2 class="cart-list__title">Products in cart</h2>
@@ -200,7 +177,7 @@
           <button class="cart-summary__buy-btn">Buy now</button>
         </div>
       </section>
-      <section class="payment-page-section">
+      <section class="payment-page-section display-none" id="payment-page">
         <form class="payment-page">
           <h2 class="payment-page__title">Personal details</h2>
           <label title="Two words, each at least 3 characters long" class="payment-page__label">
@@ -243,7 +220,7 @@
           <p><input class="payment-page__confirm-btn" type="submit" value="Confirm"></p>
         </form>
       </section>
-      <section class="error-page">
+      <section class="error-page display-none" id="error-page">
         <h2 class="error-page__h2">404</h2>
         <h3 class="error-page__h3">The page you are looking for can't be found</h3>
         <button class="error-page__btn">Main page</button>
