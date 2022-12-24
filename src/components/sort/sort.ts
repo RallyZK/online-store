@@ -2,39 +2,12 @@ import './sort.scss';
 import '../../assets/styles/media.scss';
 import * as types from '../types';
 import catalog from '../../assets/catalog';
+import { addGoodsToCart } from '../cart/cart';
 import { slideOne, slideTwo, slideThree, slideFour, sliderTwo, sliderThree, sliderFour, sliderOne, searchMaxPrice, searchMinPrice } from '../filters/filters';
+
 
 sliderOne!.value = searchMinPrice().toString();
 sliderTwo!.value = searchMaxPrice().toString();
-
-if (sliderOne)
-  sliderOne!.onchange = () => {
-    slideOne();
-    filters.minPrice = Number(sliderOne!.value);
-    updateAllFilters();
-  };
-
-if (sliderTwo)   
-  sliderTwo.onchange = () => {    
-    slideTwo();
-    filters.maxPrice = Number(sliderTwo!.value);
-    updateAllFilters();    
-  };
-
-if (sliderThree)
-  sliderThree.onchange = () => {
-    slideThree();
-    filters.minRating = Number(sliderThree!.value);
-    updateAllFilters();    
-  };
-if (sliderFour)
-  sliderFour.onchange = () => {
-    slideFour();
-    filters.maxRating = Number(sliderFour!.value);
-    updateAllFilters();    
-  };
-
-
 
 export const filters: types.IFilters = {
   category: [],
@@ -47,7 +20,6 @@ export const filters: types.IFilters = {
   contains: '',
   view: 'cube'
 }
-//console.log(filters)
 
 // рендер всех товаров
 
@@ -79,7 +51,8 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
       createElements('goods__item__rating', 'span', goodsItemWrapper, `${arr[i].rating}`);
       const goodsItemPriceWrapper = createElements('goods__item__price-wrapper', 'div', goodsItemWrapper, '');
       createElements('goods__item__price', 'span', goodsItemPriceWrapper, `$ ${arr[i].price}`);
-      createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'buy');
+      const addToCartButton = createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'Add to cart');
+      addToCartButton.setAttribute('item-id', `${arr[i].id}`);
     }
     itemsCount!.innerHTML = `${arr.length}`;
   }  
@@ -179,6 +152,34 @@ function getCatalogByRating(arr: types.IGoodsItem[], minVal: number, maxVal: num
   return arr.filter((el) => el.rating >= minVal && el.rating <= maxVal);
 }
 
+if (sliderOne)
+  sliderOne!.onchange = () => {
+    slideOne();
+    filters.minPrice = Number(sliderOne!.value);
+    updateAllFilters();
+  };
+
+if (sliderTwo)   
+  sliderTwo.onchange = () => {    
+    slideTwo();
+    filters.maxPrice = Number(sliderTwo!.value);
+    updateAllFilters();    
+  };
+
+if (sliderThree)
+  sliderThree.onchange = () => {
+    slideThree();
+    filters.minRating = Number(sliderThree!.value);
+    updateAllFilters();    
+  };
+if (sliderFour)
+  sliderFour.onchange = () => {
+    slideFour();
+    filters.maxRating = Number(sliderFour!.value);
+    updateAllFilters();    
+  };
+
+
 
 function updateAllFilters() {
   const arr = sortGoodsArray(catalogArr, n);
@@ -187,7 +188,8 @@ function updateAllFilters() {
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
   currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
-  renderCatalog(currentGoodsArray);  
+  renderCatalog(currentGoodsArray);
+  addGoodsToCart();
   //updateRangeInputs(currentGoodsArray);
   //updateHash();
   //console.log('filers:::', filters);

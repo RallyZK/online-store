@@ -101,9 +101,11 @@
 
     &__title {
       margin: 3px 0;
-      height: 38px;
+      height: 40px;
       font-size: 18px;
+      line-height: 20px;
       margin-bottom: 10px;
+      overflow-y: hidden;
     }
 
     &__subtitle {
@@ -114,6 +116,7 @@
       margin: 3px 0;
       font-weight: 300;
       height: 85px;
+      overflow-y: hidden;
     }
 
     &__wrapper {
@@ -163,6 +166,12 @@
     }
   }
 }
+
+.goods-in-cart {
+  background-color: $blue;
+}
+
+
 
 .list-view {
   background-size: 88% 88%;

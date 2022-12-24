@@ -1,3 +1,5 @@
+import { ids } from "webpack";
+
 export interface IGoodsItem {
   id: number;
   title: string;
@@ -26,6 +28,11 @@ export interface IFilters {
 }
 
 export type viewType = 'cube' | 'list';
+
+export interface IGoodInCart { 
+  count: number,
+  item: IGoodsItem | null,
+}
 
 
 

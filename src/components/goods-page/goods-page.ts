@@ -1,13 +1,13 @@
 import './goods-page.scss';
 import * as types from '../types';
 import { createElements } from '../sort/sort';
+import { addGoodsToCart } from '../cart/cart';
 
 export function renderGoodPage(el: types.IGoodsItem) {
   const mainSection: HTMLElement | null = document.querySelector('.main-section');
   const goodCardContainer: HTMLElement | null = document.querySelector('.good-card-wr');
   mainSection?.classList.add('display-none');
-  goodCardContainer?.classList.remove('display-none');
-  console.log('renderGoodPage:::');
+  goodCardContainer?.classList.remove('display-none');  
   if (goodCardContainer) {
     goodCardContainer.innerHTML = '';
     const goodCard = createElements('good-card', 'div', goodCardContainer, '');
@@ -38,9 +38,11 @@ export function renderGoodPage(el: types.IGoodsItem) {
     createElements('good-card__price', 'h2', goodCardThirdRow, `$ ${el.price}`);
     const goodCardBtnContainer = createElements('good-card__btns-container', 'div', goodCardThirdRow, '');
     createElements('good-card__btn buy-now-btn', 'button', goodCardBtnContainer, 'Buy now');
-    createElements('good-card__btn add-to-cart-btn', 'button', goodCardBtnContainer, 'Add to cart');
+    const addToBtn = createElements('good-card__btn add-to-cart-btn', 'button', goodCardBtnContainer, 'Add to cart');
+    addToBtn.setAttribute('item-id', `${el.id}`);
   }
   changePhotosInGoodsCards();
+  addGoodsToCart();
 }
 
 function changePhotosInGoodsCards() {

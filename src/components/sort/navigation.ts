@@ -1,6 +1,6 @@
 import * as types from '../types';
 import { renderGoodPage } from '../goods-page/goods-page';
-import { catalogArr, currentGoodsArray } from '../sort/sort';
+import { catalogArr } from '../sort/sort';
 
 const logo: HTMLElement | null = document.querySelector('.header__title');
 const mainSection: HTMLElement | null = document.querySelector('.main-section');
@@ -50,8 +50,7 @@ export function getGoodCardFromUrl(hash: string) {
     return acc
   });
   if (goodItem) {
-    renderGoodPage(goodItem);
-    console.log('goodItem:::', goodItem);
+    renderGoodPage(goodItem);    
   }
 }
 
