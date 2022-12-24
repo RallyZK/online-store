@@ -204,35 +204,41 @@
         <form class="payment-page">
           <h2 class="payment-page__title">Personal details</h2>
           <label title="Two words, each at least 3 characters long" class="payment-page__label">
-            <input class="payment-page__input name" type="text" placeholder="Name and Last name" name="name">
+            <input class="payment-page__input name" type="text" id="name" placeholder="Name and Last name" name="name">
+            <span class="name-error display-none">! Error</span>
           </label>
           <label title="Must start with '+', contain only numbers and be at least 9 characters"
             class="payment-page__label">
-            <input class="payment-page__input phone" type="number" placeholder="Phone number">
+            <input class="payment-page__input phone" type="number" id="phone" placeholder="Phone number">
+            <span class="phone-error display-none">! Error</span>
           </label>
           <label title="Must contain at least three words, each at least 5 characters long" class="payment-page__label">
-            <input class="payment-page__input adress" type="text" placeholder="Delivery adress">
+            <input class="payment-page__input adress" type="text" id="adress" placeholder="Delivery adress">
+            <span  class="adress-error display-none">! Error</span>
           </label>
           <label title="Must contain correct email adress" class="payment-page__label">
-            <input class="payment-page__input email" type="email" placeholder="E-mail">
+            <input class="payment-page__input email" type="email" id="email" placeholder="E-mail">
+            <span  class="email-error display-none">! Error</span>
           </label>
           <h2 class="payment-page__title">Credit card details</h2>
           <div class="payment-page__card">
             <div class="payment-page__card__number-cont">
               <img class="payment-page__card__number-cont__img" src="./assets/icons/card-default.png"  alt="card">
               <label title="Must contain 16 characters, only numbers allowed" class="payment-page__label">
-                <input class="payment-page__input card-number" type="number" placeholder="Card number">
+                <input class="payment-page__input card-number" type="number" id="card-number" placeholder="Card number">
               </label>
             </div>
             <div class="payment-page__card__number-cont bottom-row">
-              <label title="Must contain 4 characters, only numbers allowed" class="payment-page__label-card">
-                <input class="payment-page__input valid-date" type="number" placeholder="Valid until">
+              <label title="Must contain 4 characters, only numbers allowed" class="payment-page__label-card valid-date-wr">
+                <input class="payment-page__input valid-mounth" type="number" id="cardDateMM" placeholder="MM">
+                <span>/</span>
+                <input class="payment-page__input valid-year" type="number" id="cardDateYY" placeholder="YY">
               </label>
               <label title="Must contain 3 characters, only numbers allowed" class="payment-page__label-card">
-                <input class="payment-page__input cvv" type="number" placeholder="CVV">
+                <input class="payment-page__input cvv" type="number" id="cvv" placeholder="CVV">
               </label>
             </div>
-            <p>Valid: false</p>
+            <p class="checkCardValid"></p>
           </div>
           <p><input class="payment-page__confirm-btn" type="submit" value="Confirm"></p>
         </form>
