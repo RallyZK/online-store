@@ -20,8 +20,17 @@ addGoodsToCart()
 
 function addItemToCart(el: Element) {
   el.classList.toggle('goods-in-cart');
-  if (el.innerHTML === 'Add to cart') el.innerHTML = 'Remove';
-  else el.innerHTML = 'Add to cart';
+  
+  if (el.innerHTML === 'Add to cart') {    
+    el.innerHTML = ' Remove ';
+  } else if (el.innerHTML === 'Buy') {    
+    el.innerHTML = 'Remove';
+  } else if (el.innerHTML === ' Remove ') {
+    el.innerHTML = 'Add to cart';
+  } else if (el.innerHTML === 'Remove') {
+    el.innerHTML = 'Buy';
+  }   
+
   const id = Number(el.getAttribute('item-id'));
   updateGoodsItemToCart(id);
 }

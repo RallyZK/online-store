@@ -51,7 +51,7 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
       createElements('goods__item__rating', 'span', goodsItemWrapper, `${arr[i].rating}`);
       const goodsItemPriceWrapper = createElements('goods__item__price-wrapper', 'div', goodsItemWrapper, '');
       createElements('goods__item__price', 'span', goodsItemPriceWrapper, `$ ${arr[i].price}`);
-      const addToCartButton = createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'Add to cart');
+      const addToCartButton = createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'Buy');
       addToCartButton.setAttribute('item-id', `${arr[i].id}`);
     }
     itemsCount!.innerHTML = `${arr.length}`;
