@@ -7,6 +7,35 @@ import { slideOne, slideTwo, slideThree, slideFour, sliderTwo, sliderThree, slid
 sliderOne!.value = searchMinPrice().toString();
 sliderTwo!.value = searchMaxPrice().toString();
 
+if (sliderOne)
+  sliderOne!.onchange = () => {
+    slideOne();
+    filters.minPrice = Number(sliderOne!.value);
+    updateAllFilters();
+  };
+
+if (sliderTwo)   
+  sliderTwo.onchange = () => {    
+    slideTwo();
+    filters.maxPrice = Number(sliderTwo!.value);
+    updateAllFilters();    
+  };
+
+if (sliderThree)
+  sliderThree.onchange = () => {
+    slideThree();
+    filters.minRating = Number(sliderThree!.value);
+    updateAllFilters();    
+  };
+if (sliderFour)
+  sliderFour.onchange = () => {
+    slideFour();
+    filters.maxRating = Number(sliderFour!.value);
+    updateAllFilters();    
+  };
+
+
+
 export const filters: types.IFilters = {
   category: [],
   brand: [],
@@ -18,7 +47,7 @@ export const filters: types.IFilters = {
   contains: '',
   view: 'cube'
 }
-console.log(filters)
+//console.log(filters)
 
 // рендер всех товаров
 
@@ -161,41 +190,9 @@ function updateAllFilters() {
   renderCatalog(currentGoodsArray);  
   //updateRangeInputs(currentGoodsArray);
   //updateHash();
-  console.log('filers:::', filters);
+  //console.log('filers:::', filters);
 }
 //updateAllFilters()
-
-
-if (sliderOne)
-  sliderOne!.onchange = () => {
-    slideOne();
-    filters.minPrice = Number(sliderOne!.value);
-    updateAllFilters();
-    console.log('filers:::', filters);
-  };
-
-if (sliderTwo)
-  sliderTwo.onchange = () => {
-    slideTwo();
-    filters.maxPrice = Number(sliderTwo!.value);
-    updateAllFilters();
-    console.log('filers:::', filters);
-  };
-if (sliderThree)
-  sliderThree.onchange = () => {
-    slideThree();
-    filters.minRating = Number(sliderThree!.value);
-    updateAllFilters();
-    console.log('filers:::', filters);
-  };
-if (sliderFour)
-  sliderFour.onchange = () => {
-    slideFour();
-    filters.maxRating = Number(sliderFour!.value);
-    updateAllFilters();
-    console.log('filers:::', filters);
-  };
-
 
 
 // сброс всех фильтров
