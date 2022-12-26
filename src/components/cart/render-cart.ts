@@ -119,7 +119,7 @@ function removePromocodes() {
         appliedPromocodes = appliedPromocodes.filter(el => el !== 'pink');
         appliedCodesList!.removeChild(el.parentElement as Node);
       }
-      console.log('appliedPromocodes', appliedPromocodes)
+      console.log('appliedPromocodes',    appliedPromocodes)   
       updateCartSummary(goodsInCart);
     }))
   }
