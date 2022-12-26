@@ -1,6 +1,7 @@
 import './goods-page.scss';
 import * as types from '../types';
 import { createElements } from '../sort/sort';
+import { getBuyNowBtns } from '../sort/navigation';
 
 export function renderGoodPage(el: types.IGoodsItem) {
   const mainSection: HTMLElement | null = document.querySelector('.main-section');
@@ -41,15 +42,20 @@ export function renderGoodPage(el: types.IGoodsItem) {
     createElements('good-card__btn add-to-cart-btn', 'button', goodCardBtnContainer, 'Add to cart');
   }
   changePhotosInGoodsCards();
+  getBuyNowBtns();
 }
 
 function changePhotosInGoodsCards() {
   const goodsPhotoMax: HTMLElement | null = document.querySelector('.good-card__photo-max');
   const goodsPhotosMini: NodeListOf<Element> | null = document.querySelectorAll('.good-card__photo-min');
-  goodsPhotosMini!.forEach(el => el.addEventListener('click', () => {
-    const miniPhotoPath = (el as HTMLImageElement).src;
-    const maxPhotoPath = (goodsPhotoMax as HTMLImageElement).src;
-    (goodsPhotoMax as HTMLImageElement).src = miniPhotoPath;
-    (el as HTMLImageElement).src = maxPhotoPath;
-  }))
+  goodsPhotosMini!.forEach((el) =>
+    el.addEventListener('click', () => {
+      const miniPhotoPath = (el as HTMLImageElement).src;
+      const maxPhotoPath = (goodsPhotoMax as HTMLImageElement).src;
+      (goodsPhotoMax as HTMLImageElement).src = miniPhotoPath;
+      (el as HTMLImageElement).src = maxPhotoPath;
+    })
+  );
 }
+
+
