@@ -1,8 +1,5 @@
-import { createElements } from '../sort/sort';
+import { createElements, rawCatalog } from '../sort/sort';
 import { IGoodInCart, IGoodsItem } from '../types';
-//import { goodsInCart } from './cart';
-import { catalogArr } from '../sort/sort';
-
 
 export function renderCartList(arr: IGoodsItem[]) {
   const cartList: HTMLElement | null = document.querySelector('.cart-list__good-card');
@@ -42,7 +39,7 @@ export function renderCartList(arr: IGoodsItem[]) {
       }
     })
   }
-  //updateCartSummary(arr);
+  updateCartSummary(arr);
 }
 
 let totalSum = 0;
@@ -51,30 +48,28 @@ enum Promocodes {
   pink = 5,
 }
 
-function updateCartSummary(arr: IGoodInCart[]) {
-  const productsCount: HTMLElement | null = document.querySelector('.cart-summary__prod-count');
+function updateCartSummary(arr: IGoodsItem[]) { 
   const totalCount: HTMLElement | null = document.querySelector('.cart-summary__total-count');
   const totalCountDisc: HTMLElement | null = document.querySelector('.cart-summary__total-count-disc');
-  if (productsCount) productsCount.innerHTML = `Products: ${arr.length}`;
-  if (totalCount) totalCount.innerHTML = `  Total: $${getTotalCartSum(arr, false)}  `;
+  
+  if (totalCount) totalCount.innerHTML = `&nbsp;&nbsp;Total: $${getTotalCartSum(arr, false)}&nbsp;&nbsp;`;
   totalSum = getTotalCartSum(arr, true);
   totalSum = updateTotalSumByPromocodes(totalSum);
   if (totalCountDisc) totalCountDisc.innerHTML = `Total: $${totalSum}`;
   console.log('total sum:::', totalSum)
 }
 
-function getTotalCartSum(arr: IGoodInCart[], isDiscount: boolean): number {
-  let sum = arr.reduce((acc: number, el: IGoodInCart) => {
-    if (el.item) {
-      if (isDiscount) acc = acc + el.count * el.item.price * ((100 - el.item.discountPercentage) / 100);
-      else acc = acc + el.count * el.item.price;
+function getTotalCartSum(arr: IGoodsItem[], isDiscount: boolean): number {
+  let sum = arr.reduce((acc: number, el: IGoodsItem) => {
+    if (el.isInCart && el.countInCart) {
+      if (isDiscount) acc = acc + el.countInCart * el.price * ((100 - el.discountPercentage) / 100);
+      else acc = acc + el.countInCart * el.price;
       return Math.floor(acc);
     }
     return Math.floor(acc);
   }, 0);
   return sum;
 }
-
 
 const appliedCodesErrorCont: HTMLElement | null = document.querySelector('.cart-summary__applied-codes__error-cont');
 const appliedCodesList: HTMLElement | null = document.querySelector('.cart-summary__applied-codes__list');
@@ -83,7 +78,7 @@ let appliedPromocodes: string[] = [];
 
 if (codeInput) codeInput.addEventListener('keydown', () => {
   updatePromocodesList();
-  //updateCartSummary(goodsInCart);
+  updateCartSummary(rawCatalog);
 });
 
 function updatePromocodesList() {
@@ -91,7 +86,7 @@ function updatePromocodesList() {
     if (codeInput.value.toLowerCase() === 'black' || codeInput.value.toLowerCase() === 'pink') {
       if (!appliedPromocodes.includes(codeInput.value)) {
         appliedPromocodes.push(codeInput.value);
-        setTimeout(() => codeInput.value = '', 1000);
+        setTimeout(() => codeInput.value = '', 300);
         if (appliedCodesErrorCont) appliedCodesErrorCont.innerHTML = '';
         if (appliedCodesList) {
           const appliedCodesCont = createElements('cart-summary__applied-codes__cont', 'div', appliedCodesList, '');
@@ -128,7 +123,7 @@ function removePromocodes() {
         appliedCodesList!.removeChild(el.parentElement as Node);
       }
       console.log('appliedPromocodes', appliedPromocodes)
-      //updateCartSummary(goodsInCart);
+      updateCartSummary(rawCatalog);
     }))
   }
 }

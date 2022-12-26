@@ -5,8 +5,6 @@ import { renderCartList } from './render-cart';
 
 export let goodsInCart: types.Itest[] = [];
 const countItemsInCart: HTMLElement | null = document.querySelector('.header__cart-wrapper__items-count');
-const totalCartCount: HTMLElement | null = document.querySelector('.header__cart-wrapper__sum');
-
 
 export function updateGoodsInCart(el: HTMLElement, id: number): void {
   let index = id - 1;
@@ -24,8 +22,8 @@ export function updateGoodsInCart(el: HTMLElement, id: number): void {
     rawCatalog[index].countInCart = 0;
     rawCatalog[index].isInCart = false;
   }
-  updateItemsCount();
-  updateTotalCartSum();
+  updateItemsCount(); 
+  displayTotalCartSum (getTotalCartSum());
   colorAddToCartButtons(el, id);
   updateAllFilters();
   console.log('goodsInCart:::', goodsInCart);  
@@ -49,15 +47,30 @@ function updateItemsCount(): void {
   }
 }
 
-function updateTotalCartSum(): void {
-  const idItemsInCart = goodsInCart.map((el) => el.id);
-  const sum = rawCatalog.reduce((acc, el) => {
+export function getTotalCartSum(): number {
+  //const idItemsInCart = goodsInCart.map((el) => el.id);
+  const sum = rawCatalog.reduce((acc: number, el: types.IGoodsItem) => {
     if (el.isInCart && el.countInCart) {
       acc = acc + el.price * el.countInCart;
     }
     return acc;
   }, 0);
+  console.log('Cart sum:::', sum);
+  return sum;
 
+  // if (totalCartCount) {
+  //   if (sum !== 0) {
+  //     totalCartCount.classList.remove('display-none');
+  //     totalCartCount.innerHTML = `$ ${sum}`;
+  //   } else {
+  //     totalCartCount.classList.add('display-none');
+  //   }
+  // }
+  
+}
+
+function displayTotalCartSum (sum: number) {
+  const totalCartCount: HTMLElement | null = document.querySelector('.header__cart-wrapper__sum');
   if (totalCartCount) {
     if (sum !== 0) {
       totalCartCount.classList.remove('display-none');
@@ -66,7 +79,6 @@ function updateTotalCartSum(): void {
       totalCartCount.classList.add('display-none');
     }
   }
-  console.log('Cart sum:::', sum);
 }
 
 export function colorAddToCartButtons(el: HTMLElement, id: number): void {
