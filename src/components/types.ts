@@ -10,6 +10,13 @@ export interface IGoodsItem {
   category: string;
   thumbnail: string;
   images: string[];
+  isInCart?: boolean;
+  countInCart?: number;
+}
+
+export interface Itest {
+  id: number;
+  countInCart: number;
 }
 
 export interface IFilters {

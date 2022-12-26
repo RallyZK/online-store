@@ -3,7 +3,7 @@ import '../../assets/styles/media.scss';
 import * as types from '../types';
 import catalog from '../../assets/catalog';
 import { slideOne, slideTwo, slideThree, slideFour, sliderTwo, sliderThree, sliderFour, sliderOne, searchMaxPrice, searchMinPrice } from '../filters/filters';
-import { addGoodsToCart } from '../cart/cart';
+import { goodsInCart, updateGoodsInCart, colorAddToCartButtons} from '../cart/cart';
 
 sliderOne!.value = searchMinPrice().toString();
 sliderTwo!.value = searchMaxPrice().toString();
@@ -15,27 +15,25 @@ if (sliderOne)
     updateAllFilters();
   };
 
-if (sliderTwo)   
-  sliderTwo.onchange = () => {    
+if (sliderTwo)
+  sliderTwo.onchange = () => {
     slideTwo();
     filters.maxPrice = Number(sliderTwo!.value);
-    updateAllFilters();    
+    updateAllFilters();
   };
 
 if (sliderThree)
   sliderThree.onchange = () => {
     slideThree();
     filters.minRating = Number(sliderThree!.value);
-    updateAllFilters();    
+    updateAllFilters();
   };
 if (sliderFour)
   sliderFour.onchange = () => {
     slideFour();
     filters.maxRating = Number(sliderFour!.value);
-    updateAllFilters();    
+    updateAllFilters();
   };
-
-
 
 export const filters: types.IFilters = {
   category: [],
@@ -54,7 +52,7 @@ export const filters: types.IFilters = {
 
 let view: types.viewType = 'cube';
 
-export const firstArr: types.IGoodsItem[] = catalog.products.map((el) => el);
+export const rawCatalog: types.IGoodsItem[] = catalog.products.map((el) => el);
 export let catalogArr: types.IGoodsItem[] = catalog.products;
 export let currentGoodsArray: types.IGoodsItem[] = catalog.products;
 
@@ -81,11 +79,14 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
       createElements('goods__item__rating', 'span', goodsItemWrapper, `${arr[i].rating}`);
       const goodsItemPriceWrapper = createElements('goods__item__price-wrapper', 'div', goodsItemWrapper, '');
       createElements('goods__item__price', 'span', goodsItemPriceWrapper, `$ ${arr[i].price}`);
+
       const addToCartButton = createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'Buy');
       addToCartButton.setAttribute('item-id', `${arr[i].id}`);
+      colorAddToCartButtons(addToCartButton, Number(arr[i].id));
+      addToCartButton.addEventListener('click', () => { updateGoodsInCart(addToCartButton, arr[i].id) });   
     }
     itemsCount!.innerHTML = `${arr.length}`;
-  }  
+  }
 }
 renderCatalog(currentGoodsArray);
 
@@ -140,18 +141,18 @@ const categoriesUl: HTMLElement | null = document.querySelector('.categories');
 let categoriesLiArr: NodeListOf<Element> | null;
 if (categoriesUl) {
   categoriesLiArr = categoriesUl.querySelectorAll('.filters__item__li');
-}
 
-categoriesLiArr!.forEach((el: Element): void => {
-  el.addEventListener('click', () => {
-    const selectedCategory = el.getAttribute('item-category') as string;
-    if (!filters.category.includes(selectedCategory)) filters.category.push(selectedCategory);
-    else filters.category = filters.category.filter((el) => el !== selectedCategory);
-    //updateRangeInputs(currentGoodsArray);
-    updateAllFilters();
-    el.classList.toggle('selected-filter');
+  categoriesLiArr.forEach((el: Element): void => {
+    el.addEventListener('click', () => {
+      const selectedCategory = el.getAttribute('item-category') as string;
+      if (!filters.category.includes(selectedCategory)) filters.category.push(selectedCategory);
+      else filters.category = filters.category.filter((el) => el !== selectedCategory);
+      //updateRangeInputs(currentGoodsArray);
+      updateAllFilters();
+      el.classList.toggle('selected-filter');
+    })
   })
-})
+}
 
 // фильтр по брендам товаров
 
@@ -159,18 +160,18 @@ const brandsUl: HTMLElement | null = document.querySelector('.brands');
 let brandsLiArr: NodeListOf<Element> | null;
 if (brandsUl) {
   brandsLiArr = brandsUl.querySelectorAll('.filters__item__li');
-}
 
-brandsLiArr!.forEach((el: Element, key: number, parent: NodeListOf<Element>): void => {
-  el.addEventListener('click', () => {
-    const selectedBrand = el.getAttribute('item-brand') as string;
-    if (filters.brand.includes(selectedBrand)) filters.brand = filters.brand.filter((el) => el !== selectedBrand);
-    else filters.brand.push(selectedBrand);
-    updateAllFilters();
-    //updateRangeInputs(currentGoodsArray);
-    el.classList.toggle('selected-filter');
+  brandsLiArr.forEach((el: Element, key: number, parent: NodeListOf<Element>): void => {
+    el.addEventListener('click', () => {
+      const selectedBrand = el.getAttribute('item-brand') as string;
+      if (filters.brand.includes(selectedBrand)) filters.brand = filters.brand.filter((el) => el !== selectedBrand);
+      else filters.brand.push(selectedBrand);
+      updateAllFilters();
+      //updateRangeInputs(currentGoodsArray);
+      el.classList.toggle('selected-filter');
+    })
   })
-})
+}
 
 // фильтр по выставленным ценам
 
@@ -183,15 +184,15 @@ function getCatalogByRating(arr: types.IGoodsItem[], minVal: number, maxVal: num
 }
 
 
-function updateAllFilters() {
+export function updateAllFilters() {
   const arr = sortGoodsArray(catalogArr, n);
   const arr2 = searchGoods(arr, searchFrase);
   const arr3 = getGoodsBySelectedCategories(arr2, filters.category);
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
-  currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
+  currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);  
   renderCatalog(currentGoodsArray);
-  addGoodsToCart();
+  //addGoodsToCart();
   //updateRangeInputs(currentGoodsArray);
   //updateHash();
   //console.log('filers:::', filters);
@@ -213,12 +214,11 @@ resetFiltersBtn?.addEventListener('click', () => {
   filters.contains = '';
   filters.brand = [];
   filters.category = [];
-  filters.minPrice = searchMinPrice(),
-    filters.maxPrice = searchMaxPrice(),
-    filters.minRating = 0,
-    filters.maxRating = 5,
-    //updateAllFilters();
-    renderCatalog(firstArr);
+  filters.minPrice = searchMinPrice();
+  filters.maxPrice = searchMaxPrice();
+  filters.minRating = 0;
+  filters.maxRating = 5;
+  renderCatalog(rawCatalog);
   sliderOne!.value = searchMinPrice().toString();
   sliderTwo!.value = searchMaxPrice().toString();
   slideOne();
@@ -230,6 +230,7 @@ resetFiltersBtn?.addEventListener('click', () => {
   console.log('filers:::', filters);
   categoriesLiArr?.forEach(el => el.classList.remove('selected-filter'));
   brandsLiArr?.forEach(el => el.classList.remove('selected-filter'));
+  //updateAllFilters();
 })
 
 // вспом функции

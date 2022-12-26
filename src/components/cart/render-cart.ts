@@ -1,40 +1,48 @@
 import { createElements } from '../sort/sort';
-import { IGoodInCart } from '../types';
-import { goodsInCart } from './cart';
+import { IGoodInCart, IGoodsItem } from '../types';
+//import { goodsInCart } from './cart';
 import { catalogArr } from '../sort/sort';
 
 
-export function renderCartList(arr: IGoodInCart[]) {
+export function renderCartList(arr: IGoodsItem[]) {
   const cartList: HTMLElement | null = document.querySelector('.cart-list__good-card');
   const cartListCont = document.querySelector('.cart-list__first-row p');
+  const productsCount: HTMLElement | null = document.querySelector('.cart-summary__prod-count');
+  
+  const itemsCountInCart = arr.reduce((acc, el) => {
+    if (el.isInCart) acc = acc + 1;
+    return acc;
+  }, 0);
+  if (cartListCont) cartListCont.innerHTML = `Items: ${itemsCountInCart}`;
+  if (productsCount) productsCount.innerHTML = `Products: ${itemsCountInCart}`;
+
   if (cartList) {
-    cartList.innerHTML = '';
-    if (cartListCont) cartListCont.innerHTML = `Items: ${arr.length}`;
+    cartList.innerHTML = '';    
     arr.forEach(el => {
-      if (el.item) {
+      if (el.isInCart && el.countInCart) {
         const cartListLi = createElements('cart-list__good-card__li', 'li', cartList, '');
         const img = new Image();
-        (img as HTMLImageElement).src = el.item.thumbnail;
+        (img as HTMLImageElement).src = el.thumbnail;
         img.classList.add('cart-list__good-card__img');
-        img.alt = `${el.item.title} Photo`;
+        img.alt = `${el.title} Photo`;
         cartListLi.append(img);
         const cartListGoodCardItem = createElements('cart-list__good-card__item', 'div', cartListLi, '');
-        createElements('cart-list__good-card__item__title', 'h2', cartListGoodCardItem, el.item.title);
-        createElements('cart-list__good-card__item__description', 'h3', cartListGoodCardItem, el.item.description);
-        createElements('cart-list__good-card__item__rating', 'p', cartListGoodCardItem, `Rating: ${el.item.rating}`);
-        createElements('cart-list__good-card__item__discountPercentage', 'p', cartListGoodCardItem, `Discount: ${el.item.discountPercentage}%`);
+        createElements('cart-list__good-card__item__title', 'h2', cartListGoodCardItem, el.title);
+        createElements('cart-list__good-card__item__description', 'h3', cartListGoodCardItem, el.description);
+        createElements('cart-list__good-card__item__rating', 'p', cartListGoodCardItem, `Rating: ${el.rating}`);
+        createElements('cart-list__good-card__item__discountPercentage', 'p', cartListGoodCardItem, `Discount: ${el.discountPercentage}%`);
 
         const cartListCont = createElements('cart-list__counts-cont', 'div', cartListLi, '');
-        createElements('cart-list__counts-cont__stock', 'p', cartListCont, `Stock: ${el.item.stock - el.count}`);
+        createElements('cart-list__counts-cont__stock', 'p', cartListCont, `Stock: ${el.stock - el.countInCart}`);
         const cartListItemCont = createElements('cart-list__counts-cont__items-cont', 'div', cartListCont, '');
         createElements('cart-list__counts-cont__btn add-items', 'button', cartListItemCont, '-');
-        createElements('cart-list__counts-cont__items-count', 'p', cartListItemCont, `${el.count}`);
+        createElements('cart-list__counts-cont__items-count', 'p', cartListItemCont, `${el.countInCart}`);
         createElements('cart-list__counts-cont__btn del-items', 'button', cartListItemCont, '+');
-        createElements('cart-list__counts-cont__total-item-count', 'p', cartListCont, `$ ${el.item.price * el.count}`);
+        createElements('cart-list__counts-cont__total-item-count', 'p', cartListCont, `$ ${el.price * el.countInCart}`);
       }
     })
   }
-  updateCartSummary(arr);
+  //updateCartSummary(arr);
 }
 
 let totalSum = 0;
@@ -75,7 +83,7 @@ let appliedPromocodes: string[] = [];
 
 if (codeInput) codeInput.addEventListener('keydown', () => {
   updatePromocodesList();
-  updateCartSummary(goodsInCart);
+  //updateCartSummary(goodsInCart);
 });
 
 function updatePromocodesList() {
@@ -120,7 +128,7 @@ function removePromocodes() {
         appliedCodesList!.removeChild(el.parentElement as Node);
       }
       console.log('appliedPromocodes', appliedPromocodes)
-      updateCartSummary(goodsInCart);
+      //updateCartSummary(goodsInCart);
     }))
   }
 }
