@@ -185,11 +185,23 @@ function checkAllPaymentPageValid() {
   else if (!isNameValid && !isPhoneValid && !isAdressValid && !isEmailValid && !paymentPageCard?.classList.contains('valid-card')) isAllPaymentPageValid = false;
 }
 
+function clearPaymentPageInputs() {
+  if (name) name.value = '';
+  if (phone) phone.value = '';
+  if (adress) adress.value = '';
+  if (email) email.value = '';
+  if (cardNumber) cardNumber.value = '';
+  if (cardDateMM) cardDateMM.value = '';
+  if (cardDateYY) cardDateYY.value = '';
+  if (cvv) cvv.value = '';
+}
+
 confirmBtn!.onclick = () => {
   checkAllPaymentPageValid();
   if (isAllPaymentPageValid) {
     paymentPage?.classList.add('display-none');
     document.querySelector('.paid-page__wrapper')?.classList.remove('display-none');
-    setTimeout(getMainPage, 8000);
+    setTimeout(getMainPage, 6000);
+    setTimeout(clearPaymentPageInputs, 3000);
   }
 };
