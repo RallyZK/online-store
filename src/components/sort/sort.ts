@@ -25,6 +25,7 @@ export const filters: types.IFilters = {
 
 let view: types.viewType = 'cube';
 
+export const firstArr = catalog.products.map((el) => el);
 export let catalogArr: types.IGoodsItem[] = catalog.products;
 export let currentGoodsArray: types.IGoodsItem[] = catalog.products;
 

@@ -1,8 +1,9 @@
 import './cart.scss';
 import * as types from '../types';
-import { catalogArr } from '../sort/sort';
+import { firstArr } from '../sort/sort';
 import { renderCartList } from './render-cart';
 
+    
 export let goodsInCart: types.IGoodInCart[] = [];
 const countItemsInCart: HTMLElement | null = document.querySelector('.header__cart-wrapper__items-count');
 const totalCartCount: HTMLElement | null = document.querySelector('.header__cart-wrapper__sum');
@@ -38,15 +39,15 @@ function addItemToCart(el: Element): void {
 
 function updateGoodsItemToCart(id: number): void {
 
-  const goodItem: types.IGoodsItem = catalogArr.reduce((acc: types.IGoodsItem, el: types.IGoodsItem) => {
-    if (el.id === id) {
-      acc = el;
-      return acc;
-    }
-    return acc;
-  });
+  // const goodItem: types.IGoodsItem = catalogArr.reduce((acc: types.IGoodsItem, el: types.IGoodsItem) => {
+  //   if (el.id === id) {
+  //     acc = el;
+  //     return acc;
+  //   }
+  //   return acc;
+  // });
 
-  if (goodItem) {
+  //if (goodItem) {
     if (checkIsGoodInCart(id) === true) {
       goodsInCart = goodsInCart.filter(el => {
         if (el.item) {
@@ -54,16 +55,18 @@ function updateGoodsItemToCart(id: number): void {
         }
       })
     } else {
+      const element: types.IGoodsItem | undefined = firstArr.find((el) => el.id === id);
+      console.log('element:::', element);
       goodsInCart.push({
         count: 1,
-        item: goodItem,
+        item: element,
       });
     }
     renderCartList(goodsInCart);
     updateItemsCount();
     updateTotalCartCount();
     console.log('goodsInCart:::', goodsInCart);
-  }
+  //}
 }
 
 function checkIsGoodInCart(id: number): Boolean {

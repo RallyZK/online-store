@@ -31,7 +31,7 @@ export type viewType = 'cube' | 'list';
 
 export interface IGoodInCart { 
   count: number,
-  item: IGoodsItem | null,
+  item: IGoodsItem | undefined,
 }
 
 
