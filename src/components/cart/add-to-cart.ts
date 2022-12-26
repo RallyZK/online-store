@@ -45,6 +45,7 @@ function updateGoodsItemToCart(id: number): void {
     }
     return acc;
   });
+
   if (goodItem) {
     if (checkIsGoodInCart(id) === true) {
       goodsInCart = goodsInCart.filter(el => {

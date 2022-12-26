@@ -2,7 +2,7 @@ import './sort.scss';
 import '../../assets/styles/media.scss';
 import * as types from '../types';
 import catalog from '../../assets/catalog';
-import { addGoodsToCart } from '../cart/add-to-cart';
+//import { addGoodsToCart } from '../cart/add-to-cart';
 import { slideOne, slideTwo, slideThree, slideFour, sliderTwo, sliderThree, sliderFour, sliderOne, searchMaxPrice, searchMinPrice } from '../filters/filters';
 
 
@@ -189,7 +189,7 @@ function updateAllFilters() {
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
   currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
   renderCatalog(currentGoodsArray);
-  addGoodsToCart();
+  //addGoodsToCart();
   //updateRangeInputs(currentGoodsArray);
   //updateHash();
   //console.log('filers:::', filters);
