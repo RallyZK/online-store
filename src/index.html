@@ -178,7 +178,7 @@
         </div>
       </section>
       <section class="payment-page-section display-none" id="payment-page">
-        <form class="payment-page">
+        <div class="payment-page">
           <h2 class="payment-page__title">Personal details</h2>
           <label title="Two words, each at least 3 characters long" class="payment-page__label">
             <input class="payment-page__input name" type="text" id="name" placeholder="Name and Last name" name="name">
@@ -217,9 +217,15 @@
             </div>
             <p class="checkCardValid"></p>
           </div>
-          <p><input class="payment-page__confirm-btn" type="submit" value="Confirm"></p>
-        </form>
+          <button class="payment-page__confirm-btn">Confirm</button>
+        </div>
       </section>
+      <div class="paid-page__wrapper display-none">
+        <div class="paid-page">
+          <h2 class="paid-page__title">Order is accepted</h2>
+          <h3 class="paid-page__info">Dear Customer, thank you for your purchase. In the near future, the courier will contact you and specify the delivery time</h3>
+        </div>
+      </div>
       <section class="error-page display-none" id="error-page">
         <h2 class="error-page__h2">404</h2>
         <h3 class="error-page__h3">The page you are looking for can't be found</h3>

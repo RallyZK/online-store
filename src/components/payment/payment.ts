@@ -1,11 +1,14 @@
 import './payment.scss';
 import '../../assets/styles/additionals.scss';
+import { getMainPage } from '../sort/navigation';
 
 const phonePattern = new RegExp('^([+]+[s0-9]+)?(d{3}|[+]+[(]?[0-9]+[)])?([+]?[s]?[0-9])+$');
 const emailPattern = new RegExp('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,5})$');
 
-const paymentPage: HTMLInputElement | null = document.querySelector('.payment-page');
+const paymentPage: HTMLElement | null = document.querySelector('.payment-page-section');
 const paymentPageCard: HTMLInputElement | null = document.querySelector('.payment-page__card');
+const cardPage: HTMLElement | null = document.querySelector('#cart-page');
+const goodPage: HTMLElement | null = document.querySelector('#good-page');
 const name: HTMLInputElement | null = document.querySelector('#name');
 const phone: HTMLInputElement | null = document.querySelector('#phone');
 const adress: HTMLInputElement | null = document.querySelector('#adress');
@@ -15,7 +18,7 @@ const cardDateMM: HTMLInputElement | null = document.querySelector('#cardDateMM'
 const cardDateYY: HTMLInputElement | null = document.querySelector('#cardDateYY');
 const cvv: HTMLInputElement | null = document.querySelector('#cvv');
 const cardImg: HTMLImageElement | null = document.querySelector('.payment-page__card__number-cont__img');
-const confirmBtn: HTMLInputElement | null = document.querySelector('.payment-page__confirm-btn');
+const confirmBtn: HTMLButtonElement | null = document.querySelector('.payment-page__confirm-btn');
 
 let isNameValid = false;
 let isPhoneValid = false;
@@ -25,6 +28,16 @@ let isCardNumberValid = false;
 let isCardDateValid = false;
 let isCvvValid = false;
 let isAllPaymentPageValid = false;
+
+export function displayPaymentPage(): void {
+  if (paymentPage != null) paymentPage.classList.remove('display-none');
+  if (cardPage != null) cardPage.classList.add('display-none');
+  if (goodPage != null) goodPage.classList.add('display-none');
+}
+
+if (document.querySelector('.cart-summary__buy-btn') as HTMLButtonElement) {
+  (document.querySelector('.cart-summary__buy-btn') as HTMLButtonElement).onclick = () => displayPaymentPage();
+}
 
 function checkName(name: string): Boolean {
   const nameArr = name.trimStart().trimEnd().split(' ');
@@ -144,20 +157,6 @@ function checkCardValid() {
   }
 }
 
-function checkAllPaymentPageValid() {
-  if (isNameValid) document.querySelector('.name-error')!.classList.add('display-none');
-  if (!isNameValid) document.querySelector('.name-error')!.classList.remove('display-none');
-  if (isPhoneValid) document.querySelector('.phone-error')!.classList.add('display-none');
-  if (!isPhoneValid) document.querySelector('.phone-error')!.classList.remove('display-none');
-  if (isAdressValid) document.querySelector('.adress-error')!.classList.add('display-none');
-  if (!isAdressValid) document.querySelector('.adress-error')!.classList.remove('display-none');
-  if (isEmailValid) document.querySelector('.email-error')!.classList.add('display-none');
-  if (!isEmailValid) document.querySelector('.email-error')!.classList.remove('display-none');
-
-  if (isNameValid && isPhoneValid && isAdressValid && isEmailValid && paymentPageCard?.classList.contains('valid-card')) isAllPaymentPageValid = true;
-  if (!isNameValid && !isPhoneValid && !isAdressValid && !isEmailValid && !paymentPageCard?.classList.contains('valid-card')) isAllPaymentPageValid = false;
-}
-
 paymentPage!.oninput = () => {
   checkName(name!.value);
   checkPhone(phone!.value);
@@ -169,7 +168,40 @@ paymentPage!.oninput = () => {
   checkCardValid();
 };
 
-confirmBtn!.onclick = (event) => {
+function checkAllPaymentPageValid() {
+  if (isNameValid) document.querySelector('.name-error')!.classList.add('display-none');
+  else document.querySelector('.name-error')!.classList.remove('display-none');
+
+  if (isPhoneValid) document.querySelector('.phone-error')!.classList.add('display-none');
+  else document.querySelector('.phone-error')!.classList.remove('display-none');
+
+  if (isAdressValid) document.querySelector('.adress-error')!.classList.add('display-none');
+  else document.querySelector('.adress-error')!.classList.remove('display-none');
+
+  if (isEmailValid) document.querySelector('.email-error')!.classList.add('display-none');
+  else document.querySelector('.email-error')!.classList.remove('display-none');
+
+  if (isNameValid && isPhoneValid && isAdressValid && isEmailValid && paymentPageCard?.classList.contains('valid-card')) isAllPaymentPageValid = true;
+  else if (!isNameValid && !isPhoneValid && !isAdressValid && !isEmailValid && !paymentPageCard?.classList.contains('valid-card')) isAllPaymentPageValid = false;
+}
+
+function clearPaymentPageInputs() {
+  if (name) name.value = '';
+  if (phone) phone.value = '';
+  if (adress) adress.value = '';
+  if (email) email.value = '';
+  if (cardNumber) cardNumber.value = '';
+  if (cardDateMM) cardDateMM.value = '';
+  if (cardDateYY) cardDateYY.value = '';
+  if (cvv) cvv.value = '';
+}
+
+confirmBtn!.onclick = () => {
   checkAllPaymentPageValid();
-  if (!isAllPaymentPageValid) event.preventDefault();
+  if (isAllPaymentPageValid) {
+    paymentPage?.classList.add('display-none');
+    document.querySelector('.paid-page__wrapper')?.classList.remove('display-none');
+    setTimeout(getMainPage, 6000);
+    setTimeout(clearPaymentPageInputs, 3000);
+  }
 };

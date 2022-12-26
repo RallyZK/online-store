@@ -1,6 +1,7 @@
 import * as types from '../types';
 import { renderGoodPage } from '../goods-page/goods-page';
 import { catalogArr, currentGoodsArray } from '../sort/sort';
+import { displayPaymentPage } from '../payment/payment';
 
 const logo: HTMLElement | null = document.querySelector('.header__title');
 const mainSection: HTMLElement | null = document.querySelector('.main-section');
@@ -21,6 +22,7 @@ export function getMainPage() {
   errorPage!.classList.add('display-none');
   goodCardContainer!.innerHTML = '';
   window.location.hash = '';
+  document.querySelector('.paid-page__wrapper')?.classList.add('display-none');
 }
 
 export function getCartPage() {
@@ -37,17 +39,17 @@ export function getErrorPage() {
   mainSection!.classList.add('display-none');
   goodCardContainer!.classList.add('display-none');
   cartWrapper!.classList.add('display-none');
-  goodCardContainer!.innerHTML = '';  
+  goodCardContainer!.innerHTML = '';
 }
 
 export function getGoodCardFromUrl(hash: string) {
-  const id: number = Number(hash.slice(3, 6));  
+  const id: number = Number(hash.slice(3, 6));
   const goodItem: types.IGoodsItem = catalogArr.reduce((acc: types.IGoodsItem, el: types.IGoodsItem) => {
     if (el.id === id) {
       acc = el;
       return acc;
     }
-    return acc
+    return acc;
   });
   if (goodItem) {
     renderGoodPage(goodItem);
@@ -55,3 +57,13 @@ export function getGoodCardFromUrl(hash: string) {
   }
 }
 
+export function getBuyNowBtns() {
+  const buyNowBtns: NodeListOf<Element> | null = document.querySelectorAll('.buy-now-btn');
+  if (buyNowBtns) {
+    buyNowBtns.forEach((el) =>
+      el.addEventListener('click', () => {
+        displayPaymentPage();
+      })
+    );
+  }
+}
