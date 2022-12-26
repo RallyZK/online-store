@@ -2,6 +2,7 @@ import './goods-page.scss';
 import * as types from '../types';
 import { createElements } from '../sort/sort';
 import { getBuyNowBtns } from '../sort/navigation';
+import { addGoodsToCart } from '../cart/cart';
 
 export function renderGoodPage(el: types.IGoodsItem) {
   const mainSection: HTMLElement | null = document.querySelector('.main-section');
@@ -43,6 +44,7 @@ export function renderGoodPage(el: types.IGoodsItem) {
   }
   changePhotosInGoodsCards();
   getBuyNowBtns();
+  addGoodsToCart();
 }
 
 function changePhotosInGoodsCards() {

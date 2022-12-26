@@ -3,6 +3,7 @@ import '../../assets/styles/media.scss';
 import * as types from '../types';
 import catalog from '../../assets/catalog';
 import { slideOne, slideTwo, slideThree, slideFour, sliderTwo, sliderThree, sliderFour, sliderOne, searchMaxPrice, searchMinPrice } from '../filters/filters';
+import { addGoodsToCart } from '../cart/cart';
 
 sliderOne!.value = searchMinPrice().toString();
 sliderTwo!.value = searchMaxPrice().toString();
@@ -53,6 +54,7 @@ export const filters: types.IFilters = {
 
 let view: types.viewType = 'cube';
 
+export const firstArr: types.IGoodsItem[] = catalog.products.map((el) => el);
 export let catalogArr: types.IGoodsItem[] = catalog.products;
 export let currentGoodsArray: types.IGoodsItem[] = catalog.products;
 
@@ -79,12 +81,13 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
       createElements('goods__item__rating', 'span', goodsItemWrapper, `${arr[i].rating}`);
       const goodsItemPriceWrapper = createElements('goods__item__price-wrapper', 'div', goodsItemWrapper, '');
       createElements('goods__item__price', 'span', goodsItemPriceWrapper, `$ ${arr[i].price}`);
-      createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'buy');
+      const addToCartButton = createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'Buy');
+      addToCartButton.setAttribute('item-id', `${arr[i].id}`);
     }
     itemsCount!.innerHTML = `${arr.length}`;
   }  
 }
-renderCatalog(catalogArr);
+renderCatalog(currentGoodsArray);
 
 // варианты отображения товаров
 
@@ -187,7 +190,8 @@ function updateAllFilters() {
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
   currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
-  renderCatalog(currentGoodsArray);  
+  renderCatalog(currentGoodsArray);
+  addGoodsToCart();
   //updateRangeInputs(currentGoodsArray);
   //updateHash();
   //console.log('filers:::', filters);
@@ -203,6 +207,7 @@ resetFiltersBtn?.addEventListener('click', () => {
   currentGoodsArray = catalog.products;
   n = '0';
   filters.sortBy = n;
+  goodsSortSelect!.value = '0';
   searchFrase = '';
   searchInput!.value = '';
   filters.contains = '';
@@ -213,7 +218,7 @@ resetFiltersBtn?.addEventListener('click', () => {
     filters.minRating = 0,
     filters.maxRating = 5,
     //updateAllFilters();
-    renderCatalog(catalog.products);
+    renderCatalog(firstArr);
   sliderOne!.value = searchMinPrice().toString();
   sliderTwo!.value = searchMaxPrice().toString();
   slideOne();
@@ -239,8 +244,9 @@ export function createElements(className: string, tag: string, parentclassName: 
 
 function sortGoodsArray(arr: types.IGoodsItem[], n: string) {
 
-  if (n === '0') return arr;
-  if (n === '1') {
+  if (n === '0') {
+    arr.sort((a, b) => a.id - b.id);
+  } else if (n === '1') {
     arr.sort((a, b) => a.price - b.price);
   } else if (n === '2') {
     arr.sort((a, b) => b.price - a.price);
