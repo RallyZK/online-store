@@ -7,6 +7,8 @@ const emailPattern = new RegExp('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0
 
 const paymentPage: HTMLElement | null = document.querySelector('.payment-page-section');
 const paymentPageCard: HTMLInputElement | null = document.querySelector('.payment-page__card');
+const cardPage: HTMLElement | null = document.querySelector('#cart-page');
+const goodPage: HTMLElement | null = document.querySelector('#good-page');
 const name: HTMLInputElement | null = document.querySelector('#name');
 const phone: HTMLInputElement | null = document.querySelector('#phone');
 const adress: HTMLInputElement | null = document.querySelector('#adress');
@@ -28,13 +30,14 @@ let isCvvValid = false;
 let isAllPaymentPageValid = false;
 
 export function displayPaymentPage(): void {
-  if (paymentPage) paymentPage.classList.remove('display-none');
+  if (paymentPage != null) paymentPage.classList.remove('display-none');
+  if (cardPage != null) cardPage.classList.add('display-none');
+  if (goodPage != null) goodPage.classList.add('display-none');
 }
 
 if (document.querySelector('.cart-summary__buy-btn') as HTMLButtonElement) {
   (document.querySelector('.cart-summary__buy-btn') as HTMLButtonElement).onclick = () => displayPaymentPage();
 }
-
 
 function checkName(name: string): Boolean {
   const nameArr = name.trimStart().trimEnd().split(' ');
