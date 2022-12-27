@@ -2,51 +2,66 @@ import './sort.scss';
 import '../../assets/styles/media.scss';
 import * as types from '../types';
 import catalog from '../../assets/catalog';
-import { slideOne, slideTwo, slideThree, slideFour, sliderTwo, sliderThree, sliderFour, sliderOne, searchMaxPrice, searchMinPrice } from '../filters/filters';
-import { goodsInCart, updateGoodsInCart, colorAddToCartButtons} from '../cart/cart';
+import {
+  slideOne,
+  slideTwo,
+  slideThree,
+  slideFour,
+  sliderTwo,
+  sliderThree,
+  sliderFour,
+  sliderOne,
+  SLIDER_MAX_PRICE,
+  SLIDER_MIN_PRICE,
+  SLIDER_MAX_RATING,
+} from '../filters/filters';
+import { updateGoodsInCart, colorAddToCartButtons } from '../cart/cart';
 
-sliderOne!.value = searchMinPrice().toString();
-sliderTwo!.value = searchMaxPrice().toString();
-
-if (sliderOne)
+if (sliderOne) {
+  sliderOne.value = SLIDER_MIN_PRICE.toString();
   sliderOne!.onchange = () => {
     slideOne();
     filters.minPrice = Number(sliderOne!.value);
     updateAllFilters();
   };
+}
 
-if (sliderTwo)
+if (sliderTwo) {
+  sliderTwo.value = SLIDER_MAX_PRICE.toString();
   sliderTwo.onchange = () => {
     slideTwo();
     filters.maxPrice = Number(sliderTwo!.value);
     updateAllFilters();
   };
+}
 
-if (sliderThree)
+if (sliderThree) {
   sliderThree.onchange = () => {
     slideThree();
     filters.minRating = Number(sliderThree!.value);
     updateAllFilters();
   };
-if (sliderFour)
+}
+
+if (sliderFour) {
   sliderFour.onchange = () => {
     slideFour();
     filters.maxRating = Number(sliderFour!.value);
     updateAllFilters();
   };
+}
 
 export const filters: types.IFilters = {
   category: [],
   brand: [],
-  minPrice: searchMinPrice(),
-  maxPrice: searchMaxPrice(),
+  minPrice: SLIDER_MIN_PRICE,
+  maxPrice: SLIDER_MAX_PRICE,
   minRating: 0,
   maxRating: 5,
   sortBy: '0',
   contains: '',
-  view: 'cube'
-}
-//console.log(filters)
+  view: 'cube',
+};
 
 // рендер всех товаров
 
@@ -67,7 +82,7 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
       goodsItem.setAttribute('item-id', `${arr[i].id}`);
 
       const testLink = createElements('', 'a', goodsItem, '');
-      (testLink as HTMLAnchorElement).href = `#id=${(arr[i].id).toString().padStart(3, '0')}`;
+      (testLink as HTMLAnchorElement).href = `#id=${arr[i].id.toString().padStart(3, '0')}`;
       const goodsItemImg = createElements('goods__item__img', 'img', testLink, '');
       (goodsItemImg as HTMLImageElement).src = `${arr[i].thumbnail}`;
       (goodsItemImg as HTMLImageElement).alt = `${arr[i].title} Photo`;
@@ -83,7 +98,9 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
       const addToCartButton = createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'Buy');
       addToCartButton.setAttribute('item-id', `${arr[i].id}`);
       colorAddToCartButtons(addToCartButton, Number(arr[i].id));
-      addToCartButton.addEventListener('click', () => { updateGoodsInCart(addToCartButton, arr[i].id) });   
+      addToCartButton.addEventListener('click', () => {
+        updateGoodsInCart(addToCartButton, arr[i].id);
+      });
     }
     itemsCount!.innerHTML = `${arr.length}`;
   }
@@ -95,8 +112,12 @@ renderCatalog(currentGoodsArray);
 const setListBtn: HTMLButtonElement | null = document.querySelector('.list-view');
 const setCubeBtn: HTMLButtonElement | null = document.querySelector('.grid-view');
 
-setListBtn!.addEventListener('click', () => { changeView('list', 'cube') });
-setCubeBtn!.addEventListener('click', () => { changeView('cube', 'list') });
+setListBtn!.addEventListener('click', () => {
+  changeView('list', 'cube');
+});
+setCubeBtn!.addEventListener('click', () => {
+  changeView('cube', 'list');
+});
 
 function changeView(typeOfView: types.viewType, deleteTypeOfView: types.viewType) {
   view = typeOfView;
@@ -111,9 +132,11 @@ function changeView(typeOfView: types.viewType, deleteTypeOfView: types.viewType
 const goodsSortSelect: HTMLInputElement | null = document.querySelector('.goods__sort-wr__select');
 let n: string = '0';
 
-goodsSortSelect!.addEventListener('change', sortCatalog);
+if (goodsSortSelect) {
+  goodsSortSelect.addEventListener('change', sortCatalog);
+}
 
-function sortCatalog() {
+function sortCatalog(): void {
   n = goodsSortSelect!.value;
   filters.sortBy = n;
   updateAllFilters();
@@ -125,14 +148,21 @@ const searchInput: HTMLInputElement | null = document.querySelector('.goods__sor
 const searchBtn: HTMLElement | null = document.querySelector('.goods__sort-wr__search-wr__btn');
 let searchFrase: string = filters.contains;
 
-searchInput!.focus();
-searchInput!.addEventListener('keypress', () => getGoodsBySearchFrase());
-searchBtn!.addEventListener('click', () => getGoodsBySearchFrase());
+if (searchInput) {
+  searchInput.focus();
+  searchInput.addEventListener('keypress', () => getGoodsBySearchFrase());
+}
 
-function getGoodsBySearchFrase() {
-  searchFrase = searchInput!.value;
-  filters.contains = searchFrase;
-  updateAllFilters();
+if (searchBtn) {
+  searchBtn.addEventListener('click', () => getGoodsBySearchFrase());
+}
+
+function getGoodsBySearchFrase(): void {
+  if (searchInput) {
+    searchFrase = searchInput.value;
+    filters.contains = searchFrase;
+    updateAllFilters();
+  }
 }
 
 // фильтр по категориям товаров
@@ -145,13 +175,16 @@ if (categoriesUl) {
   categoriesLiArr.forEach((el: Element): void => {
     el.addEventListener('click', () => {
       const selectedCategory = el.getAttribute('item-category') as string;
-      if (!filters.category.includes(selectedCategory)) filters.category.push(selectedCategory);
-      else filters.category = filters.category.filter((el) => el !== selectedCategory);
+      if (!filters.category.includes(selectedCategory)) {
+        filters.category.push(selectedCategory);
+      } else {
+        filters.category = filters.category.filter((el) => el !== selectedCategory);
+      }
       //updateRangeInputs(currentGoodsArray);
       updateAllFilters();
       el.classList.toggle('selected-filter');
-    })
-  })
+    });
+  });
 }
 
 // фильтр по брендам товаров
@@ -164,13 +197,16 @@ if (brandsUl) {
   brandsLiArr.forEach((el: Element, key: number, parent: NodeListOf<Element>): void => {
     el.addEventListener('click', () => {
       const selectedBrand = el.getAttribute('item-brand') as string;
-      if (filters.brand.includes(selectedBrand)) filters.brand = filters.brand.filter((el) => el !== selectedBrand);
-      else filters.brand.push(selectedBrand);
+      if (filters.brand.includes(selectedBrand)) {
+        filters.brand = filters.brand.filter((el) => el !== selectedBrand);
+      } else {
+        filters.brand.push(selectedBrand);
+      }
       updateAllFilters();
       //updateRangeInputs(currentGoodsArray);
       el.classList.toggle('selected-filter');
-    })
-  })
+    });
+  });
 }
 
 // фильтр по выставленным ценам
@@ -183,14 +219,13 @@ function getCatalogByRating(arr: types.IGoodsItem[], minVal: number, maxVal: num
   return arr.filter((el) => el.rating >= minVal && el.rating <= maxVal);
 }
 
-
-export function updateAllFilters() {
+export function updateAllFilters(): void {
   const arr = sortGoodsArray(catalogArr, n);
   const arr2 = searchGoods(arr, searchFrase);
   const arr3 = getGoodsBySelectedCategories(arr2, filters.category);
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
-  currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);  
+  currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
   renderCatalog(currentGoodsArray);
   //addGoodsToCart();
   //updateRangeInputs(currentGoodsArray);
@@ -198,7 +233,6 @@ export function updateAllFilters() {
   //console.log('filers:::', filters);
 }
 //updateAllFilters()
-
 
 // сброс всех фильтров
 
@@ -214,13 +248,13 @@ resetFiltersBtn?.addEventListener('click', () => {
   filters.contains = '';
   filters.brand = [];
   filters.category = [];
-  filters.minPrice = searchMinPrice();
-  filters.maxPrice = searchMaxPrice();
+  filters.minPrice = SLIDER_MIN_PRICE;
+  filters.maxPrice = SLIDER_MAX_PRICE;
   filters.minRating = 0;
-  filters.maxRating = 5;
+  filters.maxRating = SLIDER_MAX_RATING;
   renderCatalog(rawCatalog);
-  sliderOne!.value = searchMinPrice().toString();
-  sliderTwo!.value = searchMaxPrice().toString();
+  sliderOne!.value = SLIDER_MIN_PRICE.toString();
+  sliderTwo!.value = SLIDER_MAX_PRICE.toString();
   slideOne();
   slideTwo();
   sliderThree!.value = (0).toString();
@@ -228,10 +262,10 @@ resetFiltersBtn?.addEventListener('click', () => {
   slideThree();
   slideFour();
   console.log('filers:::', filters);
-  categoriesLiArr?.forEach(el => el.classList.remove('selected-filter'));
-  brandsLiArr?.forEach(el => el.classList.remove('selected-filter'));
+  categoriesLiArr?.forEach((el) => el.classList.remove('selected-filter'));
+  brandsLiArr?.forEach((el) => el.classList.remove('selected-filter'));
   //updateAllFilters();
-})
+});
 
 // вспом функции
 
@@ -244,7 +278,6 @@ export function createElements(className: string, tag: string, parentclassName: 
 }
 
 function sortGoodsArray(arr: types.IGoodsItem[], n: string) {
-
   if (n === '0') {
     arr.sort((a, b) => a.id - b.id);
   } else if (n === '1') {
@@ -280,8 +313,9 @@ function sortGoodsArray(arr: types.IGoodsItem[], n: string) {
 }
 
 function searchGoods(arr: types.IGoodsItem[], searchFrase: string) {
-
-  if (searchFrase.trim() === '') return arr;
+  if (searchFrase.trim() === '') {
+    return arr;
+  }
   searchFrase = searchFrase.toLowerCase();
   const searchArr = arr.filter((el) => {
     if (
@@ -300,13 +334,17 @@ function searchGoods(arr: types.IGoodsItem[], searchFrase: string) {
 }
 
 function getGoodsBySelectedCategories(arr: types.IGoodsItem[], selectedCategories: string[]) {
-  if (selectedCategories.length === 0) return arr;
+  if (selectedCategories.length === 0) {
+    return arr;
+  }
   const sortArr = arr.filter((el: types.IGoodsItem) => selectedCategories.includes(el.category));
   return sortArr;
 }
 
 function getGoodsBySelectedFilters(arr: types.IGoodsItem[], selectedBrands: string[]) {
-  if (selectedBrands.length === 0) return arr;
+  if (selectedBrands.length === 0) {
+    return arr;
+  }
   const sortArr = arr.filter((el: types.IGoodsItem) => selectedBrands.includes(el.brand));
   return sortArr;
 }
@@ -319,10 +357,10 @@ function getGoodsBySelectedFilters(arr: types.IGoodsItem[], selectedBrands: stri
 //   let maxCurrentRating: number;
 
 //   if (filters.category.length === 0 && filters.brand.length === 0 && filters.contains === '') {
-//     minCurrentPrice = searchMinPrice();
-//     maxCurrentPrice = searchMaxPrice();
+//     minCurrentPrice = SLIDER_MIN_PRICE;
+//     maxCurrentPrice = SLIDER_MAX_PRICE;
 //     minCurrentRating = 0;
-//     maxCurrentRating = 5;
+//     maxCurrentRating = SLIDER_MAX_RATING;
 //     filters.minPrice = minCurrentPrice;
 //     filters.maxPrice = maxCurrentPrice;
 //     filters.minRating = minCurrentRating;
@@ -344,5 +382,3 @@ function getGoodsBySelectedFilters(arr: types.IGoodsItem[], selectedBrands: stri
 //   slideFour();
 //   console.log('filers:::', filters);
 // }
-
-

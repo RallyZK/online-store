@@ -1,9 +1,5 @@
 import catalog from '../../assets/catalog';
 
-// window.onload = function () {
-//   renderCategory();
-// };
-
 interface IGoodsItem {
   id: number;
   title: string;
@@ -24,13 +20,13 @@ interface IAcc {
 
 const catalogArr: IGoodsItem[] = catalog.products;
 
-const categories = catalogArr.reduce((acc: IAcc, el: IGoodsItem) => {
+const categories: IAcc = catalogArr.reduce((acc: IAcc, el: IGoodsItem) => {
   if (el.category in acc) acc[el.category] += 1;
   else acc[el.category] = 1;
   return acc;
 }, {});
 
-const brands = catalogArr.reduce((acc: IAcc, el: IGoodsItem) => {
+const brands: IAcc = catalogArr.reduce((acc: IAcc, el: IGoodsItem) => {
   if (el.brand in acc) acc[el.brand] += 1;
   else acc[el.brand] = 1;
   return acc;
@@ -53,7 +49,7 @@ let filtersItemPStockCategory: HTMLElement | null;
 let filtersSpanCurStockCategory: HTMLElement | null;
 let filtersSpanAllStockCategory: HTMLElement | null;
 
-function renderCategory() {
+function renderCategory(): void {
   for (let key in categories) {
     if (filtersItemUlCategory) {
       filtersItemLiCategory = createElements('filters__item__li', 'li', filtersItemUlCategory, '');
@@ -76,7 +72,7 @@ let filtersItemPStockBrands: HTMLElement | null;
 let filtersSpanCurStockBrands: HTMLElement | null;
 let filtersSpanAllStockBrands: HTMLElement | null;
 
-function renderBrands() {
+function renderBrands(): void {
   for (let key in brands) {
     if (filtersItemUlBrands) {
       filtersItemLiBrands = createElements('filters__item__li', 'li', filtersItemUlBrands, '');
@@ -89,4 +85,3 @@ function renderBrands() {
   }
 }
 renderBrands();
-
