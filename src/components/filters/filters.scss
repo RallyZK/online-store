@@ -35,11 +35,11 @@
       overflow-x: hidden;
 
       &::-webkit-scrollbar {
-        width: 9px;        
+        width: 4px;        
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: #3482a1;
+        background-color: #000405;
         border-radius: 2px;       
       }
 
@@ -70,7 +70,7 @@
 
   &__slider-track {
     width: 100%;
-    height: 5px;
+    height: 2px;
     position: absolute;
     margin: auto;
     top: 0;
@@ -114,33 +114,33 @@ input[type="range"]{
 
 input[type="range"]::-webkit-slider-runnable-track{
   -webkit-appearance: none;
-  height: 5px;
+  height: 3px;
 }
 input[type="range"]::-moz-range-track{
   -moz-appearance: none;
-  height: 5px;
+  height: 3px;
 }
 input[type="range"]::-ms-track{
   appearance: none;
-  height: 5px;
+  height: 3px;
 }
 input[type="range"]::-webkit-slider-thumb{
   -webkit-appearance: none;
-  height: 1.3em;
-  width: 1.3em;
-  background-color: #3482a1;
+  height: 10px;
+  width: 10px;
+  background-color: #000000;
   cursor: pointer;
-  margin-top: -6px;
+  margin-top: -4px;
   pointer-events: auto;
   border-radius: 50%;
 }
 input[type="range"]::-moz-range-thumb{
   -webkit-appearance: none;
-  height: 1.3em;
-  width: 1.3em;
+  height: 1em;
+  width: 1em;
   cursor: pointer;
   border-radius: 50%;
-  background-color: #3482a1;
+  background-color: #000000;
   pointer-events: auto;
 }
 input[type="range"]::-ms-thumb{
@@ -149,10 +149,10 @@ input[type="range"]::-ms-thumb{
   width: 1.3em;
   cursor: pointer;
   border-radius: 50%;
-  background-color: #3482a1;
+  background-color: #000000;
   pointer-events: auto;
 }
 input[type="range"]:active::-webkit-slider-thumb{
   background-color: #ffffff;
-  border: 3px solid #3482a1;
+  border: 1px solid #000000;
 }

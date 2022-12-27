@@ -98,7 +98,7 @@ function fillColor() {
     const percent3: number = (Number(sliderThree.value) / SLIDER_MAX_RATING) * 100;
     const percent4: number = (Number(sliderFour.value) / SLIDER_MAX_RATING) * 100;
 
-    sliderTrack1.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3482a1 ${percent1}% , #3482a1 ${percent2}%, #dadae5 ${percent2}%)`;
-    sliderTrack2.style.background = `linear-gradient(to right, #dadae5 ${percent3}% , #3482a1 ${percent3}% , #3482a1 ${percent4}%, #dadae5 ${percent4}%)`;
+    sliderTrack1.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #000000 ${percent1}% , #000000 ${percent2}%, #dadae5 ${percent2}%)`;
+    sliderTrack2.style.background = `linear-gradient(to right, #dadae5 ${percent3}% , #000000 ${percent3}% , #000000 ${percent4}%, #dadae5 ${percent4}%)`;
   }
 }
