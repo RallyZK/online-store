@@ -20,8 +20,8 @@
       <button class="burger-menu-btn"></button>
       <h1 class="header__title">Shopify</h1>
       <div class="header__cart-wrapper">
-        <span class="header__cart-wrapper__sum">$ 750</span>
-        <span class="header__cart-wrapper__items-count">3</span>
+        <span class="header__cart-wrapper__sum"></span>
+        <span class="header__cart-wrapper__items-count display-none"></span>
         <!-- <button class="header__cart-wrapper__cart-btn"></button> -->
         <a href="#cart" class="header__cart-wrapper__cart-link"><img class="header__cart-wrapper__cart-btn" src="./assets/icons/card2.png"></a>
       </div>
@@ -104,61 +104,9 @@
             <p>items: 3</p>
           </div>
           <ol class="cart-list__good-card">
-            <li class="cart-list__good-card__li">
-              <img class="cart-list__good-card__img" src="./assets/icons/shopify.png" alt="good-photo">
-              <div class="cart-list__good-card__item">
-                <h2 class="cart-list__good-card__item__title">Apple 14 Pro</h2>
-                <h3 class="cart-list__good-card__item__description">An apple mobile which is nothing like apple</h3>
-                <p class="cart-list__good-card__item__rating">Rating: 4.5</p>
-                <p class="cart-list__good-card__item__discountPercentage">Discount percentage: 12</p>
-              </div>
-              <div class="cart-list__counts-cont">
-                <p class="cart-list__counts-cont__stock">Stock: 96</p>
-                <div class="cart-list__counts-cont__items-cont">
-                  <button class="cart-list__counts-cont__btn add-items">-</button>
-                  <p class="cart-list__counts-cont__items-count">3</p>
-                  <button class="cart-list__counts-cont__btn del-items">+</button>
-                </div>
-                <p class="cart-list__counts-cont__total-item-count">$ 1500</p>
-              </div>
-            </li>
-            <li class="cart-list__good-card__li">
-              <img class="cart-list__good-card__img" src="./assets/icons/shopify.png" alt="good-photo">
-              <div class="cart-list__good-card__item">
-                <h2 class="cart-list__good-card__item__title">Apple 14 Pro</h2>
-                <h3 class="cart-list__good-card__item__description">An apple mobile which is nothing like apple</h3>
-                <p class="cart-list__good-card__item__rating">Rating: 4.5</p>
-                <p class="cart-list__good-card__item__discountPercentage">Discount percentage: 12</p>
-              </div>
-              <div class="cart-list__counts-cont">
-                <p class="cart-list__counts-cont__stock">Stock: 96</p>
-                <div class="cart-list__counts-cont__items-cont">
-                  <button class="cart-list__counts-cont__btn add-items">-</button>
-                  <p class="cart-list__counts-cont__items-count">3</p>
-                  <button class="cart-list__counts-cont__btn del-items">+</button>
-                </div>
-                <p class="cart-list__counts-cont__total-item-count">$ 1500</p>
-              </div>
-            </li>
-            <li class="cart-list__good-card__li">
-              <img class="cart-list__good-card__img" src="./assets/icons/shopify.png"  alt="good-photo">
-              <div class="cart-list__good-card__item">
-                <h2 class="cart-list__good-card__item__title">Apple 14 Pro</h2>
-                <h3 class="cart-list__good-card__item__description">An apple mobile which is nothing like apple</h3>
-                <p class="cart-list__good-card__item__rating">Rating: 4.5</p>
-                <p class="cart-list__good-card__item__discountPercentage">Discount percentage: 12</p>
-              </div>
-              <div class="cart-list__counts-cont">
-                <p class="cart-list__counts-cont__stock">Stock: 96</p>
-                <div class="cart-list__counts-cont__items-cont">
-                  <button class="cart-list__counts-cont__btn add-items">-</button>
-                  <p class="cart-list__counts-cont__items-count">3</p>
-                  <button class="cart-list__counts-cont__btn del-items">+</button>
-                </div>
-                <p class="cart-list__counts-cont__total-item-count">$ 1500</p>
-              </div>
-            </li>
+            <li>Cart is Empty</li>
           </ol>
+          
         </div>
         <div class="cart-summary">
           <h2 class="cart-summary__title">Summary</h2>
@@ -167,12 +115,9 @@
           <h3 class="cart-summary__total-count-disc">Total: $250</h3>
           <div class="cart-summary__applied-codes">
             <h3 class="cart-summary__applied-codes__title">Applied codes</h3>
-            <div class="cart-summary__applied-codes__cont">
-              <p class="cart-summary__applied-codes__code-name">Code name</p>
-              <button class="cart-summary__applied-codes__btn">Drop</button>
-            </div>
+            <div class="cart-summary__applied-codes__list"></div> 
             <input class="cart-summary__code-input" type="text" placeholder="Enter promocode">
-            <p class="cart-summary__code-input-desc">Promo for test</p>
+            <p class="cart-summary__code-input-desc">Promocodes for test:<br>"Black" (-10%), "Pink" (-5%)</p>
           </div>
           <button class="cart-summary__buy-btn">Buy now</button>
         </div>

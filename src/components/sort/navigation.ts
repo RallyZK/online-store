@@ -1,7 +1,8 @@
 import * as types from '../types';
 import { renderGoodPage } from '../goods-page/goods-page';
-import { catalogArr, currentGoodsArray } from '../sort/sort';
+import { catalogArr, currentGoodsArray, rawCatalog } from '../sort/sort';
 import { displayPaymentPage } from '../payment/payment';
+import { renderCartList } from '../cart/render-cart';
 
 const logo: HTMLElement | null = document.querySelector('.header__title');
 const mainSection: HTMLElement | null = document.querySelector('.main-section');
@@ -32,6 +33,7 @@ export function getCartPage() {
   errorPage!.classList.add('display-none');
   goodCardContainer!.innerHTML = '';
   window.location.hash = 'cart';
+  renderCartList(rawCatalog);
 }
 
 export function getErrorPage() {

@@ -2,6 +2,7 @@ import './goods-page.scss';
 import * as types from '../types';
 import { createElements } from '../sort/sort';
 import { getBuyNowBtns } from '../sort/navigation';
+import { updateGoodsInCart, colorAddToCartButtons } from '../cart/cart';
 
 export function renderGoodPage(el: types.IGoodsItem) {
   const mainSection: HTMLElement | null = document.querySelector('.main-section');
@@ -39,10 +40,13 @@ export function renderGoodPage(el: types.IGoodsItem) {
     createElements('good-card__price', 'h2', goodCardThirdRow, `$ ${el.price}`);
     const goodCardBtnContainer = createElements('good-card__btns-container', 'div', goodCardThirdRow, '');
     createElements('good-card__btn buy-now-btn', 'button', goodCardBtnContainer, 'Buy now');
-    createElements('good-card__btn add-to-cart-btn', 'button', goodCardBtnContainer, 'Add to cart');
+
+    const addToCartBtn = createElements('good-card__btn add-to-cart-btn', 'button', goodCardBtnContainer, 'Buy');
+    colorAddToCartButtons(addToCartBtn, Number(el.id));
+    addToCartBtn.addEventListener('click', () => { updateGoodsInCart(addToCartBtn, el.id)});
   }
   changePhotosInGoodsCards();
-  getBuyNowBtns();
+  getBuyNowBtns();  
 }
 
 function changePhotosInGoodsCards() {
