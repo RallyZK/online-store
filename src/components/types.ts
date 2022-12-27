@@ -13,27 +13,20 @@ export interface IGoodsItem {
   isInCart?: boolean;
   countInCart?: number;
 }
-
 export interface Itest {
   id: number;
   countInCart: number;
 }
-
 export interface IFilters {
-  category: string[],
-  brand: string[],
-  minPrice: number,
-  maxPrice: number,
-  minRating: number,
-  maxRating: number,
-  sortBy: string,
-  contains: string,
-  view: viewType,  
+  category: string[];
+  brand: string[];
+  minPrice: number;
+  maxPrice: number;
+  minRating: number;
+  maxRating: number;
+  sortBy: string;
+  contains: string;
+  view: viewType;
 }
 
 export type viewType = 'cube' | 'list';
-
-export interface IGoodInCart {
-  count: number,
-  item: IGoodsItem | undefined,
-}

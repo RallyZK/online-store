@@ -19,9 +19,11 @@ import { updateGoodsInCart, colorAddToCartButtons } from '../cart/cart';
 
 if (sliderOne) {
   sliderOne.value = SLIDER_MIN_PRICE.toString();
-  sliderOne!.onchange = () => {
+  sliderOne.onchange = () => {
     slideOne();
-    filters.minPrice = Number(sliderOne!.value);
+    if (sliderOne) {
+      filters.minPrice = Number(sliderOne.value);
+    }
     updateAllFilters();
   };
 }
@@ -30,7 +32,9 @@ if (sliderTwo) {
   sliderTwo.value = SLIDER_MAX_PRICE.toString();
   sliderTwo.onchange = () => {
     slideTwo();
-    filters.maxPrice = Number(sliderTwo!.value);
+    if (sliderTwo) {
+      filters.maxPrice = Number(sliderTwo.value);
+    }
     updateAllFilters();
   };
 }
@@ -38,7 +42,9 @@ if (sliderTwo) {
 if (sliderThree) {
   sliderThree.onchange = () => {
     slideThree();
-    filters.minRating = Number(sliderThree!.value);
+    if (sliderThree) {
+      filters.minRating = Number(sliderThree.value);
+    }
     updateAllFilters();
   };
 }
@@ -46,7 +52,9 @@ if (sliderThree) {
 if (sliderFour) {
   sliderFour.onchange = () => {
     slideFour();
-    filters.maxRating = Number(sliderFour!.value);
+    if (sliderFour) {
+      filters.maxRating = Number(sliderFour.value);
+    }
     updateAllFilters();
   };
 }
@@ -102,7 +110,9 @@ function renderCatalog(arr: types.IGoodsItem[]): void {
         updateGoodsInCart(addToCartButton, arr[i].id);
       });
     }
-    itemsCount!.innerHTML = `${arr.length}`;
+    if (itemsCount) {
+      itemsCount.innerHTML = `${arr.length}`;
+    }
   }
 }
 renderCatalog(currentGoodsArray);
@@ -119,27 +129,33 @@ setCubeBtn!.addEventListener('click', () => {
   changeView('cube', 'list');
 });
 
-function changeView(typeOfView: types.viewType, deleteTypeOfView: types.viewType) {
+function changeView(typeOfView: types.viewType, deleteTypeOfView: types.viewType): void {
   view = typeOfView;
   filters.view = typeOfView;
   renderCatalog(currentGoodsArray);
-  goodsContainer!.classList.add(`${typeOfView}-cont`);
-  goodsContainer!.classList.remove(`${deleteTypeOfView}-cont`);
+  if (goodsContainer) {
+    goodsContainer.classList.add(`${typeOfView}-cont`);
+  }
+  if (goodsContainer) {
+    goodsContainer.classList.remove(`${deleteTypeOfView}-cont`);
+  }
 }
 
 // фильтр по вариантам сортировки
 
 const goodsSortSelect: HTMLInputElement | null = document.querySelector('.goods__sort-wr__select');
-let n: string = '0';
+let sortOption: string = '0';
 
 if (goodsSortSelect) {
   goodsSortSelect.addEventListener('change', sortCatalog);
 }
 
 function sortCatalog(): void {
-  n = goodsSortSelect!.value;
-  filters.sortBy = n;
-  updateAllFilters();
+  if (goodsSortSelect) {
+    sortOption = goodsSortSelect.value;
+    filters.sortBy = sortOption;
+    updateAllFilters();
+  }
 }
 
 // фильтр по поиску введенного слова
@@ -194,7 +210,7 @@ let brandsLiArr: NodeListOf<Element> | null;
 if (brandsUl) {
   brandsLiArr = brandsUl.querySelectorAll('.filters__item__li');
 
-  brandsLiArr.forEach((el: Element, key: number, parent: NodeListOf<Element>): void => {
+  brandsLiArr.forEach((el: Element): void => {
     el.addEventListener('click', () => {
       const selectedBrand = el.getAttribute('item-brand') as string;
       if (filters.brand.includes(selectedBrand)) {
@@ -211,16 +227,16 @@ if (brandsUl) {
 
 // фильтр по выставленным ценам
 
-function getCatalogByPrice(arr: types.IGoodsItem[], minVal: number, maxVal: number) {
+function getCatalogByPrice(arr: types.IGoodsItem[], minVal: number, maxVal: number): types.IGoodsItem[] {
   return arr.filter((el) => el.price >= minVal && el.price <= maxVal);
 }
 
-function getCatalogByRating(arr: types.IGoodsItem[], minVal: number, maxVal: number) {
+function getCatalogByRating(arr: types.IGoodsItem[], minVal: number, maxVal: number): types.IGoodsItem[] {
   return arr.filter((el) => el.rating >= minVal && el.rating <= maxVal);
 }
 
 export function updateAllFilters(): void {
-  const arr = sortGoodsArray(catalogArr, n);
+  const arr = sortGoodsArray(catalogArr, sortOption);
   const arr2 = searchGoods(arr, searchFrase);
   const arr3 = getGoodsBySelectedCategories(arr2, filters.category);
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
@@ -237,14 +253,19 @@ export function updateAllFilters(): void {
 // сброс всех фильтров
 
 const resetFiltersBtn: HTMLElement | null = document.querySelector('.reset-filter-btn');
+resetFiltersBtn?.addEventListener('click', resetAllFilters);
 
-resetFiltersBtn?.addEventListener('click', () => {
+function resetAllFilters(): void {
   currentGoodsArray = catalog.products;
-  n = '0';
-  filters.sortBy = n;
-  goodsSortSelect!.value = '0';
+  sortOption = '0';
+  filters.sortBy = sortOption;
+  if (goodsSortSelect) {
+    goodsSortSelect.value = '0';
+  }
   searchFrase = '';
-  searchInput!.value = '';
+  if (searchInput) {
+    searchInput.value = '';
+  }
   filters.contains = '';
   filters.brand = [];
   filters.category = [];
@@ -253,19 +274,26 @@ resetFiltersBtn?.addEventListener('click', () => {
   filters.minRating = 0;
   filters.maxRating = SLIDER_MAX_RATING;
   renderCatalog(rawCatalog);
-  sliderOne!.value = SLIDER_MIN_PRICE.toString();
-  sliderTwo!.value = SLIDER_MAX_PRICE.toString();
+  if (sliderOne) {
+    sliderOne.value = SLIDER_MIN_PRICE.toString();
+  }
+  if (sliderTwo) {
+    sliderTwo.value = SLIDER_MAX_PRICE.toString();
+  }
   slideOne();
   slideTwo();
-  sliderThree!.value = (0).toString();
-  sliderFour!.value = (5).toString();
+  if (sliderThree) {
+    sliderThree.value = (0).toString();
+  }
+  if (sliderFour) {
+    sliderFour.value = (5).toString();
+  }
   slideThree();
   slideFour();
-  console.log('filers:::', filters);
   categoriesLiArr?.forEach((el) => el.classList.remove('selected-filter'));
   brandsLiArr?.forEach((el) => el.classList.remove('selected-filter'));
   //updateAllFilters();
-});
+}
 
 // вспом функции
 
@@ -277,18 +305,18 @@ export function createElements(className: string, tag: string, parentclassName: 
   return el;
 }
 
-function sortGoodsArray(arr: types.IGoodsItem[], n: string) {
-  if (n === '0') {
+function sortGoodsArray(arr: types.IGoodsItem[], sortOption: string) {
+  if (sortOption === '0') {
     arr.sort((a, b) => a.id - b.id);
-  } else if (n === '1') {
+  } else if (sortOption === '1') {
     arr.sort((a, b) => a.price - b.price);
-  } else if (n === '2') {
+  } else if (sortOption === '2') {
     arr.sort((a, b) => b.price - a.price);
-  } else if (n === '3') {
+  } else if (sortOption === '3') {
     arr.sort((a, b) => a.rating - b.rating);
-  } else if (n === '4') {
+  } else if (sortOption === '4') {
     arr.sort((a, b) => b.rating - a.rating);
-  } else if (n === '5') {
+  } else if (sortOption === '5') {
     arr.sort((a, b) => {
       if (a.title < b.title) return -1;
       if (a.title > b.title) return 1;
@@ -298,7 +326,7 @@ function sortGoodsArray(arr: types.IGoodsItem[], n: string) {
       }
       return 0;
     });
-  } else if (n === '6') {
+  } else if (sortOption === '6') {
     arr.sort((a, b) => {
       if (a.title > b.title) return -1;
       if (a.title < b.title) return 1;

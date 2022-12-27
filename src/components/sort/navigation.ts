@@ -1,6 +1,6 @@
 import * as types from '../types';
 import { renderGoodPage } from '../goods-page/goods-page';
-import { catalogArr, currentGoodsArray, rawCatalog } from '../sort/sort';
+import { catalogArr, rawCatalog } from '../sort/sort';
 import { displayPaymentPage } from '../payment/payment';
 import { renderCartList } from '../cart/render-cart';
 
@@ -16,35 +16,59 @@ logo?.addEventListener('click', getMainPage);
 cartBtn?.addEventListener('click', getCartPage);
 btnToMainPage?.addEventListener('click', getMainPage);
 
-export function getMainPage() {
-  mainSection!.classList.remove('display-none');
-  goodCardContainer!.classList.add('display-none');
-  cartWrapper!.classList.add('display-none');
-  errorPage!.classList.add('display-none');
-  goodCardContainer!.innerHTML = '';
+export function getMainPage(): void {
+  if (mainSection) {
+    mainSection.classList.remove('display-none');
+  }
+  if (cartWrapper) {
+    cartWrapper.classList.add('display-none');
+  }
+  if (errorPage) {
+    errorPage.classList.add('display-none');
+  }
+  if (goodCardContainer) {
+    goodCardContainer.innerHTML = '';
+    goodCardContainer.classList.add('display-none');
+  }
   window.location.hash = '';
   document.querySelector('.paid-page__wrapper')?.classList.add('display-none');
 }
 
-export function getCartPage() {
-  cartWrapper!.classList.remove('display-none');
-  mainSection!.classList.add('display-none');
-  goodCardContainer!.classList.add('display-none');
-  errorPage!.classList.add('display-none');
-  goodCardContainer!.innerHTML = '';
+export function getCartPage(): void {
+  if (goodCardContainer) {
+    goodCardContainer.innerHTML = '';
+    goodCardContainer.classList.add('display-none');
+  }
+  if (cartWrapper) {
+    cartWrapper.classList.remove('display-none');
+  }
+  if (mainSection) {
+    mainSection.classList.add('display-none');
+  }
+  if (errorPage) {
+    errorPage.classList.add('display-none');
+  }
   window.location.hash = 'cart';
   renderCartList(rawCatalog);
 }
 
-export function getErrorPage() {
-  errorPage!.classList.remove('display-none');
-  mainSection!.classList.add('display-none');
-  goodCardContainer!.classList.add('display-none');
-  cartWrapper!.classList.add('display-none');
-  goodCardContainer!.innerHTML = '';
+export function getErrorPage(): void {
+  if (errorPage) {
+    errorPage.classList.remove('display-none');
+  }
+  if (mainSection) {
+    mainSection.classList.add('display-none');
+  }
+  if (cartWrapper) {
+    cartWrapper.classList.add('display-none');
+  }
+  if (goodCardContainer) {
+    goodCardContainer.innerHTML = '';
+    goodCardContainer.classList.add('display-none');
+  }
 }
 
-export function getGoodCardFromUrl(hash: string) {
+export function getGoodCardFromUrl(hash: string): void {
   const id: number = Number(hash.slice(3, 6));
   const goodItem: types.IGoodsItem = catalogArr.reduce((acc: types.IGoodsItem, el: types.IGoodsItem) => {
     if (el.id === id) {
@@ -55,11 +79,10 @@ export function getGoodCardFromUrl(hash: string) {
   });
   if (goodItem) {
     renderGoodPage(goodItem);
-    console.log('goodItem:::', goodItem);
   }
 }
 
-export function getBuyNowBtns() {
+export function getBuyNowBtns(): void {
   const buyNowBtns: NodeListOf<Element> | null = document.querySelectorAll('.buy-now-btn');
   if (buyNowBtns) {
     buyNowBtns.forEach((el) =>
