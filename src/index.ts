@@ -10,5 +10,3 @@ import './components/cart/cart';
 import './components/goods-page/goods-page';
 import './assets/catalog';
 import './components/types';
-
-
