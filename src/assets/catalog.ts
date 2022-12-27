@@ -11,16 +11,12 @@ const catalog = {
       brand: 'Apple',
       category: 'smartphones',
       thumbnail: 'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
-      images: [        
-        'https://i.dummyjson.com/data/products/1/3.jpg',
-        'https://i.dummyjson.com/data/products/1/4.jpg',        
-      ],
+      images: ['https://i.dummyjson.com/data/products/1/3.jpg', 'https://i.dummyjson.com/data/products/1/4.jpg'],
     },
     {
       id: 2,
       title: 'iPhone X',
-      description:
-        'SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...',
+      description: 'SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...',
       price: 899,
       discountPercentage: 17.94,
       rating: 4.44,
@@ -31,7 +27,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/2/1.jpg',
         'https://i.dummyjson.com/data/products/2/2.jpg',
-        'https://i.dummyjson.com/data/products/2/3.jpg',        
+        'https://i.dummyjson.com/data/products/2/3.jpg',
       ],
     },
     {
@@ -62,14 +58,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/4/1.jpg',
         'https://i.dummyjson.com/data/products/4/2.jpg',
         'https://i.dummyjson.com/data/products/4/3.jpg',
-        'https://i.dummyjson.com/data/products/4/4.jpg',        
+        'https://i.dummyjson.com/data/products/4/4.jpg',
       ],
     },
     {
       id: 5,
       title: 'Huawei P30',
-      description:
-        'Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.',
+      description: 'Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.',
       price: 499,
       discountPercentage: 10.58,
       rating: 4.09,
@@ -115,14 +110,13 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/7/1.jpg',
         'https://i.dummyjson.com/data/products/7/2.jpg',
-        'https://i.dummyjson.com/data/products/7/3.jpg',        
+        'https://i.dummyjson.com/data/products/7/3.jpg',
       ],
     },
     {
       id: 8,
       title: 'Microsoft Surface Laptop 4',
-      description:
-        'Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.',
+      description: 'Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.',
       price: 1499,
       discountPercentage: 10.23,
       rating: 4.43,
@@ -134,7 +128,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/8/1.jpg',
         'https://i.dummyjson.com/data/products/8/2.jpg',
         'https://i.dummyjson.com/data/products/8/3.jpg',
-        'https://i.dummyjson.com/data/products/8/4.jpg',        
+        'https://i.dummyjson.com/data/products/8/4.jpg',
       ],
     },
     {
@@ -152,7 +146,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/9/1.jpg',
         'https://i.dummyjson.com/data/products/9/2.png',
         'https://i.dummyjson.com/data/products/9/3.png',
-        'https://i.dummyjson.com/data/products/9/4.jpg',        
+        'https://i.dummyjson.com/data/products/9/4.jpg',
       ],
     },
     {
@@ -169,7 +163,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/10/1.jpg',
         'https://i.dummyjson.com/data/products/10/2.jpg',
-        'https://i.dummyjson.com/data/products/10/3.jpg',        
+        'https://i.dummyjson.com/data/products/10/3.jpg',
       ],
     },
     {
@@ -186,7 +180,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/11/1.jpg',
         'https://i.dummyjson.com/data/products/11/2.jpg',
-        'https://i.dummyjson.com/data/products/11/3.jpg',        
+        'https://i.dummyjson.com/data/products/11/3.jpg',
       ],
     },
     {
@@ -204,14 +198,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/12/1.jpg',
         'https://i.dummyjson.com/data/products/12/2.jpg',
         'https://i.dummyjson.com/data/products/12/3.png',
-        'https://i.dummyjson.com/data/products/12/4.jpg',        
+        'https://i.dummyjson.com/data/products/12/4.jpg',
       ],
     },
     {
       id: 13,
       title: 'Fog Scent Xpressio Perfume',
-      description:
-        'Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men',
+      description: 'Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men',
       price: 13,
       discountPercentage: 8.14,
       rating: 4.59,
@@ -223,14 +216,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/13/1.jpg',
         'https://i.dummyjson.com/data/products/13/2.png',
         'https://i.dummyjson.com/data/products/13/3.jpg',
-        'https://i.dummyjson.com/data/products/13/4.jpg',        
+        'https://i.dummyjson.com/data/products/13/4.jpg',
       ],
     },
     {
       id: 14,
       title: 'Non-Alcoholic Concentrated Perfume Oil',
-      description:
-        'Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil',
+      description: 'Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil',
       price: 120,
       discountPercentage: 15.6,
       rating: 4.21,
@@ -241,7 +233,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/14/1.jpg',
         'https://i.dummyjson.com/data/products/14/2.jpg',
-        'https://i.dummyjson.com/data/products/14/3.jpg',        
+        'https://i.dummyjson.com/data/products/14/3.jpg',
       ],
     },
     {
@@ -259,7 +251,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/15/1.jpg',
         'https://i.dummyjson.com/data/products/15/2.jpg',
         'https://i.dummyjson.com/data/products/15/3.jpg',
-        'https://i.dummyjson.com/data/products/15/4.jpg',        
+        'https://i.dummyjson.com/data/products/15/4.jpg',
       ],
     },
     {
@@ -277,14 +269,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/16/1.png',
         'https://i.dummyjson.com/data/products/16/2.webp',
         'https://i.dummyjson.com/data/products/16/3.jpg',
-        'https://i.dummyjson.com/data/products/16/4.jpg',        
+        'https://i.dummyjson.com/data/products/16/4.jpg',
       ],
     },
     {
       id: 17,
       title: 'Tree Oil 30ml',
-      description:
-        'Tea tree oil contains a number of compounds, including terpinen-4-ol, that have been shown to kill certain bacteria,',
+      description: 'Tea tree oil contains a number of compounds, including terpinen-4-ol, that have been shown to kill certain bacteria,',
       price: 12,
       discountPercentage: 4.09,
       rating: 4.52,
@@ -295,14 +286,13 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/17/1.jpg',
         'https://i.dummyjson.com/data/products/17/2.jpg',
-        'https://i.dummyjson.com/data/products/17/3.jpg',        
+        'https://i.dummyjson.com/data/products/17/3.jpg',
       ],
     },
     {
       id: 18,
       title: 'Oil Free Moisturizer 100ml',
-      description:
-        'Dermive Oil Free Moisturizer with SPF 20 is specifically formulated with ceramides, hyaluronic acid & sunscreen.',
+      description: 'Dermive Oil Free Moisturizer with SPF 20 is specifically formulated with ceramides, hyaluronic acid & sunscreen.',
       price: 40,
       discountPercentage: 13.1,
       rating: 4.56,
@@ -314,7 +304,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/18/1.jpg',
         'https://i.dummyjson.com/data/products/18/2.jpg',
         'https://i.dummyjson.com/data/products/18/3.jpg',
-        'https://i.dummyjson.com/data/products/18/4.jpg',        
+        'https://i.dummyjson.com/data/products/18/4.jpg',
       ],
     },
     {
@@ -331,7 +321,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/19/1.jpg',
         'https://i.dummyjson.com/data/products/19/2.jpg',
-        'https://i.dummyjson.com/data/products/19/3.png',        
+        'https://i.dummyjson.com/data/products/19/3.png',
       ],
     },
     {
@@ -350,7 +340,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/20/1.jpg',
         'https://i.dummyjson.com/data/products/20/2.jpg',
         'https://i.dummyjson.com/data/products/20/3.jpg',
-        'https://i.dummyjson.com/data/products/20/4.jpg',        
+        'https://i.dummyjson.com/data/products/20/4.jpg',
       ],
     },
     {
@@ -402,7 +392,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/23/1.jpg',
         'https://i.dummyjson.com/data/products/23/2.jpg',
         'https://i.dummyjson.com/data/products/23/3.jpg',
-        'https://i.dummyjson.com/data/products/23/4.jpg',        
+        'https://i.dummyjson.com/data/products/23/4.jpg',
       ],
     },
     {
@@ -421,7 +411,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/24/1.jpg',
         'https://i.dummyjson.com/data/products/24/2.jpg',
         'https://i.dummyjson.com/data/products/24/3.jpg',
-        'https://i.dummyjson.com/data/products/24/4.jpg',        
+        'https://i.dummyjson.com/data/products/24/4.jpg',
       ],
     },
     {
@@ -439,7 +429,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/25/1.png',
         'https://i.dummyjson.com/data/products/25/2.jpg',
         'https://i.dummyjson.com/data/products/25/3.png',
-        'https://i.dummyjson.com/data/products/25/4.jpg',        
+        'https://i.dummyjson.com/data/products/25/4.jpg',
       ],
     },
     {
@@ -458,14 +448,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/26/2.jpg',
         'https://i.dummyjson.com/data/products/26/3.jpg',
         'https://i.dummyjson.com/data/products/26/4.jpg',
-        'https://i.dummyjson.com/data/products/26/5.jpg',        
+        'https://i.dummyjson.com/data/products/26/5.jpg',
       ],
     },
     {
       id: 27,
       title: 'Flying Wooden Bird',
-      description:
-        'Package Include 6 Birds with Adhesive Tape Shape: 3D Shaped Wooden Birds Material: Wooden MDF, Laminated 3.5mm',
+      description: 'Package Include 6 Birds with Adhesive Tape Shape: 3D Shaped Wooden Birds Material: Wooden MDF, Laminated 3.5mm',
       price: 51,
       discountPercentage: 15.58,
       rating: 4.41,
@@ -477,7 +466,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/27/1.jpg',
         'https://i.dummyjson.com/data/products/27/2.jpg',
         'https://i.dummyjson.com/data/products/27/3.jpg',
-        'https://i.dummyjson.com/data/products/27/4.jpg',        
+        'https://i.dummyjson.com/data/products/27/4.jpg',
       ],
     },
     {
@@ -495,14 +484,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/28/1.jpg',
         'https://i.dummyjson.com/data/products/28/2.jpg',
         'https://i.dummyjson.com/data/products/28/3.png',
-        'https://i.dummyjson.com/data/products/28/4.jpg',        
+        'https://i.dummyjson.com/data/products/28/4.jpg',
       ],
     },
     {
       id: 29,
       title: 'Handcraft Chinese style',
-      description:
-        'Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate',
+      description: 'Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate',
       price: 60,
       discountPercentage: 15.34,
       rating: 4.44,
@@ -514,7 +502,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/29/1.jpg',
         'https://i.dummyjson.com/data/products/29/2.jpg',
         'https://i.dummyjson.com/data/products/29/3.webp',
-        'https://i.dummyjson.com/data/products/29/4.webp',        
+        'https://i.dummyjson.com/data/products/29/4.webp',
       ],
     },
     {
@@ -531,7 +519,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/30/1.jpg',
         'https://i.dummyjson.com/data/products/30/2.jpg',
-        'https://i.dummyjson.com/data/products/30/3.jpg',        
+        'https://i.dummyjson.com/data/products/30/3.jpg',
       ],
     },
     {
@@ -549,7 +537,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/31/1.jpg',
         'https://i.dummyjson.com/data/products/31/2.jpg',
         'https://i.dummyjson.com/data/products/31/3.jpg',
-        'https://i.dummyjson.com/data/products/31/4.jpg',        
+        'https://i.dummyjson.com/data/products/31/4.jpg',
       ],
     },
     {
@@ -566,7 +554,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/32/1.jpg',
         'https://i.dummyjson.com/data/products/32/2.jpg',
-        'https://i.dummyjson.com/data/products/32/3.jpg',        
+        'https://i.dummyjson.com/data/products/32/3.jpg',
       ],
     },
     {
@@ -584,7 +572,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/33/1.jpg',
         'https://i.dummyjson.com/data/products/33/2.jpg',
         'https://i.dummyjson.com/data/products/33/3.jpg',
-        'https://i.dummyjson.com/data/products/33/4.jpg',        
+        'https://i.dummyjson.com/data/products/33/4.jpg',
       ],
     },
     {
@@ -602,14 +590,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/34/1.jpg',
         'https://i.dummyjson.com/data/products/34/2.jpg',
         'https://i.dummyjson.com/data/products/34/3.jpg',
-        'https://i.dummyjson.com/data/products/34/4.jpg',        
+        'https://i.dummyjson.com/data/products/34/4.jpg',
       ],
     },
     {
       id: 35,
       title: '3 DOOR PORTABLE',
-      description:
-        'Material: Stainless Steel and Fabric  Item Size: 110 cm x 45 cm x 175 cm Package Contents: 1 Storage Wardrobe',
+      description: 'Material: Stainless Steel and Fabric  Item Size: 110 cm x 45 cm x 175 cm Package Contents: 1 Storage Wardrobe',
       price: 41,
       discountPercentage: 7.98,
       rating: 4.06,
@@ -621,14 +608,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/35/1.jpg',
         'https://i.dummyjson.com/data/products/35/2.jpg',
         'https://i.dummyjson.com/data/products/35/3.jpg',
-        'https://i.dummyjson.com/data/products/35/4.jpg',        
+        'https://i.dummyjson.com/data/products/35/4.jpg',
       ],
     },
     {
       id: 36,
       title: 'Sleeve Shirt Womens',
-      description:
-        'Cotton Solid Color Professional Wear Sleeve Shirt Womens Work Blouses Wholesale Clothing Casual Plain Custom Top OEM Customized',
+      description: 'Cotton Solid Color Professional Wear Sleeve Shirt Womens Work Blouses Wholesale Clothing Casual Plain Custom Top OEM Customized',
       price: 90,
       discountPercentage: 10.89,
       rating: 4.26,
@@ -640,7 +626,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/36/1.jpg',
         'https://i.dummyjson.com/data/products/36/2.webp',
         'https://i.dummyjson.com/data/products/36/3.webp',
-        'https://i.dummyjson.com/data/products/36/4.jpg',        
+        'https://i.dummyjson.com/data/products/36/4.jpg',
       ],
     },
     {
@@ -658,7 +644,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/37/1.jpg',
         'https://i.dummyjson.com/data/products/37/2.jpg',
         'https://i.dummyjson.com/data/products/37/3.jpg',
-        'https://i.dummyjson.com/data/products/37/4.jpg',        
+        'https://i.dummyjson.com/data/products/37/4.jpg',
       ],
     },
     {
@@ -682,8 +668,7 @@ const catalog = {
     {
       id: 39,
       title: 'Women Sweaters Wool',
-      description:
-        '2021 Custom Winter Fall Zebra Knit Crop Top Women Sweaters Wool Mohair Cos Customize Crew Neck Women` S Crop Top Sweater',
+      description: '2021 Custom Winter Fall Zebra Knit Crop Top Women Sweaters Wool Mohair Cos Customize Crew Neck Women` S Crop Top Sweater',
       price: 600,
       discountPercentage: 17.2,
       rating: 4.55,
@@ -695,14 +680,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/39/1.jpg',
         'https://i.dummyjson.com/data/products/39/2.jpg',
         'https://i.dummyjson.com/data/products/39/3.jpg',
-        'https://i.dummyjson.com/data/products/39/4.jpg',        
+        'https://i.dummyjson.com/data/products/39/4.jpg',
       ],
     },
     {
       id: 40,
       title: 'women winter clothes',
-      description:
-        'women winter clothes thick fleece hoodie top with sweat pantjogger women sweatsuit set joggers pants two piece pants set',
+      description: 'women winter clothes thick fleece hoodie top with sweat pantjogger women sweatsuit set joggers pants two piece pants set',
       price: 57,
       discountPercentage: 13.39,
       rating: 4.91,
@@ -727,7 +711,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/41/1.jpg',
         'https://i.dummyjson.com/data/products/41/2.webp',
         'https://i.dummyjson.com/data/products/41/3.jpg',
-        'https://i.dummyjson.com/data/products/41/4.jpg',        
+        'https://i.dummyjson.com/data/products/41/4.jpg',
       ],
     },
     {
@@ -745,7 +729,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/42/1.png',
         'https://i.dummyjson.com/data/products/42/2.png',
         'https://i.dummyjson.com/data/products/42/3.png',
-        'https://i.dummyjson.com/data/products/42/4.jpg',        
+        'https://i.dummyjson.com/data/products/42/4.jpg',
       ],
     },
     {
@@ -763,14 +747,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/43/1.jpg',
         'https://i.dummyjson.com/data/products/43/2.jpg',
         'https://i.dummyjson.com/data/products/43/3.jpg',
-        'https://i.dummyjson.com/data/products/43/4.jpg',        
+        'https://i.dummyjson.com/data/products/43/4.jpg',
       ],
     },
     {
       id: 44,
       title: 'Ladies Multicolored Dress',
-      description:
-        'This classy shirt for women gives you a gorgeous look on everyday wear and specially for semi-casual wears.',
+      description: 'This classy shirt for women gives you a gorgeous look on everyday wear and specially for semi-casual wears.',
       price: 79,
       discountPercentage: 16.88,
       rating: 4.03,
@@ -782,7 +765,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/44/1.jpg',
         'https://i.dummyjson.com/data/products/44/2.jpg',
         'https://i.dummyjson.com/data/products/44/3.jpg',
-        'https://i.dummyjson.com/data/products/44/4.jpg',        
+        'https://i.dummyjson.com/data/products/44/4.jpg',
       ],
     },
     {
@@ -800,7 +783,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/45/1.jpg',
         'https://i.dummyjson.com/data/products/45/2.webp',
         'https://i.dummyjson.com/data/products/45/3.jpg',
-        'https://i.dummyjson.com/data/products/45/4.jpg',        
+        'https://i.dummyjson.com/data/products/45/4.jpg',
       ],
     },
     {
@@ -818,7 +801,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/46/1.webp',
         'https://i.dummyjson.com/data/products/46/2.jpg',
         'https://i.dummyjson.com/data/products/46/3.jpg',
-        'https://i.dummyjson.com/data/products/46/4.jpg',        
+        'https://i.dummyjson.com/data/products/46/4.jpg',
       ],
     },
     {
@@ -835,7 +818,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/47/1.jpg',
         'https://i.dummyjson.com/data/products/47/2.jpg',
-        'https://i.dummyjson.com/data/products/47/3.jpg',        
+        'https://i.dummyjson.com/data/products/47/3.jpg',
       ],
     },
     {
@@ -853,7 +836,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/48/1.jpg',
         'https://i.dummyjson.com/data/products/48/2.jpg',
         'https://i.dummyjson.com/data/products/48/3.jpg',
-        'https://i.dummyjson.com/data/products/48/4.jpg',        
+        'https://i.dummyjson.com/data/products/48/4.jpg',
       ],
     },
     {
@@ -870,7 +853,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/49/1.jpg',
         'https://i.dummyjson.com/data/products/49/2.jpg',
-        'https://i.dummyjson.com/data/products/49/3.webp',       
+        'https://i.dummyjson.com/data/products/49/3.webp',
       ],
     },
     {
@@ -893,8 +876,7 @@ const catalog = {
     {
       id: 51,
       title: 'half sleeves T shirts',
-      description:
-        'Many store is creating new designs and trend every month and every year. Daraz.pk have a beautiful range of men fashion brands',
+      description: 'Many store is creating new designs and trend every month and every year. Daraz.pk have a beautiful range of men fashion brands',
       price: 23,
       discountPercentage: 12.76,
       rating: 4.26,
@@ -905,7 +887,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/51/1.png',
         'https://i.dummyjson.com/data/products/51/2.jpg',
-        'https://i.dummyjson.com/data/products/51/3.jpg',        
+        'https://i.dummyjson.com/data/products/51/3.jpg',
       ],
     },
     {
@@ -923,7 +905,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/52/1.png',
         'https://i.dummyjson.com/data/products/52/2.png',
         'https://i.dummyjson.com/data/products/52/3.jpg',
-        'https://i.dummyjson.com/data/products/52/4.jpg',        
+        'https://i.dummyjson.com/data/products/52/4.jpg',
       ],
     },
     {
@@ -941,7 +923,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/53/1.webp',
         'https://i.dummyjson.com/data/products/53/2.jpg',
         'https://i.dummyjson.com/data/products/53/3.jpg',
-        'https://i.dummyjson.com/data/products/53/4.jpg',        
+        'https://i.dummyjson.com/data/products/53/4.jpg',
       ],
     },
     {
@@ -960,7 +942,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/54/1.jpg',
         'https://i.dummyjson.com/data/products/54/2.jpg',
         'https://i.dummyjson.com/data/products/54/3.jpg',
-        'https://i.dummyjson.com/data/products/54/4.jpg',        
+        'https://i.dummyjson.com/data/products/54/4.jpg',
       ],
     },
     {
@@ -978,7 +960,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/55/1.jpg',
         'https://i.dummyjson.com/data/products/55/2.webp',
         'https://i.dummyjson.com/data/products/55/3.jpg',
-        'https://i.dummyjson.com/data/products/55/4.jpg',        
+        'https://i.dummyjson.com/data/products/55/4.jpg',
       ],
     },
     {
@@ -997,14 +979,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/56/2.jpg',
         'https://i.dummyjson.com/data/products/56/3.jpg',
         'https://i.dummyjson.com/data/products/56/4.jpg',
-        'https://i.dummyjson.com/data/products/56/5.jpg',       
+        'https://i.dummyjson.com/data/products/56/5.jpg',
       ],
     },
     {
       id: 57,
       title: 'Loafers for men',
-      description:
-        'Men Shoes - Loafers for men - Rubber Shoes - Nylon Shoes - Shoes for men - Moccassion - Pure Nylon (Rubber) Expot Quality.',
+      description: 'Men Shoes - Loafers for men - Rubber Shoes - Nylon Shoes - Shoes for men - Moccassion - Pure Nylon (Rubber) Expot Quality.',
       price: 47,
       discountPercentage: 10.91,
       rating: 4.91,
@@ -1016,7 +997,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/57/1.jpg',
         'https://i.dummyjson.com/data/products/57/2.jpg',
         'https://i.dummyjson.com/data/products/57/3.jpg',
-        'https://i.dummyjson.com/data/products/57/4.jpg',        
+        'https://i.dummyjson.com/data/products/57/4.jpg',
       ],
     },
     {
@@ -1034,7 +1015,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/58/1.jpg',
         'https://i.dummyjson.com/data/products/58/2.jpg',
         'https://i.dummyjson.com/data/products/58/3.jpg',
-        'https://i.dummyjson.com/data/products/58/4.jpg',        
+        'https://i.dummyjson.com/data/products/58/4.jpg',
       ],
     },
     {
@@ -1052,7 +1033,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/59/1.jpg',
         'https://i.dummyjson.com/data/products/59/2.jpg',
         'https://i.dummyjson.com/data/products/59/3.jpg',
-        'https://i.dummyjson.com/data/products/59/4.jpg',        
+        'https://i.dummyjson.com/data/products/59/4.jpg',
       ],
     },
     {
@@ -1069,7 +1050,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/60/1.jpg',
         'https://i.dummyjson.com/data/products/60/2.jpg',
-        'https://i.dummyjson.com/data/products/60/3.jpg',        
+        'https://i.dummyjson.com/data/products/60/3.jpg',
       ],
     },
     {
@@ -1134,7 +1115,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/64/1.jpg',
         'https://i.dummyjson.com/data/products/64/2.webp',
-        'https://i.dummyjson.com/data/products/64/3.jpg',        
+        'https://i.dummyjson.com/data/products/64/3.jpg',
       ],
     },
     {
@@ -1152,7 +1133,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/65/1.jpg',
         'https://i.dummyjson.com/data/products/65/2.webp',
         'https://i.dummyjson.com/data/products/65/3.jpg',
-        'https://i.dummyjson.com/data/products/65/4.webp',        
+        'https://i.dummyjson.com/data/products/65/4.webp',
       ],
     },
     {
@@ -1170,14 +1151,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/66/1.jpg',
         'https://i.dummyjson.com/data/products/66/2.jpg',
         'https://i.dummyjson.com/data/products/66/3.jpg',
-        'https://i.dummyjson.com/data/products/66/4.JPG',        
+        'https://i.dummyjson.com/data/products/66/4.JPG',
       ],
     },
     {
       id: 67,
       title: 'Fashion Magnetic Wrist Watch',
-      description:
-        'Buy this awesome  The product is originally manufactured by the company and it`s a top selling product with a very reasonable',
+      description: 'Buy this awesome  The product is originally manufactured by the company and it`s a top selling product with a very reasonable',
       price: 60,
       discountPercentage: 16.69,
       rating: 4.03,
@@ -1189,7 +1169,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/67/1.jpg',
         'https://i.dummyjson.com/data/products/67/2.jpg',
         'https://i.dummyjson.com/data/products/67/3.jpg',
-        'https://i.dummyjson.com/data/products/67/4.jpg',        
+        'https://i.dummyjson.com/data/products/67/4.jpg',
       ],
     },
     {
@@ -1208,8 +1188,7 @@ const catalog = {
     {
       id: 69,
       title: 'Golden Watch Pearls Bracelet Watch',
-      description:
-        'Product details of Golden Watch Pearls Bracelet Watch For Girls - Golden Chain Ladies Bracelate Watch for Women',
+      description: 'Product details of Golden Watch Pearls Bracelet Watch For Girls - Golden Chain Ladies Bracelate Watch for Women',
       price: 47,
       discountPercentage: 17.55,
       rating: 4.77,
@@ -1221,14 +1200,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/69/1.jpg',
         'https://i.dummyjson.com/data/products/69/2.jpg',
         'https://i.dummyjson.com/data/products/69/3.webp',
-        'https://i.dummyjson.com/data/products/69/4.jpg',        
+        'https://i.dummyjson.com/data/products/69/4.jpg',
       ],
     },
     {
       id: 70,
       title: 'Stainless Steel Women',
-      description:
-        'Fashion Skmei 1830 Shell Dial Stainless Steel Women Wrist Watch Lady Bracelet Watch Quartz Watches Ladies',
+      description: 'Fashion Skmei 1830 Shell Dial Stainless Steel Women Wrist Watch Lady Bracelet Watch Quartz Watches Ladies',
       price: 35,
       discountPercentage: 8.98,
       rating: 4.08,
@@ -1236,10 +1214,7 @@ const catalog = {
       brand: 'Bracelet',
       category: 'womens-watches',
       thumbnail: 'https://i.dummyjson.com/data/products/70/thumbnail.jpg',
-      images: [
-        'https://i.dummyjson.com/data/products/70/1.jpg',
-        'https://i.dummyjson.com/data/products/70/2.jpg',        
-      ],
+      images: ['https://i.dummyjson.com/data/products/70/1.jpg', 'https://i.dummyjson.com/data/products/70/2.jpg'],
     },
     {
       id: 71,
@@ -1256,14 +1231,13 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/71/1.jpg',
         'https://i.dummyjson.com/data/products/71/2.jpg',
-        'https://i.dummyjson.com/data/products/71/3.webp',        
+        'https://i.dummyjson.com/data/products/71/3.webp',
       ],
     },
     {
       id: 72,
       title: 'Handbag For Girls',
-      description:
-        'This fashion is designed to add a charming effect to your casual outfit. This Bag is made of synthetic leather.',
+      description: 'This fashion is designed to add a charming effect to your casual outfit. This Bag is made of synthetic leather.',
       price: 23,
       discountPercentage: 17.5,
       rating: 4.91,
@@ -1275,14 +1249,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/72/1.jpg',
         'https://i.dummyjson.com/data/products/72/2.png',
         'https://i.dummyjson.com/data/products/72/3.webp',
-        'https://i.dummyjson.com/data/products/72/4.jpg',       
+        'https://i.dummyjson.com/data/products/72/4.jpg',
       ],
     },
     {
       id: 73,
       title: 'Fancy hand clutch',
-      description:
-        'This fashion is designed to add a charming effect to your casual outfit. This Bag is made of synthetic leather.',
+      description: 'This fashion is designed to add a charming effect to your casual outfit. This Bag is made of synthetic leather.',
       price: 44,
       discountPercentage: 10.39,
       rating: 4.18,
@@ -1293,7 +1266,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/73/1.jpg',
         'https://i.dummyjson.com/data/products/73/2.webp',
-        'https://i.dummyjson.com/data/products/73/3.jpg',        
+        'https://i.dummyjson.com/data/products/73/3.jpg',
       ],
     },
     {
@@ -1312,7 +1285,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/74/1.jpg',
         'https://i.dummyjson.com/data/products/74/2.jpg',
         'https://i.dummyjson.com/data/products/74/3.jpg',
-        'https://i.dummyjson.com/data/products/74/4.jpg',        
+        'https://i.dummyjson.com/data/products/74/4.jpg',
       ],
     },
     {
@@ -1329,7 +1302,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/75/1.jpg',
         'https://i.dummyjson.com/data/products/75/2.jpg',
-        'https://i.dummyjson.com/data/products/75/3.jpg',        
+        'https://i.dummyjson.com/data/products/75/3.jpg',
       ],
     },
     {
@@ -1343,10 +1316,7 @@ const catalog = {
       brand: 'Darojay',
       category: 'womens-jewellery',
       thumbnail: 'https://i.dummyjson.com/data/products/76/thumbnail.jpg',
-      images: [
-        'https://i.dummyjson.com/data/products/76/1.jpg',
-        'https://i.dummyjson.com/data/products/76/2.jpg',        
-      ],
+      images: ['https://i.dummyjson.com/data/products/76/1.jpg', 'https://i.dummyjson.com/data/products/76/2.jpg'],
     },
     {
       id: 77,
@@ -1362,7 +1332,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/77/1.jpg',
         'https://i.dummyjson.com/data/products/77/2.jpg',
-        'https://i.dummyjson.com/data/products/77/3.jpg',        
+        'https://i.dummyjson.com/data/products/77/3.jpg',
       ],
     },
     {
@@ -1406,14 +1376,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/80/1.jpg',
         'https://i.dummyjson.com/data/products/80/2.jpg',
         'https://i.dummyjson.com/data/products/80/3.png',
-        'https://i.dummyjson.com/data/products/80/4.jpg',        
+        'https://i.dummyjson.com/data/products/80/4.jpg',
       ],
     },
     {
       id: 81,
       title: 'Round Silver Frame Sun Glasses',
-      description:
-        'A pair of sunglasses can protect your eyes from being hurt. For car driving, vacation travel, outdoor activities, social gatherings,',
+      description: 'A pair of sunglasses can protect your eyes from being hurt. For car driving, vacation travel, outdoor activities, social gatherings,',
       price: 19,
       discountPercentage: 10.1,
       rating: 4.94,
@@ -1425,14 +1394,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/81/1.jpg',
         'https://i.dummyjson.com/data/products/81/2.jpg',
         'https://i.dummyjson.com/data/products/81/3.jpg',
-        'https://i.dummyjson.com/data/products/81/4.webp',        
+        'https://i.dummyjson.com/data/products/81/4.webp',
       ],
     },
     {
       id: 82,
       title: 'Kabir Singh Square Sunglass',
-      description:
-        'Orignal Metal Kabir Singh design 2020 Sunglasses Men Brand Designer Sun Glasses Kabir Singh Square Sunglass',
+      description: 'Orignal Metal Kabir Singh design 2020 Sunglasses Men Brand Designer Sun Glasses Kabir Singh Square Sunglass',
       price: 50,
       discountPercentage: 15.6,
       rating: 4.62,
@@ -1444,7 +1412,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/82/1.jpg',
         'https://i.dummyjson.com/data/products/82/2.webp',
         'https://i.dummyjson.com/data/products/82/3.jpg',
-        'https://i.dummyjson.com/data/products/82/4.jpg',       
+        'https://i.dummyjson.com/data/products/82/4.jpg',
       ],
     },
     {
@@ -1463,14 +1431,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/83/1.jpg',
         'https://i.dummyjson.com/data/products/83/2.jpg',
         'https://i.dummyjson.com/data/products/83/3.jpg',
-        'https://i.dummyjson.com/data/products/83/4.jpg',        
+        'https://i.dummyjson.com/data/products/83/4.jpg',
       ],
     },
     {
       id: 84,
       title: 'Square Sunglasses',
-      description:
-        'Fashion Oversized Square Sunglasses Retro Gradient Big Frame Sunglasses For Women One Piece Gafas Shade Mirror Clear Lens 17059',
+      description: 'Fashion Oversized Square Sunglasses Retro Gradient Big Frame Sunglasses For Women One Piece Gafas Shade Mirror Clear Lens 17059',
       price: 28,
       discountPercentage: 13.89,
       rating: 4.64,
@@ -1478,10 +1445,7 @@ const catalog = {
       brand: 'mastar watch',
       category: 'sunglasses',
       thumbnail: 'https://i.dummyjson.com/data/products/84/thumbnail.jpg',
-      images: [
-        'https://i.dummyjson.com/data/products/84/1.jpg',
-        'https://i.dummyjson.com/data/products/84/2.jpg',        
-      ],
+      images: ['https://i.dummyjson.com/data/products/84/1.jpg', 'https://i.dummyjson.com/data/products/84/2.jpg'],
     },
     {
       id: 85,
@@ -1495,10 +1459,7 @@ const catalog = {
       brand: 'LouisWill',
       category: 'sunglasses',
       thumbnail: 'https://i.dummyjson.com/data/products/85/thumbnail.jpg',
-      images: [
-        'https://i.dummyjson.com/data/products/85/1.jpg',
-        'https://i.dummyjson.com/data/products/85/2.jpg',        
-      ],
+      images: ['https://i.dummyjson.com/data/products/85/1.jpg', 'https://i.dummyjson.com/data/products/85/2.jpg'],
     },
     {
       id: 86,
@@ -1516,14 +1477,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/86/1.jpg',
         'https://i.dummyjson.com/data/products/86/2.webp',
         'https://i.dummyjson.com/data/products/86/3.jpg',
-        'https://i.dummyjson.com/data/products/86/4.jpg',        
+        'https://i.dummyjson.com/data/products/86/4.jpg',
       ],
     },
     {
       id: 87,
       title: 't Temperature Controller Incubator Controller',
-      description:
-        'Both Heat and Cool Purpose, Temperature control range; -50 to +110, Temperature measurement accuracy; 0.1, Control accuracy; 0.1',
+      description: 'Both Heat and Cool Purpose, Temperature control range; -50 to +110, Temperature measurement accuracy; 0.1, Control accuracy; 0.1',
       price: 40,
       discountPercentage: 11.3,
       rating: 4.54,
@@ -1535,7 +1495,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/87/1.jpg',
         'https://i.dummyjson.com/data/products/87/2.jpg',
         'https://i.dummyjson.com/data/products/87/3.jpg',
-        'https://i.dummyjson.com/data/products/87/4.jpg',        
+        'https://i.dummyjson.com/data/products/87/4.jpg',
       ],
     },
     {
@@ -1554,7 +1514,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/88/1.jpg',
         'https://i.dummyjson.com/data/products/88/2.jpg',
         'https://i.dummyjson.com/data/products/88/3.jpg',
-        'https://i.dummyjson.com/data/products/88/4.webp',        
+        'https://i.dummyjson.com/data/products/88/4.webp',
       ],
     },
     {
@@ -1572,7 +1532,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/89/1.jpg',
         'https://i.dummyjson.com/data/products/89/2.jpg',
         'https://i.dummyjson.com/data/products/89/3.jpg',
-        'https://i.dummyjson.com/data/products/89/4.jpg',        
+        'https://i.dummyjson.com/data/products/89/4.jpg',
       ],
     },
     {
@@ -1591,7 +1551,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/90/1.jpg',
         'https://i.dummyjson.com/data/products/90/2.jpg',
         'https://i.dummyjson.com/data/products/90/3.jpg',
-        'https://i.dummyjson.com/data/products/90/4.jpg',        
+        'https://i.dummyjson.com/data/products/90/4.jpg',
       ],
     },
     {
@@ -1610,14 +1570,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/91/1.jpg',
         'https://i.dummyjson.com/data/products/91/2.jpg',
         'https://i.dummyjson.com/data/products/91/3.jpg',
-        'https://i.dummyjson.com/data/products/91/4.jpg',        
+        'https://i.dummyjson.com/data/products/91/4.jpg',
       ],
     },
     {
       id: 92,
       title: 'HOT SALE IN EUROPE electric racing motorcycle',
-      description:
-        'HOT SALE IN EUROPE electric racing motorcycle electric motorcycle for sale adult electric motorcycles',
+      description: 'HOT SALE IN EUROPE electric racing motorcycle electric motorcycle for sale adult electric motorcycles',
       price: 920,
       discountPercentage: 14.4,
       rating: 4.19,
@@ -1647,7 +1606,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/93/1.jpg',
         'https://i.dummyjson.com/data/products/93/2.jpg',
         'https://i.dummyjson.com/data/products/93/3.jpg',
-        'https://i.dummyjson.com/data/products/93/4.jpg',        
+        'https://i.dummyjson.com/data/products/93/4.jpg',
       ],
     },
     {
@@ -1664,14 +1623,13 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/94/1.webp',
         'https://i.dummyjson.com/data/products/94/2.jpg',
-        'https://i.dummyjson.com/data/products/94/3.jpg',        
+        'https://i.dummyjson.com/data/products/94/3.jpg',
       ],
     },
     {
       id: 95,
       title: 'Wholesale cargo lashing Belt',
-      description:
-        'Wholesale cargo lashing Belt Tie Down end Ratchet strap customized strap 25mm motorcycle 1500kgs with rubber handle',
+      description: 'Wholesale cargo lashing Belt Tie Down end Ratchet strap customized strap 25mm motorcycle 1500kgs with rubber handle',
       price: 930,
       discountPercentage: 17.67,
       rating: 4.21,
@@ -1683,14 +1641,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/95/1.jpg',
         'https://i.dummyjson.com/data/products/95/2.jpg',
         'https://i.dummyjson.com/data/products/95/3.jpg',
-        'https://i.dummyjson.com/data/products/95/4.jpg',        
+        'https://i.dummyjson.com/data/products/95/4.jpg',
       ],
     },
     {
       id: 96,
       title: 'lighting ceiling kitchen',
-      description:
-        'Wholesale slim hanging decorative kid room lighting ceiling kitchen chandeliers pendant light modern',
+      description: 'Wholesale slim hanging decorative kid room lighting ceiling kitchen chandeliers pendant light modern',
       price: 30,
       discountPercentage: 14.89,
       rating: 4.83,
@@ -1702,7 +1659,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/96/1.jpg',
         'https://i.dummyjson.com/data/products/96/2.jpg',
         'https://i.dummyjson.com/data/products/96/3.jpg',
-        'https://i.dummyjson.com/data/products/96/4.jpg',        
+        'https://i.dummyjson.com/data/products/96/4.jpg',
       ],
     },
     {
@@ -1720,14 +1677,13 @@ const catalog = {
         'https://i.dummyjson.com/data/products/97/1.jpg',
         'https://i.dummyjson.com/data/products/97/2.jpg',
         'https://i.dummyjson.com/data/products/97/3.jpg',
-        'https://i.dummyjson.com/data/products/97/4.webp',        
+        'https://i.dummyjson.com/data/products/97/4.webp',
       ],
     },
     {
       id: 98,
       title: '3 lights lndenpant kitchen islang',
-      description:
-        '3 lights lndenpant kitchen islang dining room pendant rice paper chandelier contemporary led pendant light modern chandelier',
+      description: '3 lights lndenpant kitchen islang dining room pendant rice paper chandelier contemporary led pendant light modern chandelier',
       price: 34,
       discountPercentage: 5.92,
       rating: 4.99,
@@ -1739,7 +1695,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/98/1.jpg',
         'https://i.dummyjson.com/data/products/98/2.jpg',
         'https://i.dummyjson.com/data/products/98/3.jpg',
-        'https://i.dummyjson.com/data/products/98/4.jpg',       
+        'https://i.dummyjson.com/data/products/98/4.jpg',
       ],
     },
     {
@@ -1757,7 +1713,7 @@ const catalog = {
         'https://i.dummyjson.com/data/products/99/1.jpg',
         'https://i.dummyjson.com/data/products/99/2.jpg',
         'https://i.dummyjson.com/data/products/99/3.jpg',
-        'https://i.dummyjson.com/data/products/99/4.jpg',        
+        'https://i.dummyjson.com/data/products/99/4.jpg',
       ],
     },
     {
@@ -1774,7 +1730,7 @@ const catalog = {
       images: [
         'https://i.dummyjson.com/data/products/100/1.jpg',
         'https://i.dummyjson.com/data/products/100/2.jpg',
-        'https://i.dummyjson.com/data/products/100/3.jpg',        
+        'https://i.dummyjson.com/data/products/100/3.jpg',
       ],
     },
   ],
