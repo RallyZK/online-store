@@ -1,49 +1,56 @@
-import { createElements, rawCatalog } from '../sort/sort';
 import { IGoodsItem } from '../types';
+import { createElements, rawCatalog } from '../sort/sort';
+import { getItemsCountInCart } from '../cart/cart';
+import { updateBuyButtonState } from '../payment/payment';
 
 export function renderCartList(arr: IGoodsItem[]): void {
   const cartList: HTMLElement | null = document.querySelector('.cart-list__good-card');
   const cartListCont = document.querySelector('.cart-list__first-row p');
   const productsCount: HTMLElement | null = document.querySelector('.cart-summary__prod-count');
 
-  const itemsCountInCart = arr.reduce((acc, el) => {
-    if (el.isInCart) acc = acc + 1;
-    return acc;
-  }, 0);
+  // const itemsCountInCart = arr.reduce((acc, el) => {
+  //   if (el.isInCart) acc = acc + 1;
+  //   return acc;
+  // }, 0);
   if (cartListCont) {
-    cartListCont.innerHTML = `Items: ${itemsCountInCart}`;
+    cartListCont.innerHTML = `Items: ${getItemsCountInCart()}`;
   }
   if (productsCount) {
-    productsCount.innerHTML = `Products: ${itemsCountInCart}`;
+    productsCount.innerHTML = `Products: ${getItemsCountInCart()}`;
   }
 
   if (cartList) {
     cartList.innerHTML = '';
-    arr.forEach((el) => {
-      if (el.isInCart && el.countInCart) {
-        const cartListLi = createElements('cart-list__good-card__li', 'li', cartList, '');
-        const img = new Image();
-        (img as HTMLImageElement).src = el.thumbnail;
-        img.classList.add('cart-list__good-card__img');
-        img.alt = `${el.title} Photo`;
-        cartListLi.append(img);
-        const cartListGoodCardItem = createElements('cart-list__good-card__item', 'div', cartListLi, '');
-        createElements('cart-list__good-card__item__title', 'h2', cartListGoodCardItem, el.title);
-        createElements('cart-list__good-card__item__description', 'h3', cartListGoodCardItem, el.description);
-        createElements('cart-list__good-card__item__rating', 'p', cartListGoodCardItem, `Rating: ${el.rating}`);
-        createElements('cart-list__good-card__item__discountPercentage', 'p', cartListGoodCardItem, `Discount: ${el.discountPercentage}%`);
+    if (getItemsCountInCart() === 0) {
+      createElements('cart-list__empty', 'p', cartList, 'Cart is empty');
+    } else {
+      arr.forEach((el) => {
+        if (el.isInCart && el.countInCart) {
+          const cartListLi = createElements('cart-list__good-card__li', 'li', cartList, '');
+          const img = new Image();
+          (img as HTMLImageElement).src = el.thumbnail;
+          img.classList.add('cart-list__good-card__img');
+          img.alt = `${el.title} Photo`;
+          cartListLi.append(img);
+          const cartListGoodCardItem = createElements('cart-list__good-card__item', 'div', cartListLi, '');
+          createElements('cart-list__good-card__item__title', 'h2', cartListGoodCardItem, el.title);
+          createElements('cart-list__good-card__item__description', 'h3', cartListGoodCardItem, el.description);
+          createElements('cart-list__good-card__item__rating', 'p', cartListGoodCardItem, `Rating: ${el.rating}`);
+          createElements('cart-list__good-card__item__discountPercentage', 'p', cartListGoodCardItem, `Discount: ${el.discountPercentage}%`);
 
-        const cartListCont = createElements('cart-list__counts-cont', 'div', cartListLi, '');
-        createElements('cart-list__counts-cont__stock', 'p', cartListCont, `Stock: ${el.stock - el.countInCart}`);
-        const cartListItemCont = createElements('cart-list__counts-cont__items-cont', 'div', cartListCont, '');
-        createElements('cart-list__counts-cont__btn add-items', 'button', cartListItemCont, '-');
-        createElements('cart-list__counts-cont__items-count', 'p', cartListItemCont, `${el.countInCart}`);
-        createElements('cart-list__counts-cont__btn del-items', 'button', cartListItemCont, '+');
-        createElements('cart-list__counts-cont__total-item-count', 'p', cartListCont, `$ ${el.price * el.countInCart}`);
-      }
-    });
+          const cartListCont = createElements('cart-list__counts-cont', 'div', cartListLi, '');
+          createElements('cart-list__counts-cont__stock', 'p', cartListCont, `Stock: ${el.stock - el.countInCart}`);
+          const cartListItemCont = createElements('cart-list__counts-cont__items-cont', 'div', cartListCont, '');
+          createElements('cart-list__counts-cont__btn add-items', 'button', cartListItemCont, '-');
+          createElements('cart-list__counts-cont__items-count', 'p', cartListItemCont, `${el.countInCart}`);
+          createElements('cart-list__counts-cont__btn del-items', 'button', cartListItemCont, '+');
+          createElements('cart-list__counts-cont__total-item-count', 'p', cartListCont, `$ ${el.price * el.countInCart}`);
+        }
+      });
+    }
   }
   updateCartSummary(arr);
+  updateBuyButtonState();
 }
 
 let totalSum = 0;
@@ -59,7 +66,7 @@ function updateCartSummary(arr: IGoodsItem[]): void {
   if (totalCount) totalCount.innerHTML = `&nbsp;&nbsp;Total: $${getTotalCartSum(arr, false)}&nbsp;&nbsp;`;
   totalSum = getTotalCartSum(arr, true);
   totalSum = updateTotalSumByPromocodes(totalSum);
-  if (totalCountDisc) totalCountDisc.innerHTML = `Total: $${totalSum}`; 
+  if (totalCountDisc) totalCountDisc.innerHTML = `Total: $${totalSum}`;
 }
 
 function getTotalCartSum(arr: IGoodsItem[], isDiscount: boolean): number {

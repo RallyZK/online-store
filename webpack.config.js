@@ -39,7 +39,7 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, 'src'),
     },
-    port: 3200,
+    port: 9000,
     open: true,
   },
   plugins: [
