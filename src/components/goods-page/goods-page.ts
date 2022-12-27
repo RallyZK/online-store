@@ -9,9 +9,10 @@ export function renderGoodPage(el: types.IGoodsItem) {
   const goodCardContainer: HTMLElement | null = document.querySelector('.good-card-wr');
   mainSection?.classList.add('display-none');
   goodCardContainer?.classList.remove('display-none');
-  console.log('renderGoodPage:::');
+  
   if (goodCardContainer) {
     goodCardContainer.innerHTML = '';
+    createElements('good-card__bread-crumbs', 'p', goodCardContainer, `store&nbsp;&nbsp;━&nbsp;&nbsp;${el.category.toLocaleLowerCase()}&nbsp;&nbsp;━&nbsp;&nbsp;${el.brand.toLocaleLowerCase()}&nbsp;&nbsp;━&nbsp;&nbsp;${el.title.toLocaleLowerCase()}`);
     const goodCard = createElements('good-card', 'div', goodCardContainer, '');
     const goodCardLeftRow = createElements('good-card__left-row', 'div', goodCard, '');
     const goodCardSecondRow = createElements('good-card__second-row', 'div', goodCard, '');

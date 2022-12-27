@@ -85,34 +85,40 @@ const itemsCount: HTMLElement | null = document.querySelector('.items-count');
 function renderCatalog(arr: types.IGoodsItem[]): void {
   if (goodsContainer) {
     goodsContainer.innerHTML = '';
-    for (let i = 0; i < arr.length; i++) {
-      const goodsItem = createElements(`goods__item ${view}-item`, 'div', goodsContainer, '');
-      goodsItem.setAttribute('item-id', `${arr[i].id}`);
 
-      const testLink = createElements('', 'a', goodsItem, '');
-      (testLink as HTMLAnchorElement).href = `#id=${arr[i].id.toString().padStart(3, '0')}`;
-      const goodsItemImg = createElements('goods__item__img', 'img', testLink, '');
-      (goodsItemImg as HTMLImageElement).src = `${arr[i].thumbnail}`;
-      (goodsItemImg as HTMLImageElement).alt = `${arr[i].title} Photo`;
+    if (arr.length === 0) {
+      goodsContainer.innerHTML = 'No goods found';
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        const goodsItem = createElements(`goods__item ${view}-item`, 'div', goodsContainer, '');
+        goodsItem.setAttribute('item-id', `${arr[i].id}`);
 
-      const goodsItemDescription = createElements(`goods__item__description ${view}-desc`, 'div', goodsItem, '');
-      createElements('goods__item__title', 'h4', goodsItemDescription, `${arr[i].title[0].toUpperCase()}${arr[i].title.slice(1, arr[i].title.length)}`);
-      createElements(`goods__item__subtitle ${view}-subtit`, 'h6', goodsItemDescription, `${arr[i].description}`);
-      const goodsItemWrapper = createElements('goods__item__wrapper', 'div', goodsItemDescription, '');
-      createElements('goods__item__rating', 'span', goodsItemWrapper, `${arr[i].rating}`);
-      const goodsItemPriceWrapper = createElements('goods__item__price-wrapper', 'div', goodsItemWrapper, '');
-      createElements('goods__item__price', 'span', goodsItemPriceWrapper, `$ ${arr[i].price}`);
+        const testLink = createElements('', 'a', goodsItem, '');
+        (testLink as HTMLAnchorElement).href = `#id=${arr[i].id.toString().padStart(3, '0')}`;
+        const goodsItemImg = createElements('goods__item__img', 'img', testLink, '');
+        (goodsItemImg as HTMLImageElement).src = `${arr[i].thumbnail}`;
+        (goodsItemImg as HTMLImageElement).alt = `${arr[i].title} Photo`;
 
-      const addToCartButton = createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'Buy');
-      addToCartButton.setAttribute('item-id', `${arr[i].id}`);
-      colorAddToCartButtons(addToCartButton, Number(arr[i].id));
-      addToCartButton.addEventListener('click', () => {
-        updateGoodsInCart(addToCartButton, arr[i].id);
-      });
+        const goodsItemDescription = createElements(`goods__item__description ${view}-desc`, 'div', goodsItem, '');
+        createElements('goods__item__title', 'h4', goodsItemDescription, `${arr[i].title[0].toUpperCase()}${arr[i].title.slice(1, arr[i].title.length)}`);
+        createElements(`goods__item__subtitle ${view}-subtit`, 'h6', goodsItemDescription, `${arr[i].description}`);
+        const goodsItemWrapper = createElements('goods__item__wrapper', 'div', goodsItemDescription, '');
+        createElements('goods__item__rating', 'span', goodsItemWrapper, `${arr[i].rating}`);
+        const goodsItemPriceWrapper = createElements('goods__item__price-wrapper', 'div', goodsItemWrapper, '');
+        createElements('goods__item__price', 'span', goodsItemPriceWrapper, `$ ${arr[i].price}`);
+
+        const addToCartButton = createElements(`goods__item__add-to-cart-btn ${view}-btn`, 'button', goodsItemPriceWrapper, 'Buy');
+        addToCartButton.setAttribute('item-id', `${arr[i].id}`);
+        colorAddToCartButtons(addToCartButton, Number(arr[i].id));
+        addToCartButton.addEventListener('click', () => {
+          updateGoodsInCart(addToCartButton, arr[i].id);
+        });
+      }
     }
     if (itemsCount) {
       itemsCount.innerHTML = `${arr.length}`;
     }
+
   }
 }
 renderCatalog(currentGoodsArray);

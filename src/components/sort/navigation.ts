@@ -11,6 +11,7 @@ const cartWrapper: HTMLElement | null = document.querySelector('.cart');
 const cartBtn: HTMLElement | null = document.querySelector('.header__cart-wrapper__cart-btn');
 const errorPage: HTMLElement | null = document.querySelector('.error-page');
 const btnToMainPage: HTMLElement | null = document.querySelector('.error-page__btn');
+const paymentPage: HTMLElement | null = document.querySelector('.payment-page-section');
 
 logo?.addEventListener('click', getMainPage);
 cartBtn?.addEventListener('click', getCartPage);
@@ -30,6 +31,9 @@ export function getMainPage(): void {
     goodCardContainer.innerHTML = '';
     goodCardContainer.classList.add('display-none');
   }
+  if (paymentPage) {
+    paymentPage.classList.add('display-none');
+  }
   window.location.hash = '';
   document.querySelector('.paid-page__wrapper')?.classList.add('display-none');
 }
@@ -47,6 +51,9 @@ export function getCartPage(): void {
   }
   if (errorPage) {
     errorPage.classList.add('display-none');
+  } 
+  if (paymentPage) {
+    paymentPage.classList.add('display-none');
   }
   window.location.hash = 'cart';
   renderCartList(rawCatalog);
@@ -66,6 +73,9 @@ export function getErrorPage(): void {
     goodCardContainer.innerHTML = '';
     goodCardContainer.classList.add('display-none');
   }
+  if (paymentPage) {
+    paymentPage.classList.add('display-none');
+  }
 }
 
 export function getGoodCardFromUrl(hash: string): void {
@@ -79,6 +89,12 @@ export function getGoodCardFromUrl(hash: string): void {
   });
   if (goodItem) {
     renderGoodPage(goodItem);
+  }
+  if (cartWrapper) {
+    cartWrapper.classList.add('display-none');
+  }
+  if (paymentPage) {
+    paymentPage.classList.add('display-none');
   }
 }
 

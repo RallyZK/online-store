@@ -1,32 +1,19 @@
 import catalog from '../../assets/catalog';
-
-interface IGoodsItem {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
+import * as types from '../types';
 
 interface IAcc {
   [key: string]: number;
 }
 
-const catalogArr: IGoodsItem[] = catalog.products;
+const catalogArr: types.IGoodsItem[] = catalog.products;
 
-const categories: IAcc = catalogArr.reduce((acc: IAcc, el: IGoodsItem) => {
+const categories: IAcc = catalogArr.reduce((acc: IAcc, el: types.IGoodsItem) => {
   if (el.category in acc) acc[el.category] += 1;
   else acc[el.category] = 1;
   return acc;
 }, {});
 
-const brands: IAcc = catalogArr.reduce((acc: IAcc, el: IGoodsItem) => {
+const brands: IAcc = catalogArr.reduce((acc: IAcc, el: types.IGoodsItem) => {
   if (el.brand in acc) acc[el.brand] += 1;
   else acc[el.brand] = 1;
   return acc;
@@ -40,47 +27,37 @@ function createElements(className: string, tag: string, parentclassName: HTMLEle
   return el;
 }
 
-// render category HTML
+// render category HTML-elements
 
 const filtersItemUlCategory: HTMLElement | null = document.querySelector('.categories');
-let filtersItemLiCategory: HTMLElement | null;
-let filtersItemPNameCategory: HTMLElement | null;
-let filtersItemPStockCategory: HTMLElement | null;
-let filtersSpanCurStockCategory: HTMLElement | null;
-let filtersSpanAllStockCategory: HTMLElement | null;
 
 function renderCategory(): void {
   for (let key in categories) {
     if (filtersItemUlCategory) {
-      filtersItemLiCategory = createElements('filters__item__li', 'li', filtersItemUlCategory, '');
+      const filtersItemLiCategory = createElements('filters__item__li', 'li', filtersItemUlCategory, '');
       filtersItemLiCategory.setAttribute('item-category', `${key}`);
-      filtersItemPNameCategory = createElements('filters__item__name', 'p', filtersItemLiCategory, `${key[0].toUpperCase()}${key.slice(1, key.length)}`);
-      filtersItemPStockCategory = createElements('filters__item__stock', 'p', filtersItemLiCategory, '');
-      filtersSpanCurStockCategory = createElements('filters__category-span', 'span', filtersItemPStockCategory, `${categories[key]}`);
-      filtersSpanAllStockCategory = createElements('', 'span', filtersItemPStockCategory, ` / ${categories[key]}`);
+      createElements('filters__item__name', 'p', filtersItemLiCategory, `${key[0].toUpperCase()}${key.slice(1, key.length)}`);
+      const filtersItemPStockCategory = createElements('filters__item__stock', 'p', filtersItemLiCategory, '');
+      createElements('filters__category-span', 'span', filtersItemPStockCategory, `${categories[key]}`);
+      createElements('', 'span', filtersItemPStockCategory, ` / ${categories[key]}`);
     }
   }
 }
 renderCategory();
 
-// render brands HTML
+// render brands HTML-elements
 
 const filtersItemUlBrands: HTMLElement | null = document.querySelector('.brands');
-let filtersItemLiBrands: HTMLElement | null;
-let filtersItemPNameBrands: HTMLElement | null;
-let filtersItemPStockBrands: HTMLElement | null;
-let filtersSpanCurStockBrands: HTMLElement | null;
-let filtersSpanAllStockBrands: HTMLElement | null;
 
 function renderBrands(): void {
   for (let key in brands) {
     if (filtersItemUlBrands) {
-      filtersItemLiBrands = createElements('filters__item__li', 'li', filtersItemUlBrands, '');
+      const filtersItemLiBrands = createElements('filters__item__li', 'li', filtersItemUlBrands, '');
       filtersItemLiBrands.setAttribute('item-brand', `${key}`);
-      filtersItemPNameBrands = createElements('filters__item__name', 'p', filtersItemLiBrands, `${key[0].toUpperCase()}${key.slice(1, key.length)}`);
-      filtersItemPStockBrands = createElements('filters__item__stock', 'p', filtersItemLiBrands, '');
-      filtersSpanCurStockBrands = createElements('filters__brands-span', 'span', filtersItemPStockBrands, `${brands[key]}`);
-      filtersSpanAllStockBrands = createElements('', 'span', filtersItemPStockBrands, ` / ${brands[key]}`);
+      createElements('filters__item__name', 'p', filtersItemLiBrands, `${key[0].toUpperCase()}${key.slice(1, key.length)}`);
+      const filtersItemPStockBrands = createElements('filters__item__stock', 'p', filtersItemLiBrands, '');
+      createElements('filters__brands-span', 'span', filtersItemPStockBrands, `${brands[key]}`);
+      createElements('', 'span', filtersItemPStockBrands, ` / ${brands[key]}`);
     }
   }
 }

@@ -1,10 +1,12 @@
 import './payment.scss';
 import '../../assets/styles/additionals.scss';
 import { getMainPage } from '../sort/navigation';
+import { getItemsCountInCart } from '../cart/cart'
 
 const phonePattern = new RegExp('^([+]+[s0-9]+)?(d{3}|[+]+[(]?[0-9]+[)])?([+]?[s]?[0-9])+$');
 const emailPattern = new RegExp('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,5})$');
 
+const buyButton: HTMLButtonElement | null = document.querySelector('.cart-summary__buy-btn');
 const paymentPage: HTMLElement | null = document.querySelector('.payment-page-section');
 const paymentPageCard: HTMLInputElement | null = document.querySelector('.payment-page__card');
 const cardPage: HTMLElement | null = document.querySelector('#cart-page');
@@ -35,8 +37,15 @@ export function displayPaymentPage(): void {
   if (goodPage != null) goodPage.classList.add('display-none');
 }
 
-if (document.querySelector('.cart-summary__buy-btn') as HTMLButtonElement) {
-  (document.querySelector('.cart-summary__buy-btn') as HTMLButtonElement).onclick = () => displayPaymentPage();
+export function updateBuyButtonState() {
+  if (buyButton) {
+    if (getItemsCountInCart() !== 0) {
+      buyButton.disabled = false;
+      buyButton.addEventListener('click', displayPaymentPage)
+    } else {
+      buyButton.disabled = true;
+    }
+  }
 }
 
 function checkName(name: string): Boolean {
@@ -202,6 +211,6 @@ confirmBtn!.onclick = () => {
     paymentPage?.classList.add('display-none');
     document.querySelector('.paid-page__wrapper')?.classList.remove('display-none');
     setTimeout(getMainPage, 6000);
-    setTimeout(clearPaymentPageInputs, 3000);
+    setTimeout(clearPaymentPageInputs, 3000);    
   }
 };

@@ -21,7 +21,7 @@ export function updateGoodsInCart(el: HTMLElement, id: number): void {
     rawCatalog[index].countInCart = 0;
     rawCatalog[index].isInCart = false;
   }
-  updateItemsCount();
+  displayItemsCountInCart(getItemsCountInCart());
   displayTotalCartSum(getTotalCartSum());
   colorAddToCartButtons(el, id);
   updateAllFilters();
@@ -34,13 +34,17 @@ function checkIsGoodInCart(id: number): Boolean {
   return false;
 }
 
-function updateItemsCount(): void {
+export function getItemsCountInCart(): number {
+  return goodsInCart.length
+}
+
+function displayItemsCountInCart(count: number): void {
   if (countItemsInCart) {
-    if (goodsInCart.length === 0) {
+    if (count === 0) {
       countItemsInCart.classList.add('display-none');
     } else {
       countItemsInCart.classList.remove('display-none');
-      countItemsInCart.innerHTML = goodsInCart.length.toString();
+      countItemsInCart.innerHTML = count.toString();
     }
   }
 }
