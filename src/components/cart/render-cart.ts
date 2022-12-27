@@ -1,21 +1,25 @@
 import { createElements, rawCatalog } from '../sort/sort';
-import { IGoodInCart, IGoodsItem } from '../types';
+import { IGoodsItem } from '../types';
 
-export function renderCartList(arr: IGoodsItem[]) {
+export function renderCartList(arr: IGoodsItem[]): void {
   const cartList: HTMLElement | null = document.querySelector('.cart-list__good-card');
   const cartListCont = document.querySelector('.cart-list__first-row p');
   const productsCount: HTMLElement | null = document.querySelector('.cart-summary__prod-count');
-  
+
   const itemsCountInCart = arr.reduce((acc, el) => {
     if (el.isInCart) acc = acc + 1;
     return acc;
   }, 0);
-  if (cartListCont) cartListCont.innerHTML = `Items: ${itemsCountInCart}`;
-  if (productsCount) productsCount.innerHTML = `Products: ${itemsCountInCart}`;
+  if (cartListCont) {
+    cartListCont.innerHTML = `Items: ${itemsCountInCart}`;
+  }
+  if (productsCount) {
+    productsCount.innerHTML = `Products: ${itemsCountInCart}`;
+  }
 
   if (cartList) {
-    cartList.innerHTML = '';    
-    arr.forEach(el => {
+    cartList.innerHTML = '';
+    arr.forEach((el) => {
       if (el.isInCart && el.countInCart) {
         const cartListLi = createElements('cart-list__good-card__li', 'li', cartList, '');
         const img = new Image();
@@ -37,7 +41,7 @@ export function renderCartList(arr: IGoodsItem[]) {
         createElements('cart-list__counts-cont__btn del-items', 'button', cartListItemCont, '+');
         createElements('cart-list__counts-cont__total-item-count', 'p', cartListCont, `$ ${el.price * el.countInCart}`);
       }
-    })
+    });
   }
   updateCartSummary(arr);
 }
@@ -48,15 +52,14 @@ enum Promocodes {
   pink = 5,
 }
 
-function updateCartSummary(arr: IGoodsItem[]) { 
+function updateCartSummary(arr: IGoodsItem[]): void {
   const totalCount: HTMLElement | null = document.querySelector('.cart-summary__total-count');
   const totalCountDisc: HTMLElement | null = document.querySelector('.cart-summary__total-count-disc');
-  
+
   if (totalCount) totalCount.innerHTML = `&nbsp;&nbsp;Total: $${getTotalCartSum(arr, false)}&nbsp;&nbsp;`;
   totalSum = getTotalCartSum(arr, true);
   totalSum = updateTotalSumByPromocodes(totalSum);
-  if (totalCountDisc) totalCountDisc.innerHTML = `Total: $${totalSum}`;
-  console.log('total sum:::', totalSum)
+  if (totalCountDisc) totalCountDisc.innerHTML = `Total: $${totalSum}`; 
 }
 
 function getTotalCartSum(arr: IGoodsItem[], isDiscount: boolean): number {
@@ -76,54 +79,72 @@ const appliedCodesList: HTMLElement | null = document.querySelector('.cart-summa
 const codeInput: HTMLInputElement | null = document.querySelector('.cart-summary__code-input');
 let appliedPromocodes: string[] = [];
 
-if (codeInput) codeInput.addEventListener('keydown', () => {
-  updatePromocodesList();
-  updateCartSummary(rawCatalog);
-});
+if (codeInput)
+  codeInput.addEventListener('keydown', () => {
+    updatePromocodesList();
+    updateCartSummary(rawCatalog);
+  });
 
-function updatePromocodesList() {
+function updatePromocodesList(): void {
   if (codeInput) {
     if (codeInput.value.toLowerCase() === 'black' || codeInput.value.toLowerCase() === 'pink') {
       if (!appliedPromocodes.includes(codeInput.value)) {
         appliedPromocodes.push(codeInput.value);
-        setTimeout(() => codeInput.value = '', 300);
-        if (appliedCodesErrorCont) appliedCodesErrorCont.innerHTML = '';
+        setTimeout(() => (codeInput.value = ''), 300);
+
+        if (appliedCodesErrorCont) {
+          appliedCodesErrorCont.innerHTML = '';
+        }
+
         if (appliedCodesList) {
           const appliedCodesCont = createElements('cart-summary__applied-codes__cont', 'div', appliedCodesList, '');
           createElements('cart-summary__applied-codes__code-name', 'p', appliedCodesCont, `${codeInput.value.toUpperCase()}`);
           const addPromoBtn = createElements('cart-summary__applied-codes__btn', 'button', appliedCodesCont, 'Drop');
-          addPromoBtn.setAttribute('promo', codeInput.value)
+          addPromoBtn.setAttribute('promo', codeInput.value);
         }
       }
     }
   }
   removePromocodes();
-  console.log('appliedPromocodes', appliedPromocodes)
 }
 
-function updateTotalSumByPromocodes(totalSum: number) {
-  if (appliedPromocodes.includes('black') && appliedPromocodes.includes('pink')) totalSum = totalSum * (100 - Promocodes.black - Promocodes.pink) / 100;
-  if (appliedPromocodes.includes('black') && !appliedPromocodes.includes('pink')) totalSum = totalSum * (100 - Promocodes.black) / 100;
-  if (appliedPromocodes.includes('pink') && !appliedPromocodes.includes('black')) totalSum = totalSum * (100 - Promocodes.pink) / 100;
-  if (appliedPromocodes.length === 0) totalSum = totalSum;
+function updateTotalSumByPromocodes(totalSum: number): number {
+  if (appliedPromocodes.includes('black') && appliedPromocodes.includes('pink')) {
+    totalSum = (totalSum * (100 - Promocodes.black - Promocodes.pink)) / 100;
+  }
+  if (appliedPromocodes.includes('black') && !appliedPromocodes.includes('pink')) {
+    totalSum = (totalSum * (100 - Promocodes.black)) / 100;
+  }
+  if (appliedPromocodes.includes('pink') && !appliedPromocodes.includes('black')) {
+    totalSum = (totalSum * (100 - Promocodes.pink)) / 100;
+  }
+  if (appliedPromocodes.length === 0) {
+    totalSum = totalSum;
+  }
   return Number(totalSum.toFixed(2));
 }
 
-function removePromocodes() {
+function removePromocodes(): void {
   const addPromoBtns: NodeListOf<Element> | null = document.querySelectorAll('.cart-summary__applied-codes__btn');
   if (addPromoBtns) {
-    addPromoBtns.forEach(el => el.addEventListener('click', () => {
-      console.log('el.getAttribute(promo)', el.getAttribute('promo'))
-      if (el.getAttribute('promo') === 'black') {
-        appliedPromocodes = appliedPromocodes.filter(el => el !== 'black');
-        appliedCodesList!.removeChild(el.parentElement as Node);
-      }
-      if (el.getAttribute('promo') === 'pink') {
-        appliedPromocodes = appliedPromocodes.filter(el => el !== 'pink');
-        appliedCodesList!.removeChild(el.parentElement as Node);
-      }
-      console.log('appliedPromocodes', appliedPromocodes)
-      updateCartSummary(rawCatalog);
-    }))
+    addPromoBtns.forEach((el) =>
+      el.addEventListener('click', () => {
+        console.log('el.getAttribute(promo)', el.getAttribute('promo'));
+        if (el.getAttribute('promo') === 'black') {
+          appliedPromocodes = appliedPromocodes.filter((el) => el !== 'black');
+          if (appliedCodesList) {
+            appliedCodesList.removeChild(el.parentElement as Node);
+          }
+        }
+        if (el.getAttribute('promo') === 'pink') {
+          appliedPromocodes = appliedPromocodes.filter((el) => el !== 'pink');
+          if (appliedCodesList) {
+            appliedCodesList.removeChild(el.parentElement as Node);
+          }
+        }
+        console.log('appliedPromocodes', appliedPromocodes);
+        updateCartSummary(rawCatalog);
+      })
+    );
   }
 }

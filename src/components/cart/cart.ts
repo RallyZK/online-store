@@ -1,13 +1,12 @@
 import './cart.scss';
 import * as types from '../types';
 import { rawCatalog, updateAllFilters } from '../sort/sort';
-import { renderCartList } from './render-cart';
 
 export let goodsInCart: types.Itest[] = [];
 const countItemsInCart: HTMLElement | null = document.querySelector('.header__cart-wrapper__items-count');
 
 export function updateGoodsInCart(el: HTMLElement, id: number): void {
-  let index = id - 1;
+  let index: number = id - 1;
   if (!checkIsGoodInCart(id)) {
     goodsInCart.push({
       id: id,
@@ -16,17 +15,16 @@ export function updateGoodsInCart(el: HTMLElement, id: number): void {
     rawCatalog[index].countInCart = 1;
     rawCatalog[index].isInCart = true;
   } else {
-    goodsInCart = goodsInCart.filter(el => {
+    goodsInCart = goodsInCart.filter((el) => {
       if (el.id !== id) return el;
-    })
+    });
     rawCatalog[index].countInCart = 0;
     rawCatalog[index].isInCart = false;
   }
-  updateItemsCount(); 
-  displayTotalCartSum (getTotalCartSum());
+  updateItemsCount();
+  displayTotalCartSum(getTotalCartSum());
   colorAddToCartButtons(el, id);
   updateAllFilters();
-  console.log('goodsInCart:::', goodsInCart);  
 }
 
 function checkIsGoodInCart(id: number): Boolean {
@@ -48,28 +46,16 @@ function updateItemsCount(): void {
 }
 
 export function getTotalCartSum(): number {
-  //const idItemsInCart = goodsInCart.map((el) => el.id);
-  const sum = rawCatalog.reduce((acc: number, el: types.IGoodsItem) => {
+  const sum: number = rawCatalog.reduce((acc: number, el: types.IGoodsItem) => {
     if (el.isInCart && el.countInCart) {
       acc = acc + el.price * el.countInCart;
     }
     return acc;
   }, 0);
-  console.log('Cart sum:::', sum);
   return sum;
-
-  // if (totalCartCount) {
-  //   if (sum !== 0) {
-  //     totalCartCount.classList.remove('display-none');
-  //     totalCartCount.innerHTML = `$ ${sum}`;
-  //   } else {
-  //     totalCartCount.classList.add('display-none');
-  //   }
-  // }
-  
 }
 
-function displayTotalCartSum (sum: number) {
+function displayTotalCartSum(sum: number): void {
   const totalCartCount: HTMLElement | null = document.querySelector('.header__cart-wrapper__sum');
   if (totalCartCount) {
     if (sum !== 0) {
@@ -90,4 +76,3 @@ export function colorAddToCartButtons(el: HTMLElement, id: number): void {
     el.innerHTML = 'Buy';
   }
 }
-
