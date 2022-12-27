@@ -103,10 +103,10 @@ function updatePromocodesList() {
 
 function updateTotalSumByPromocodes(totalSum: number) {
   if (appliedPromocodes.includes('black') && appliedPromocodes.includes('pink')) totalSum = totalSum * (100 - Promocodes.black - Promocodes.pink) / 100;
-  if (appliedPromocodes.includes('black')) totalSum = totalSum * (100 - Promocodes.black) / 100;
-  if (appliedPromocodes.includes('pink')) totalSum = totalSum * (100 - Promocodes.pink) / 100;
+  if (appliedPromocodes.includes('black') && !appliedPromocodes.includes('pink')) totalSum = totalSum * (100 - Promocodes.black) / 100;
+  if (appliedPromocodes.includes('pink') && !appliedPromocodes.includes('black')) totalSum = totalSum * (100 - Promocodes.pink) / 100;
   if (appliedPromocodes.length === 0) totalSum = totalSum;
-  return Math.floor(totalSum);
+  return Number(totalSum.toFixed(2));
 }
 
 function removePromocodes() {
