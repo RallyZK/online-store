@@ -1,13 +1,21 @@
 import './burger.scss';
 
-const burgerMenuBtn: Element | null = document.querySelector('.burger-menu-btn');
+export const burgerMenuBtn: Element | null = document.querySelector('.burger-menu-btn');
 const filtersWrapper: Element | null = document.querySelector('.filters');
 const goods: Element | null = document.querySelector('.goods');
 
-burgerMenuBtn?.addEventListener('click', () => {
-  filtersWrapper!.classList.toggle('filters-up');
-});
+if (burgerMenuBtn) {
+  burgerMenuBtn.addEventListener('click', () => {
+    if (filtersWrapper) {
+      filtersWrapper.classList.toggle('filters-up');
+    }
+  });
+}
 
-goods?.addEventListener('click', () => {
-  filtersWrapper!.classList.remove('filters-up');
-});
+if (goods) {
+  goods.addEventListener('click', () => {
+    if (filtersWrapper) {
+      filtersWrapper.classList.remove('filters-up');
+    }
+  });
+}

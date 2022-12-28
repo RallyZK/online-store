@@ -1,5 +1,6 @@
 import catalog from '../../assets/catalog';
 import * as types from '../types';
+import { rawCatalog } from '../sort/sort';
 
 interface IAcc {
   [key: string]: number;

@@ -21,9 +21,7 @@ export function renderCartList(arr: IGoodsItem[]): void {
       createElements('cart-list__empty', 'p', cartList, 'Cart is empty');
     } else {
       arr.forEach((el) => {
-        if (el.isInCart && el.countInCart) {
-
-          console.log('renderCartList el.stock:::', el.stock);
+        if (el.isInCart && el.countInCart) {          
           const cartListLi = createElements('cart-list__good-card__li', 'li', cartList, '');
           const img = new Image();
           (img as HTMLImageElement).src = el.thumbnail;
