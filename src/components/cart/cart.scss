@@ -48,6 +48,11 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid $grey;
+      width: 95%;
+      margin: 0 auto;
+      &:last-child {
+        border-bottom: none;
+      }
     }
 
     &__img {

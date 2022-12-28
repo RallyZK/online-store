@@ -1,6 +1,6 @@
 import { IGoodsItem } from '../types';
 import { createElements, rawCatalog } from '../sort/sort';
-import { getItemsCountInCart } from '../cart/cart';
+import { displayItemsCountInCart, getItemsCountInCart, displayTotalCartSum, getTotalCartSum, goodsInCart, updateGoodsInCart } from '../cart/cart';
 import { updateBuyButtonState } from '../payment/payment';
 
 export function renderCartList(arr: IGoodsItem[]): void {
@@ -8,10 +8,6 @@ export function renderCartList(arr: IGoodsItem[]): void {
   const cartListCont = document.querySelector('.cart-list__first-row p');
   const productsCount: HTMLElement | null = document.querySelector('.cart-summary__prod-count');
 
-  // const itemsCountInCart = arr.reduce((acc, el) => {
-  //   if (el.isInCart) acc = acc + 1;
-  //   return acc;
-  // }, 0);
   if (cartListCont) {
     cartListCont.innerHTML = `Items: ${getItemsCountInCart()}`;
   }
@@ -26,6 +22,8 @@ export function renderCartList(arr: IGoodsItem[]): void {
     } else {
       arr.forEach((el) => {
         if (el.isInCart && el.countInCart) {
+
+          console.log('renderCartList el.stock:::', el.stock);
           const cartListLi = createElements('cart-list__good-card__li', 'li', cartList, '');
           const img = new Image();
           (img as HTMLImageElement).src = el.thumbnail;
@@ -39,11 +37,21 @@ export function renderCartList(arr: IGoodsItem[]): void {
           createElements('cart-list__good-card__item__discountPercentage', 'p', cartListGoodCardItem, `Discount: ${el.discountPercentage}%`);
 
           const cartListCont = createElements('cart-list__counts-cont', 'div', cartListLi, '');
-          createElements('cart-list__counts-cont__stock', 'p', cartListCont, `Stock: ${el.stock - el.countInCart}`);
+          const countInStock = createElements('cart-list__counts-cont__stock', 'p', cartListCont, `Stock: ${el.stock}`);
           const cartListItemCont = createElements('cart-list__counts-cont__items-cont', 'div', cartListCont, '');
-          createElements('cart-list__counts-cont__btn add-items', 'button', cartListItemCont, '-');
-          createElements('cart-list__counts-cont__items-count', 'p', cartListItemCont, `${el.countInCart}`);
-          createElements('cart-list__counts-cont__btn del-items', 'button', cartListItemCont, '+');
+          const decreaseBtn = createElements('cart-list__counts-cont__btn add-items', 'button', cartListItemCont, '-');
+          decreaseBtn.setAttribute('index-id', `${el.id}`);
+          decreaseBtn.addEventListener('click', () => {
+            decreaseItems(arr, el, countItemInCart, countInStock);
+            //updateGoodsInCart(decreaseBtn, el.id);
+          });
+          const countItemInCart = createElements('cart-list__counts-cont__items-count', 'p', cartListItemCont, `${el.countInCart}`);
+          const increaseBtn = createElements('cart-list__counts-cont__btn del-items', 'button', cartListItemCont, '+');
+          increaseBtn.setAttribute('index-id', `${el.id}`);
+          increaseBtn.addEventListener('click', () => {
+            increaseItems(arr, el, countItemInCart, countInStock);
+            //updateGoodsInCart(increaseBtn, el.id);
+          });
           createElements('cart-list__counts-cont__total-item-count', 'p', cartListCont, `$ ${el.price * el.countInCart}`);
         }
       });
@@ -51,6 +59,38 @@ export function renderCartList(arr: IGoodsItem[]): void {
   }
   updateCartSummary(arr);
   updateBuyButtonState();
+}
+
+function increaseItems(arr: IGoodsItem[], el: IGoodsItem, countItemInCart: HTMLElement, countInStock: HTMLElement) {
+  if (el.countInCart && el.stock >= 1) {
+    el.countInCart += 1;
+    el.stock -= 1;
+    countItemInCart.innerHTML = (el.countInCart).toString();
+    countInStock.innerHTML = `Stock: ${el.stock}`;
+    renderCartList(arr);
+    updateCartSummary(arr);
+    updateBuyButtonState();
+  }
+}
+
+function decreaseItems(arr: IGoodsItem[], el: IGoodsItem, countItemInCart: HTMLElement, countInStock: HTMLElement) {
+  console.log('decr el.countInCart:::', el.countInCart);
+  if (el.countInCart && el.countInCart > 1) {
+    console.log('decr el.countInCart:::', el.countInCart);
+    el.countInCart = el.countInCart - 1;
+    el.stock += 1;
+    countItemInCart.innerHTML = (el.countInCart).toString();
+    countInStock.innerHTML = `Stock: ${el.stock}`;
+  } else if (el.countInCart && el.countInCart === 1) {
+    console.log('decr el.countInCart:::', el.countInCart);
+    el.countInCart = el.countInCart - 1;
+    el.stock += 1;
+    el.isInCart = false;
+  }
+  renderCartList(arr);
+  updateCartSummary(arr);
+  updateBuyButtonState();
+  console.log("goodsInCart", goodsInCart)
 }
 
 let totalSum = 0;
@@ -63,13 +103,15 @@ function updateCartSummary(arr: IGoodsItem[]): void {
   const totalCount: HTMLElement | null = document.querySelector('.cart-summary__total-count');
   const totalCountDisc: HTMLElement | null = document.querySelector('.cart-summary__total-count-disc');
 
-  if (totalCount) totalCount.innerHTML = `&nbsp;&nbsp;Total: $${getTotalCartSum(arr, false)}&nbsp;&nbsp;`;
-  totalSum = getTotalCartSum(arr, true);
+  if (totalCount) totalCount.innerHTML = `&nbsp;&nbsp;Total: $${getTotalCartSums(arr, false)}&nbsp;&nbsp;`;
+  totalSum = getTotalCartSums(arr, true);
   totalSum = updateTotalSumByPromocodes(totalSum);
   if (totalCountDisc) totalCountDisc.innerHTML = `Total: $${totalSum}`;
+  displayItemsCountInCart(getItemsCountInCart());
+  displayTotalCartSum(getTotalCartSum());
 }
 
-function getTotalCartSum(arr: IGoodsItem[], isDiscount: boolean): number {
+function getTotalCartSums(arr: IGoodsItem[], isDiscount: boolean): number {
   let sum = arr.reduce((acc: number, el: IGoodsItem) => {
     if (el.isInCart && el.countInCart) {
       if (isDiscount) acc = acc + el.countInCart * el.price * ((100 - el.discountPercentage) / 100);

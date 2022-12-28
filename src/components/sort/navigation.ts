@@ -1,6 +1,6 @@
 import * as types from '../types';
 import { renderGoodPage } from '../goods-page/goods-page';
-import { catalogArr, rawCatalog } from '../sort/sort';
+import { catalogArr, rawCatalog, renderCatalog, currentGoodsArray } from '../sort/sort';
 import { displayPaymentPage } from '../payment/payment';
 import { renderCartList } from '../cart/render-cart';
 
@@ -12,6 +12,7 @@ const cartBtn: HTMLElement | null = document.querySelector('.header__cart-wrappe
 const errorPage: HTMLElement | null = document.querySelector('.error-page');
 const btnToMainPage: HTMLElement | null = document.querySelector('.error-page__btn');
 const paymentPage: HTMLElement | null = document.querySelector('.payment-page-section');
+const paymentPageWrapper: HTMLElement | null = document.querySelector('.paid-page__wrapper');
 
 logo?.addEventListener('click', getMainPage);
 cartBtn?.addEventListener('click', getCartPage);
@@ -35,6 +36,7 @@ export function getMainPage(): void {
     paymentPage.classList.add('display-none');
   }
   window.location.hash = '';
+  renderCatalog(currentGoodsArray);
   document.querySelector('.paid-page__wrapper')?.classList.add('display-none');
 }
 

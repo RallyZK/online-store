@@ -3,23 +3,42 @@ import * as types from '../types';
 import { rawCatalog, updateAllFilters } from '../sort/sort';
 
 export let goodsInCart: types.Itest[] = [];
-const countItemsInCart: HTMLElement | null = document.querySelector('.header__cart-wrapper__items-count');
+
+
+// export function updateGoodsInCart(el: HTMLElement, id: number): void {
+//   let index: number = id - 1;
+//   if (!checkIsGoodInCart(id)) {
+//     goodsInCart.push({
+//       id: id,
+//       countInCart: 1,
+//     });
+//     rawCatalog[index].countInCart = 1;
+//     rawCatalog[index].isInCart = true;
+//     rawCatalog[index].stock -= 1;
+//   } else {
+//     goodsInCart = goodsInCart.filter((el) => {
+//       if (el.id !== id) return el;
+//     });
+//     rawCatalog[index].countInCart = 0;
+//     rawCatalog[index].isInCart = false;
+//     rawCatalog[index].stock += 1;
+//   }
+//   displayItemsCountInCart(getItemsCountInCart());
+//   displayTotalCartSum(getTotalCartSum());
+//   colorAddToCartButtons(el, id);
+//   updateAllFilters();
+// }
 
 export function updateGoodsInCart(el: HTMLElement, id: number): void {
   let index: number = id - 1;
-  if (!checkIsGoodInCart(id)) {
-    goodsInCart.push({
-      id: id,
-      countInCart: 1,
-    });
+  if (!rawCatalog[index].isInCart) {    
     rawCatalog[index].countInCart = 1;
     rawCatalog[index].isInCart = true;
-  } else {
-    goodsInCart = goodsInCart.filter((el) => {
-      if (el.id !== id) return el;
-    });
+    rawCatalog[index].stock -= 1;
+  } else {    
     rawCatalog[index].countInCart = 0;
     rawCatalog[index].isInCart = false;
+    rawCatalog[index].stock += 1;
   }
   displayItemsCountInCart(getItemsCountInCart());
   displayTotalCartSum(getTotalCartSum());
@@ -27,18 +46,22 @@ export function updateGoodsInCart(el: HTMLElement, id: number): void {
   updateAllFilters();
 }
 
-function checkIsGoodInCart(id: number): Boolean {
-  for (let i = 0; i < goodsInCart.length; i++) {
-    if (goodsInCart[i].id === id) return true;
-  }
-  return false;
-}
+// function checkIsGoodInCart(id: number): Boolean {
+//   for (let i = 0; i < goodsInCart.length; i++) {
+//     if (goodsInCart[i].id === id) return true;
+//   }
+//   return false;
+// }
 
 export function getItemsCountInCart(): number {
-  return goodsInCart.length
+  return rawCatalog.reduce((acc: number, el: types.IGoodsItem) => {
+    if (el.isInCart && el.countInCart) acc += el.countInCart;
+    return acc;
+  }, 0);
 }
 
-function displayItemsCountInCart(count: number): void {
+export function displayItemsCountInCart(count: number): void {
+const countItemsInCart: HTMLElement | null = document.querySelector('.header__cart-wrapper__items-count');
   if (countItemsInCart) {
     if (count === 0) {
       countItemsInCart.classList.add('display-none');
@@ -50,16 +73,15 @@ function displayItemsCountInCart(count: number): void {
 }
 
 export function getTotalCartSum(): number {
-  const sum: number = rawCatalog.reduce((acc: number, el: types.IGoodsItem) => {
+  return rawCatalog.reduce((acc: number, el: types.IGoodsItem) => {
     if (el.isInCart && el.countInCart) {
       acc = acc + el.price * el.countInCart;
     }
     return acc;
-  }, 0);
-  return sum;
+  }, 0);  
 }
 
-function displayTotalCartSum(sum: number): void {
+export function displayTotalCartSum(sum: number): void {
   const totalCartCount: HTMLElement | null = document.querySelector('.header__cart-wrapper__sum');
   if (totalCartCount) {
     if (sum !== 0) {
