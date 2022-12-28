@@ -82,7 +82,7 @@ export let currentGoodsArray: types.IGoodsItem[] = catalog.products;
 const goodsContainer: HTMLElement | null = document.querySelector('.goods__goods-container');
 const itemsCount: HTMLElement | null = document.querySelector('.items-count');
 
-function renderCatalog(arr: types.IGoodsItem[]): void {
+export function renderCatalog(arr: types.IGoodsItem[]): void {
   if (goodsContainer) {
     goodsContainer.innerHTML = '';
 

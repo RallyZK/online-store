@@ -48,6 +48,11 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid $grey;
+      width: 95%;
+      margin: 0 auto;
+      &:last-child {
+        border-bottom: none;
+      }
     }
 
     &__img {
@@ -221,6 +226,7 @@
 @media (max-width: 768px) {
   .cart {
     flex-direction: column;
+
   }
 
   .cart-list {
@@ -234,6 +240,10 @@
 
     &__good-card__item {
       text-align: center;
+      width: 100%;
+      &__description {
+        font-size: 16px;
+      }
     }
 
     &__good-card__img {

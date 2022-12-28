@@ -1,8 +1,9 @@
 import * as types from '../types';
 import { renderGoodPage } from '../goods-page/goods-page';
-import { catalogArr, rawCatalog } from '../sort/sort';
+import { catalogArr, rawCatalog, renderCatalog, currentGoodsArray } from '../sort/sort';
 import { displayPaymentPage } from '../payment/payment';
 import { renderCartList } from '../cart/render-cart';
+import { burgerMenuBtn } from '../filters/burger';
 
 const logo: HTMLElement | null = document.querySelector('.header__title');
 const mainSection: HTMLElement | null = document.querySelector('.main-section');
@@ -12,6 +13,7 @@ const cartBtn: HTMLElement | null = document.querySelector('.header__cart-wrappe
 const errorPage: HTMLElement | null = document.querySelector('.error-page');
 const btnToMainPage: HTMLElement | null = document.querySelector('.error-page__btn');
 const paymentPage: HTMLElement | null = document.querySelector('.payment-page-section');
+const paymentPageWrapper: HTMLElement | null = document.querySelector('.paid-page__wrapper');
 
 logo?.addEventListener('click', getMainPage);
 cartBtn?.addEventListener('click', getCartPage);
@@ -34,8 +36,15 @@ export function getMainPage(): void {
   if (paymentPage) {
     paymentPage.classList.add('display-none');
   }
+  if (paymentPageWrapper) {
+    paymentPageWrapper.classList.add('display-none');
+  }
+  if (burgerMenuBtn) {
+    burgerMenuBtn.classList.remove('display-none');
+  }
   window.location.hash = '';
-  document.querySelector('.paid-page__wrapper')?.classList.add('display-none');
+  renderCatalog(currentGoodsArray);
+  //document.querySelector('.paid-page__wrapper')?.classList.add('display-none');
 }
 
 export function getCartPage(): void {
@@ -54,6 +63,9 @@ export function getCartPage(): void {
   } 
   if (paymentPage) {
     paymentPage.classList.add('display-none');
+  }
+  if (burgerMenuBtn) {
+    burgerMenuBtn.classList.add('display-none');
   }
   window.location.hash = 'cart';
   renderCartList(rawCatalog);
@@ -76,6 +88,9 @@ export function getErrorPage(): void {
   if (paymentPage) {
     paymentPage.classList.add('display-none');
   }
+  if (burgerMenuBtn) {
+    burgerMenuBtn.classList.add('display-none');
+  }
 }
 
 export function getGoodCardFromUrl(hash: string): void {
@@ -95,6 +110,9 @@ export function getGoodCardFromUrl(hash: string): void {
   }
   if (paymentPage) {
     paymentPage.classList.add('display-none');
+  }
+  if (burgerMenuBtn) {
+    burgerMenuBtn.classList.add('display-none');
   }
 }
 

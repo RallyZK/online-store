@@ -41,7 +41,8 @@ const catalog = {
       brand: 'Samsung',
       category: 'smartphones',
       thumbnail: 'https://i.dummyjson.com/data/products/3/thumbnail.jpg',
-      images: ['https://i.dummyjson.com/data/products/3/1.jpg'],
+      images: ['https://www.phonebunch.com/phone-pictures/microsoft_kin_twom-222%20(1).jpg',
+        'https://www.phonebunch.com/phone-pictures/microsoft_kin_twom-222%20(2).jpg'],
     },
     {
       id: 4,
@@ -160,8 +161,7 @@ const catalog = {
       brand: 'HP Pavilion',
       category: 'laptops',
       thumbnail: 'https://i.dummyjson.com/data/products/10/thumbnail.jpeg',
-      images: [
-        'https://i.dummyjson.com/data/products/10/1.jpg',
+      images: [       
         'https://i.dummyjson.com/data/products/10/2.jpg',
         'https://i.dummyjson.com/data/products/10/3.jpg',
       ],
@@ -406,11 +406,11 @@ const catalog = {
       stock: 113,
       brand: 'fauji',
       category: 'groceries',
-      thumbnail: 'https://i.dummyjson.com/data/products/24/thumbnail.jpg',
+      thumbnail: 'https://i.dummyjson.com/data/products/24/3.jpg',
       images: [
         'https://i.dummyjson.com/data/products/24/1.jpg',
         'https://i.dummyjson.com/data/products/24/2.jpg',
-        'https://i.dummyjson.com/data/products/24/3.jpg',
+        'https://i.dummyjson.com/data/products/24/thumbnail.jpg',
         'https://i.dummyjson.com/data/products/24/4.jpg',
       ],
     },
@@ -497,12 +497,10 @@ const catalog = {
       stock: 7,
       brand: 'luxury palace',
       category: 'home-decoration',
-      thumbnail: 'https://i.dummyjson.com/data/products/29/thumbnail.webp',
+      thumbnail: 'https://i.dummyjson.com/data/products/29/2.jpg',
       images: [
-        'https://i.dummyjson.com/data/products/29/1.jpg',
-        'https://i.dummyjson.com/data/products/29/2.jpg',
-        'https://i.dummyjson.com/data/products/29/3.webp',
-        'https://i.dummyjson.com/data/products/29/4.webp',
+        'https://i.dummyjson.com/data/products/29/1.jpg',        
+        'https://i.dummyjson.com/data/products/29/3.webp',        
       ],
     },
     {
@@ -587,8 +585,7 @@ const catalog = {
       category: 'furniture',
       thumbnail: 'https://i.dummyjson.com/data/products/34/thumbnail.jpg',
       images: [
-        'https://i.dummyjson.com/data/products/34/1.jpg',
-        'https://i.dummyjson.com/data/products/34/2.jpg',
+        'https://i.dummyjson.com/data/products/34/1.jpg',        
         'https://i.dummyjson.com/data/products/34/3.jpg',
         'https://i.dummyjson.com/data/products/34/4.jpg',
       ],
@@ -1065,7 +1062,6 @@ const catalog = {
       category: 'mens-watches',
       thumbnail: 'https://i.dummyjson.com/data/products/61/thumbnail.jpg',
       images: [
-        'https://i.dummyjson.com/data/products/61/1.jpg',
         'https://i.dummyjson.com/data/products/61/2.png',
         'https://i.dummyjson.com/data/products/61/3.jpg',
       ],
@@ -1213,8 +1209,9 @@ const catalog = {
       stock: 111,
       brand: 'Bracelet',
       category: 'womens-watches',
-      thumbnail: 'https://i.dummyjson.com/data/products/70/thumbnail.jpg',
-      images: ['https://i.dummyjson.com/data/products/70/1.jpg', 'https://i.dummyjson.com/data/products/70/2.jpg'],
+      thumbnail: 'https://myravey.ru/image/cache/a02b08f425bc083e96f21398665a1bc3-800x800.jpg',
+      images: ['https://shop-of-watches.ru/wp-content/uploads/2017/02/CHasy-Geneva-Wavors01.jpg',
+        'https://sibtime.ru/upload/iblock/15e/1l3cs0hni6oxyi041u0b2ukkqimj87js.jpg'],
     },
     {
       id: 71,

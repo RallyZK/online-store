@@ -41,7 +41,7 @@ export function renderGoodPage(el: types.IGoodsItem) {
     createElements('good-card__price', 'h2', goodCardThirdRow, `$ ${el.price}`);
     const goodCardBtnContainer = createElements('good-card__btns-container', 'div', goodCardThirdRow, '');
     createElements('good-card__btn buy-now-btn', 'button', goodCardBtnContainer, 'Buy now');
-
+    
     const addToCartBtn = createElements('good-card__btn add-to-cart-btn', 'button', goodCardBtnContainer, 'Buy');
     colorAddToCartButtons(addToCartBtn, Number(el.id));
     addToCartBtn.addEventListener('click', () => { updateGoodsInCart(addToCartBtn, el.id)});
