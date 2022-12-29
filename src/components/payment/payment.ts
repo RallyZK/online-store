@@ -1,7 +1,13 @@
 import './payment.scss';
 import '../../assets/styles/additionals.scss';
 import { getMainPage } from '../sort/navigation';
-import { getItemsCountInCart } from '../cart/cart'
+import { rawCatalog, updateAllFilters } from '../sort/sort';
+import {
+  displayItemsCountInCart,
+  getItemsCountInCart,
+  displayTotalCartSum,
+  getTotalCartSum
+} from '../cart/cart';
 
 const phonePattern = new RegExp('^([+]+[s0-9]+)?(d{3}|[+]+[(]?[0-9]+[)])?([+]?[s]?[0-9])+$');
 const emailPattern = new RegExp('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,5})$');
@@ -261,6 +267,13 @@ if (confirmBtn) {
     if (isAllPaymentPageValid) {
       paymentPage?.classList.add('visibility-hidden');
       document.querySelector('.paid-page__wrapper')?.classList.remove('display-none');
+      rawCatalog.forEach((el) => {
+        el.isInCart = false;
+        el.countInCart = 0;
+      });
+      updateAllFilters();
+      displayItemsCountInCart(getItemsCountInCart());
+      displayTotalCartSum(getTotalCartSum());
       setTimeout(() => {
         paymentPage?.classList.add('display-none');
         paymentPage?.classList.remove('visibility-hidden');
