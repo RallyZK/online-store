@@ -93,9 +93,9 @@ export function renderCatalog(arr: types.IGoodsItem[]): void {
         const goodsItem = createElements(`goods__item ${view}-item`, 'div', goodsContainer, '');
         goodsItem.setAttribute('item-id', `${arr[i].id}`);
 
-        const testLink = createElements('', 'a', goodsItem, '');
-        (testLink as HTMLAnchorElement).href = `#id=${arr[i].id.toString().padStart(3, '0')}`;
-        const goodsItemImg = createElements('goods__item__img', 'img', testLink, '');
+        const goodsLink = createElements('', 'a', goodsItem, '');
+        (goodsLink as HTMLAnchorElement).href = `#id=${arr[i].id.toString().padStart(3, '0')}`;
+        const goodsItemImg = createElements('goods__item__img', 'img', goodsLink, '');
         (goodsItemImg as HTMLImageElement).src = `${arr[i].thumbnail}`;
         (goodsItemImg as HTMLImageElement).alt = `${arr[i].title} Photo`;
 

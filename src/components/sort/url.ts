@@ -3,6 +3,7 @@ import { filters } from './sort';
 import { getCartPage, getErrorPage, getMainPage, getGoodCardFromUrl } from '../sort/navigation';
 
 window.addEventListener('hashchange', updateHash);
+window.addEventListener('load', updateHash);
 //window.onload = () => updateHash();
 
 function renderUrl (filters: types.IFilters): string {
