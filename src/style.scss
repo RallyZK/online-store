@@ -43,7 +43,13 @@ body {
     margin: 0;
     color: $pink;
     text-transform: uppercase;
+    text-decoration: none;
     cursor: pointer;
+
+    &:visited {
+      text-decoration: none;
+      color: $pink;
+    }
     
     &::before {
       content: '';

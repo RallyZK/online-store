@@ -8,6 +8,7 @@ import {
   displayTotalCartSum,
   getTotalCartSum
 } from '../cart/cart';
+import { state, updateState } from '../sort/url';
 
 const phonePattern = new RegExp('^([+]+[s0-9]+)?(d{3}|[+]+[(]?[0-9]+[)])?([+]?[s]?[0-9])+$');
 const emailPattern = new RegExp('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,5})$');
@@ -38,13 +39,13 @@ let isCvvValid = false;
 let isAllPaymentPageValid = false;
 
 export function displayPaymentPage(): void {
-  if (paymentPage != null) {
+  if (paymentPage) {
     paymentPage.classList.remove('display-none');
   }
-  if (cardPage != null) {
+  if (cardPage) {
     cardPage.classList.add('display-none');
   }
-  if (goodPage != null) {
+  if (goodPage) {
     goodPage.classList.add('display-none');
   }
 }
@@ -271,14 +272,17 @@ if (confirmBtn) {
         el.isInCart = false;
         el.countInCart = 0;
       });
-      updateAllFilters();
+      updateAllFilters();      
       displayItemsCountInCart(getItemsCountInCart());
       displayTotalCartSum(getTotalCartSum());
-      setTimeout(() => {
+      setTimeout(() => {        
         paymentPage?.classList.add('display-none');
         paymentPage?.classList.remove('visibility-hidden');
+        state.page = 'main';
+        history.pushState(state, '', state.page);
+        updateState(state);
         clearPaymentPageInputs();
-        getMainPage();
+        //getMainPage();
       }, 6000);
     }
   };

@@ -191,6 +191,61 @@ input[type="number"]:focus {
   }
 }
 
+@media (max-width: 1124px) {
+
+  .payment-page {
+    width: 70%;
+
+    &__label {
+      width: 60%;
+    }
+
+    &__card {
+      width: 60%;
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .payment-page {
+    width: 80%;
+
+    &__label {
+      width: 90%;
+    }
+
+    &__card {
+      width: 90%;
+
+      &__number-cont {
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+
+  .payment-page {
+    width: 100%;
+
+    &__label {
+      width: 90%;
+    }
+
+    &__card {
+      width: 90%;
+
+      &__number-cont {
+        width: 90%;
+      }
+    }
+  } 
+
+}
+
 .visibility-hidden {
   visibility: hidden;
 }

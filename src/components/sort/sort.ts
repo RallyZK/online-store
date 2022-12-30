@@ -16,6 +16,7 @@ import {
   SLIDER_MAX_RATING,
 } from '../filters/filters';
 import { updateGoodsInCart, colorAddToCartButtons } from '../cart/cart';
+import { getPageByHref } from '../sort/url';
 
 if (sliderOne) {
   sliderOne.value = SLIDER_MIN_PRICE.toString();
@@ -93,13 +94,16 @@ export function renderCatalog(arr: types.IGoodsItem[]): void {
         const goodsItem = createElements(`goods__item ${view}-item`, 'div', goodsContainer, '');
         goodsItem.setAttribute('item-id', `${arr[i].id}`);
 
-        const goodsLink = createElements('', 'a', goodsItem, '');
-        (goodsLink as HTMLAnchorElement).href = `#id=${arr[i].id.toString().padStart(3, '0')}`;
-        const goodsItemImg = createElements('goods__item__img', 'img', goodsLink, '');
+        const goodsItemImg = createElements('goods__item__img', 'img', goodsItem, '');
         (goodsItemImg as HTMLImageElement).src = `${arr[i].thumbnail}`;
         (goodsItemImg as HTMLImageElement).alt = `${arr[i].title} Photo`;
-
+        
         const goodsItemDescription = createElements(`goods__item__description ${view}-desc`, 'div', goodsItem, '');
+
+        const goodsLink = createElements('', 'a', goodsItemDescription, 'Details');
+        (goodsLink as HTMLAnchorElement).href = `id=${arr[i].id.toString().padStart(3, '0')}`;
+        goodsLink.addEventListener('click', (event) => { getPageByHref(event) })
+
         createElements('goods__item__title', 'h4', goodsItemDescription, `${arr[i].title[0].toUpperCase()}${arr[i].title.slice(1, arr[i].title.length)}`);
         createElements(`goods__item__subtitle ${view}-subtit`, 'h6', goodsItemDescription, `${arr[i].description}`);
         const goodsItemWrapper = createElements('goods__item__wrapper', 'div', goodsItemDescription, '');
@@ -305,8 +309,8 @@ function resetAllFilters(): void {
 
 export function createElements(className: string, tag: string, parentclassName: HTMLElement, inner: string): HTMLElement {
   const el: HTMLElement = document.createElement(tag);
-  el.className = className;
-  el.innerHTML = inner;
+  if (className) el.className = className;
+  if (inner) el.innerHTML = inner;
   parentclassName.appendChild(el);
   return el;
 }

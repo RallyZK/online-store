@@ -4,19 +4,23 @@ import { catalogArr, rawCatalog, renderCatalog, currentGoodsArray } from '../sor
 import { displayPaymentPage } from '../payment/payment';
 import { renderCartList } from '../cart/render-cart';
 import { burgerMenuBtn } from '../filters/burger';
+import { state, getPageByHref, updateState } from '../sort/url';
 
 const logo: HTMLElement | null = document.querySelector('.header__title');
 const mainSection: HTMLElement | null = document.querySelector('.main-section');
 const goodCardContainer: HTMLElement | null = document.querySelector('.good-card-wr');
 const cartWrapper: HTMLElement | null = document.querySelector('.cart');
 const cartBtn: HTMLElement | null = document.querySelector('.header__cart-wrapper__cart-btn');
+const cartLink: HTMLElement | null= document.querySelector('.header__cart-wrapper__cart-link');
 const errorPage: HTMLElement | null = document.querySelector('.error-page');
 const btnToMainPage: HTMLElement | null = document.querySelector('.error-page__btn');
 const paymentPage: HTMLElement | null = document.querySelector('.payment-page-section');
 const paymentPageWrapper: HTMLElement | null = document.querySelector('.paid-page__wrapper');
 
-logo?.addEventListener('click', getMainPage);
-cartBtn?.addEventListener('click', getCartPage);
+//logo?.addEventListener('click', getMainPage);
+logo?.addEventListener('click', (event) => { getPageByHref(event) });
+//cartBtn?.addEventListener('click', getCartPage);
+if (cartLink) cartLink.addEventListener('click', (event) => { getPageByHref(event) });
 btnToMainPage?.addEventListener('click', getMainPage);
 
 export function getMainPage(): void {
@@ -42,7 +46,7 @@ export function getMainPage(): void {
   if (burgerMenuBtn) {
     burgerMenuBtn.classList.remove('display-none');
   }
-  window.location.hash = '';
+  //window.location.href = window.origin;  
   renderCatalog(currentGoodsArray);
   //document.querySelector('.paid-page__wrapper')?.classList.add('display-none');
 }
@@ -67,7 +71,7 @@ export function getCartPage(): void {
   if (burgerMenuBtn) {
     burgerMenuBtn.classList.add('display-none');
   }
-  window.location.hash = 'cart';
+  //window.location.hash = 'cart';
   renderCartList(rawCatalog);
 }
 
@@ -94,7 +98,8 @@ export function getErrorPage(): void {
 }
 
 export function getGoodCardFromUrl(hash: string): void {
-  const id: number = Number(hash.slice(3, 6));
+  //const id: number = Number(hash.slice(3, 6));
+  const id: number = Number(hash);
   const goodItem: types.IGoodsItem = catalogArr.reduce((acc: types.IGoodsItem, el: types.IGoodsItem) => {
     if (el.id === id) {
       acc = el;
@@ -104,6 +109,8 @@ export function getGoodCardFromUrl(hash: string): void {
   });
   if (goodItem) {
     renderGoodPage(goodItem);
+  } else {
+    getErrorPage();
   }
   if (cartWrapper) {
     cartWrapper.classList.add('display-none');
