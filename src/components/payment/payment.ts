@@ -39,13 +39,13 @@ let isCvvValid = false;
 let isAllPaymentPageValid = false;
 
 export function displayPaymentPage(): void {
-  if (paymentPage) {
+  if (paymentPage != null) {
     paymentPage.classList.remove('display-none');
   }
-  if (cardPage) {
+  if (cardPage != null) {
     cardPage.classList.add('display-none');
   }
-  if (goodPage) {
+  if (goodPage != null) {
     goodPage.classList.add('display-none');
   }
 }
@@ -272,19 +272,18 @@ if (confirmBtn) {
         el.isInCart = false;
         el.countInCart = 0;
       });
-      updateAllFilters();      
+      updateAllFilters();
       displayItemsCountInCart(getItemsCountInCart());
       displayTotalCartSum(getTotalCartSum());
-      setTimeout(() => {        
+      setTimeout(() => {
         paymentPage?.classList.add('display-none');
         paymentPage?.classList.remove('visibility-hidden');
+        clearPaymentPageInputs();
         state.page = 'main';
         history.pushState(state, '', state.page);
         updateState(state);
-        clearPaymentPageInputs();
-        //getMainPage();
+        getMainPage();
       }, 6000);
     }
   };
 }
-

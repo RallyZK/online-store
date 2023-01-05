@@ -16,7 +16,8 @@ import {
   SLIDER_MAX_RATING,
 } from '../filters/filters';
 import { updateGoodsInCart, colorAddToCartButtons } from '../cart/cart';
-import { getPageByHref } from '../sort/url';
+import { state, updateState, getPageByHref, renderUrl } from '../sort/url';
+
 
 if (sliderOne) {
   sliderOne.value = SLIDER_MIN_PRICE.toString();
@@ -252,6 +253,10 @@ export function updateAllFilters(): void {
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
   currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
+  
+  //state.page = renderUrl(filters);
+  //history.pushState(state, '', renderUrl(filters));
+
   renderCatalog(currentGoodsArray);
   //addGoodsToCart();
   //updateRangeInputs(currentGoodsArray);
@@ -304,6 +309,11 @@ function resetAllFilters(): void {
   brandsLiArr?.forEach((el) => el.classList.remove('selected-filter'));
   //updateAllFilters();
 }
+
+const copyLinkButton: HTMLButtonElement | null = document.querySelector('.copy-link-btn');
+if (copyLinkButton) copyLinkButton.addEventListener('click', () => {
+  navigator.clipboard.writeText(window.location.href);
+})
 
 // вспом функции
 
