@@ -45,10 +45,8 @@ export function getMainPage(): void {
   }
   if (burgerMenuBtn) {
     burgerMenuBtn.classList.remove('display-none');
-  }
-  //window.location.href = window.origin;  
-  renderCatalog(currentGoodsArray);
-  //document.querySelector('.paid-page__wrapper')?.classList.add('display-none');
+  }  
+  renderCatalog(currentGoodsArray);  
 }
 
 export function getCartPage(): void {
@@ -70,8 +68,7 @@ export function getCartPage(): void {
   }
   if (burgerMenuBtn) {
     burgerMenuBtn.classList.add('display-none');
-  }
-  //window.location.hash = 'cart';
+  }  
   renderCartList(rawCatalog);
 }
 

@@ -253,17 +253,11 @@ export function updateAllFilters(): void {
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
   currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
-  
-  //state.page = renderUrl(filters);
-  //history.pushState(state, '', renderUrl(filters));
-
   renderCatalog(currentGoodsArray);
-  //addGoodsToCart();
-  //updateRangeInputs(currentGoodsArray);
-  //updateHash();
-  //console.log('filers:::', filters);
+  history.pushState(null, '', renderUrl(filters));
+  //window.location.search = renderUrl(filters);  
 }
-//updateAllFilters()
+
 
 // сброс всех фильтров
 

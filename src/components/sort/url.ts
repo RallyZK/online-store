@@ -1,7 +1,5 @@
 import * as types from '../types';
-import { filters } from './sort';
 import { getCartPage, getErrorPage, getMainPage, getGoodCardFromUrl } from '../sort/navigation';
-import { updateBuyButtonState } from '../payment/payment';
 import { SLIDER_MAX_PRICE, SLIDER_MIN_PRICE } from '../filters/filters';
 
 window.addEventListener('popstate', (event) => {
@@ -9,11 +7,11 @@ window.addEventListener('popstate', (event) => {
 });
 window.addEventListener('load', updatePageDataByUrl);
 
-export interface Itest {
+export interface IState {
   page: string | null;  
 }
 
-export let state: Itest;
+export let state: IState;
 
 export function getPageByHref (event: Event) {  
   if (event) {    
@@ -26,7 +24,7 @@ export function getPageByHref (event: Event) {
   }
 }
 
-export function updateState(state: Itest): void {
+export function updateState(state: IState): void {
   if (state && state.page) {
     const pageName = state.page;
     console.log('pageName:::', pageName); 
