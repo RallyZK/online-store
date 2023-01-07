@@ -16,6 +16,7 @@ import {
   SLIDER_MAX_RATING,
 } from '../filters/filters';
 import { updateGoodsInCart, colorAddToCartButtons } from '../cart/cart';
+import { renderUrl } from './url';
 
 if (sliderOne) {
   sliderOne.value = SLIDER_MIN_PRICE.toString();
@@ -242,19 +243,15 @@ function getCatalogByRating(arr: types.IGoodsItem[], minVal: number, maxVal: num
 }
 
 export function updateAllFilters(): void {
-  const arr = sortGoodsArray(catalogArr, sortOption);
-  const arr2 = searchGoods(arr, searchFrase);
+  const arr = sortGoodsArray(catalogArr, filters.sortBy);
+  const arr2 = searchGoods(arr, filters.contains);
   const arr3 = getGoodsBySelectedCategories(arr2, filters.category);
   const arr4 = getGoodsBySelectedFilters(arr3, filters.brand);
   const arr5 = getCatalogByPrice(arr4, filters.minPrice, filters.maxPrice);
-  currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);
-  renderCatalog(currentGoodsArray);
-  //addGoodsToCart();
-  //updateRangeInputs(currentGoodsArray);
-  //updateHash();
-  //console.log('filers:::', filters);
+  currentGoodsArray = getCatalogByRating(arr5, filters.minRating, filters.maxRating);  
+  renderCatalog(currentGoodsArray);  
+  window.location.hash = renderUrl(filters);  
 }
-//updateAllFilters()
 
 // сброс всех фильтров
 
@@ -280,6 +277,7 @@ function resetAllFilters(): void {
   filters.minRating = 0;
   filters.maxRating = SLIDER_MAX_RATING;
   renderCatalog(rawCatalog);
+  window.location.hash = '';
   if (sliderOne) {
     sliderOne.value = SLIDER_MIN_PRICE.toString();
   }
