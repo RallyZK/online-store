@@ -212,20 +212,27 @@ function checkCardValid(): void {
   }
 }
 
-if (paymentPage && name && phone && adress && email && cardNumber && cvv) {
+if (paymentPage) {
   paymentPage.oninput = () => {
+    updateItputsValid()
+  };
+}
+
+function updateItputsValid(): void {
+  if (name && phone && adress && email && cardNumber && cvv) {
     checkName(name.value);
-    checkPhone(phone.value);
-    checkAdress(adress.value);
     checkEmail(email.value);
     checkCardNumber(cardNumber.value);
     checkCardDate();
     checkCvv(cvv.value);
     checkCardValid();
-  };
+    checkPhone(phone.value);
+    checkAdress(adress.value);
+  }
+  
 }
 
-function checkAllPaymentPageValid(): void {
+function checkAllPaymentPageValid(): Boolean {
   if (isNameValid) {
     document.querySelector('.name-error')!.classList.add('display-none');
   } else document.querySelector('.name-error')!.classList.remove('display-none');
@@ -243,10 +250,8 @@ function checkAllPaymentPageValid(): void {
   } else document.querySelector('.email-error')!.classList.remove('display-none');
 
   if (isNameValid && isPhoneValid && isAdressValid && isEmailValid && paymentPageCard?.classList.contains('valid-card')) {
-    isAllPaymentPageValid = true;
-  } else if (!isNameValid && !isPhoneValid && !isAdressValid && !isEmailValid && !paymentPageCard?.classList.contains('valid-card')) {
-    isAllPaymentPageValid = false;
-  }
+    return true;  
+  } else return false
 }
 
 function clearPaymentPageInputs(): void {
@@ -262,9 +267,8 @@ function clearPaymentPageInputs(): void {
 
 
 if (confirmBtn) {
-  confirmBtn.onclick = () => {
-    checkAllPaymentPageValid();
-    if (isAllPaymentPageValid) {
+  confirmBtn.onclick = () => {    
+    if (checkAllPaymentPageValid()) {
       paymentPage?.classList.add('visibility-hidden');
       document.querySelector('.paid-page__wrapper')?.classList.remove('display-none');
       rawCatalog.forEach((el) => {
@@ -278,7 +282,10 @@ if (confirmBtn) {
         paymentPage?.classList.add('display-none');
         paymentPage?.classList.remove('visibility-hidden');
         clearPaymentPageInputs();
+        updateItputsValid()
+        checkCardValid();
         getMainPage();
+
       }, 6000);
     }
   };

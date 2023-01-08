@@ -102,3 +102,8 @@ function fillColor() {
     sliderTrack2.style.background = `linear-gradient(to right, #dadae5 ${percent3}% , #000000 ${percent3}% , #000000 ${percent4}%, #dadae5 ${percent4}%)`;
   }
 }
+
+const copyLinkButton: HTMLButtonElement | null = document.querySelector('.copy-link-btn');
+if (copyLinkButton) copyLinkButton.addEventListener('click', () => {
+  navigator.clipboard.writeText(window.location.href);
+})
