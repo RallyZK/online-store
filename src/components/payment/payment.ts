@@ -212,17 +212,24 @@ function checkCardValid(): void {
   }
 }
 
-if (paymentPage && name && phone && adress && email && cardNumber && cvv) {
+if (paymentPage) {
   paymentPage.oninput = () => {
+    updateItputsValid()
+  };
+}
+
+function updateItputsValid(): void {
+  if (name && phone && adress && email && cardNumber && cvv) {
     checkName(name.value);
-    checkPhone(phone.value);
-    checkAdress(adress.value);
     checkEmail(email.value);
     checkCardNumber(cardNumber.value);
     checkCardDate();
     checkCvv(cvv.value);
     checkCardValid();
-  };
+    checkPhone(phone.value);
+    checkAdress(adress.value);
+  }
+  
 }
 
 function checkAllPaymentPageValid(): void {
@@ -278,7 +285,10 @@ if (confirmBtn) {
         paymentPage?.classList.add('display-none');
         paymentPage?.classList.remove('visibility-hidden');
         clearPaymentPageInputs();
+        updateItputsValid()
+        checkCardValid();
         getMainPage();
+
       }, 6000);
     }
   };
