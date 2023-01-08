@@ -1,0 +1,206 @@
+@media (max-width: 1450px) {
+
+  .goods__item__img {
+    width: 170px;
+    height: 150px;
+  }
+}
+
+
+@media (max-width: 1124px) {
+
+  .goods {
+
+    &__goods-container {
+      grid-template-columns: repeat(3, 33%);
+    }
+
+    &__sort-wr {
+      flex-direction: column;
+      justify-content: start;
+      gap: 7px;
+
+      &__item {
+        width: 100%;       
+      }
+    }
+
+    &__item {
+
+      &__img {
+        width: 170px;
+        height: 110px;
+        margin: 0 auto 10px auto;
+      }
+    }
+  }
+
+  .goods__sort-wr__select,
+  .goods__sort-wr__search-wr {
+    width: 82%;
+  }
+
+  .payment-page {
+    width: 70%;
+
+    &__label {
+      width: 60%;
+    }
+
+    &__card {
+      width: 60%;
+    }
+  }
+
+}
+
+@media (max-width: 910px) {
+
+  .goods {
+
+    &__goods-container {
+      grid-template-columns: repeat(2, 50%);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+
+  .goods {
+    width: 100%;
+
+    &__sort-wr__item {
+      box-sizing: border-box;
+      padding: 0 10px 0 0;
+      justify-content: space-between;
+    }
+
+    &__item {
+
+      &__img {
+        width: 180px;
+        height: 140px;
+        margin: 0 auto 10px auto;
+      }
+
+      &__wrapper {
+        flex-direction: column;
+        align-items: start;
+        gap: 5px;
+      }
+
+      &__price-wrapper {
+        width: 100%;
+        justify-content: end;
+      }
+    }
+
+  }
+
+  .goods__sort-wr__select,
+  .goods__sort-wr__search-wr {
+    width: 70%;
+  }
+
+  .filters {
+    position: absolute;
+    top: 0;
+    left: -270px;
+  }
+
+  .burger-menu-btn {
+    display: block;
+  }
+
+  .header-wr {
+    padding: 0 5px;
+  }
+
+  .header__title {
+    font-size: 20px;
+
+    &::before {
+      width: 25px;
+      height: 25px;
+      background-size: 25px 25px;
+    }
+  }
+
+  .good-card {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .payment-page {
+    width: 80%;
+
+    &__label {
+      width: 90%;
+    }
+
+    &__card {
+      width: 90%;
+
+      &__number-cont {
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+
+  .goods {
+
+    &__item {
+      &__title {
+        font-size: 14px;
+      }
+
+      &__subtitle {
+        font-size: 10px;
+      }
+
+      &__rating {
+        font-size: 10px;
+      }
+
+      &__price {
+        font-size: 16px;
+      }
+
+      &__img {
+        width: 120px;
+        height: 100px;        
+      }
+    }
+  }
+
+  .payment-page {
+    width: 100%;
+
+    &__label {
+      width: 90%;
+    }
+
+    &__card {
+      width: 90%;
+
+      &__number-cont {
+        width: 90%;
+      }
+    }
+  }
+
+  .bottom-row {
+    width: 90%;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+}
+
+.filters-up {
+  left: 0px;
+  background-color: #fdebfb;
+}
