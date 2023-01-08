@@ -232,7 +232,7 @@ function updateItputsValid(): void {
   
 }
 
-function checkAllPaymentPageValid(): void {
+function checkAllPaymentPageValid(): Boolean {
   if (isNameValid) {
     document.querySelector('.name-error')!.classList.add('display-none');
   } else document.querySelector('.name-error')!.classList.remove('display-none');
@@ -250,10 +250,8 @@ function checkAllPaymentPageValid(): void {
   } else document.querySelector('.email-error')!.classList.remove('display-none');
 
   if (isNameValid && isPhoneValid && isAdressValid && isEmailValid && paymentPageCard?.classList.contains('valid-card')) {
-    isAllPaymentPageValid = true;
-  } else if (!isNameValid && !isPhoneValid && !isAdressValid && !isEmailValid && !paymentPageCard?.classList.contains('valid-card')) {
-    isAllPaymentPageValid = false;
-  }
+    return true;  
+  } else return false
 }
 
 function clearPaymentPageInputs(): void {
@@ -269,9 +267,8 @@ function clearPaymentPageInputs(): void {
 
 
 if (confirmBtn) {
-  confirmBtn.onclick = () => {
-    checkAllPaymentPageValid();
-    if (isAllPaymentPageValid) {
+  confirmBtn.onclick = () => {    
+    if (checkAllPaymentPageValid()) {
       paymentPage?.classList.add('visibility-hidden');
       document.querySelector('.paid-page__wrapper')?.classList.remove('display-none');
       rawCatalog.forEach((el) => {
