@@ -48,7 +48,10 @@ export function updateBuyButtonState() {
   if (buyButton) {
     if (getItemsCountInCart() !== 0) {
       buyButton.disabled = false;
-      buyButton.addEventListener('click', displayPaymentPage);
+      buyButton.addEventListener('click', () => {
+        displayPaymentPage();        
+        console.log("\n\n\nVALID CARD NUMBER FOR TEST: 5336690153071545\n\n\n");
+      });
     } else {
       buyButton.disabled = true;
     }
