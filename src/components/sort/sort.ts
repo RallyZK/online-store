@@ -100,7 +100,12 @@ export function renderCatalog(arr: types.IGoodsItem[]): void {
         (goodsItemImg as HTMLImageElement).alt = `${arr[i].title} Photo`;
 
         const goodsItemDescription = createElements(`goods__item__description ${view}-desc`, 'div', goodsItem, '');
-        createElements('goods__item__title', 'h4', goodsItemDescription, `${arr[i].title[0].toUpperCase()}${arr[i].title.slice(1, arr[i].title.length)}`);
+        createElements(
+          'goods__item__title',
+          'h4',
+          goodsItemDescription,
+          `${arr[i].title[0].toUpperCase()}${arr[i].title.slice(1, arr[i].title.length)}`
+        );
         createElements(`goods__item__subtitle ${view}-subtit`, 'h6', goodsItemDescription, `${arr[i].description}`);
         const goodsItemWrapper = createElements('goods__item__wrapper', 'div', goodsItemDescription, '');
         createElements('goods__item__rating', 'span', goodsItemWrapper, `${arr[i].rating}`);
@@ -118,7 +123,6 @@ export function renderCatalog(arr: types.IGoodsItem[]): void {
     if (itemsCount) {
       itemsCount.innerHTML = `${arr.length}`;
     }
-
   }
 }
 renderCatalog(currentGoodsArray);

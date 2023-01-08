@@ -21,7 +21,7 @@ export function renderCartList(arr: IGoodsItem[]): void {
       createElements('cart-list__empty', 'p', cartList, 'Cart is empty');
     } else {
       arr.forEach((el) => {
-        if (el.isInCart && el.countInCart) {          
+        if (el.isInCart && el.countInCart) {
           const cartListLi = createElements('cart-list__good-card__li', 'li', cartList, '');
           const img = new Image();
           (img as HTMLImageElement).src = el.thumbnail;
@@ -63,7 +63,7 @@ function increaseItems(arr: IGoodsItem[], el: IGoodsItem, countItemInCart: HTMLE
   if (el.countInCart && el.stock >= 1) {
     el.countInCart += 1;
     el.stock -= 1;
-    countItemInCart.innerHTML = (el.countInCart).toString();
+    countItemInCart.innerHTML = el.countInCart.toString();
     countInStock.innerHTML = `Stock: ${el.stock}`;
     renderCartList(arr);
     updateCartSummary(arr);
@@ -77,7 +77,7 @@ function decreaseItems(arr: IGoodsItem[], el: IGoodsItem, countItemInCart: HTMLE
     console.log('decr el.countInCart:::', el.countInCart);
     el.countInCart = el.countInCart - 1;
     el.stock += 1;
-    countItemInCart.innerHTML = (el.countInCart).toString();
+    countItemInCart.innerHTML = el.countInCart.toString();
     countInStock.innerHTML = `Stock: ${el.stock}`;
   } else if (el.countInCart && el.countInCart === 1) {
     console.log('decr el.countInCart:::', el.countInCart);
@@ -88,7 +88,6 @@ function decreaseItems(arr: IGoodsItem[], el: IGoodsItem, countItemInCart: HTMLE
   renderCartList(arr);
   updateCartSummary(arr);
   updateBuyButtonState();
-  console.log("goodsInCart", goodsInCart)
 }
 
 let totalSum = 0;

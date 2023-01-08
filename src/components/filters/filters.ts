@@ -104,6 +104,8 @@ function fillColor() {
 }
 
 const copyLinkButton: HTMLButtonElement | null = document.querySelector('.copy-link-btn');
-if (copyLinkButton) copyLinkButton.addEventListener('click', () => {
-  navigator.clipboard.writeText(window.location.href);
-})
+if (copyLinkButton) {
+  copyLinkButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href);
+  });
+}

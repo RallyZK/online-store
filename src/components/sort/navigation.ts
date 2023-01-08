@@ -60,7 +60,7 @@ export function getCartPage(): void {
   }
   if (errorPage) {
     errorPage.classList.add('display-none');
-  } 
+  }
   if (paymentPage) {
     paymentPage.classList.add('display-none');
   }

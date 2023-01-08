@@ -2,12 +2,7 @@ import './payment.scss';
 import '../../assets/styles/additionals.scss';
 import { getMainPage } from '../sort/navigation';
 import { rawCatalog, updateAllFilters } from '../sort/sort';
-import {
-  displayItemsCountInCart,
-  getItemsCountInCart,
-  displayTotalCartSum,
-  getTotalCartSum
-} from '../cart/cart';
+import { displayItemsCountInCart, getItemsCountInCart, displayTotalCartSum, getTotalCartSum } from '../cart/cart';
 
 const phonePattern = new RegExp('^([+]+[s0-9]+)?(d{3}|[+]+[(]?[0-9]+[)])?([+]?[s]?[0-9])+$');
 const emailPattern = new RegExp('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,5})$');
@@ -53,7 +48,7 @@ export function updateBuyButtonState() {
   if (buyButton) {
     if (getItemsCountInCart() !== 0) {
       buyButton.disabled = false;
-      buyButton.addEventListener('click', displayPaymentPage)
+      buyButton.addEventListener('click', displayPaymentPage);
     } else {
       buyButton.disabled = true;
     }
@@ -214,7 +209,7 @@ function checkCardValid(): void {
 
 if (paymentPage) {
   paymentPage.oninput = () => {
-    updateItputsValid()
+    updateItputsValid();
   };
 }
 
@@ -229,7 +224,6 @@ function updateItputsValid(): void {
     checkPhone(phone.value);
     checkAdress(adress.value);
   }
-  
 }
 
 function checkAllPaymentPageValid(): Boolean {
@@ -250,8 +244,8 @@ function checkAllPaymentPageValid(): Boolean {
   } else document.querySelector('.email-error')!.classList.remove('display-none');
 
   if (isNameValid && isPhoneValid && isAdressValid && isEmailValid && paymentPageCard?.classList.contains('valid-card')) {
-    return true;  
-  } else return false
+    return true;
+  } else return false;
 }
 
 function clearPaymentPageInputs(): void {
@@ -265,9 +259,8 @@ function clearPaymentPageInputs(): void {
   if (cvv) cvv.value = '';
 }
 
-
 if (confirmBtn) {
-  confirmBtn.onclick = () => {    
+  confirmBtn.onclick = () => {
     if (checkAllPaymentPageValid()) {
       paymentPage?.classList.add('visibility-hidden');
       document.querySelector('.paid-page__wrapper')?.classList.remove('display-none');
@@ -282,12 +275,10 @@ if (confirmBtn) {
         paymentPage?.classList.add('display-none');
         paymentPage?.classList.remove('visibility-hidden');
         clearPaymentPageInputs();
-        updateItputsValid()
+        updateItputsValid();
         checkCardValid();
         getMainPage();
-
       }, 6000);
     }
   };
 }
-

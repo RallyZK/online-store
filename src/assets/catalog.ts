@@ -41,8 +41,10 @@ const catalog = {
       brand: 'Samsung',
       category: 'smartphones',
       thumbnail: 'https://i.dummyjson.com/data/products/3/thumbnail.jpg',
-      images: ['https://www.phonebunch.com/phone-pictures/microsoft_kin_twom-222%20(1).jpg',
-        'https://www.phonebunch.com/phone-pictures/microsoft_kin_twom-222%20(2).jpg'],
+      images: [
+        'https://www.phonebunch.com/phone-pictures/microsoft_kin_twom-222%20(1).jpg',
+        'https://www.phonebunch.com/phone-pictures/microsoft_kin_twom-222%20(2).jpg',
+      ],
     },
     {
       id: 4,
@@ -65,7 +67,8 @@ const catalog = {
     {
       id: 5,
       title: 'Huawei P30',
-      description: 'Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.',
+      description:
+        'Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.',
       price: 499,
       discountPercentage: 10.58,
       rating: 4.09,
@@ -161,10 +164,7 @@ const catalog = {
       brand: 'HP Pavilion',
       category: 'laptops',
       thumbnail: 'https://i.dummyjson.com/data/products/10/thumbnail.jpeg',
-      images: [       
-        'https://i.dummyjson.com/data/products/10/2.jpg',
-        'https://i.dummyjson.com/data/products/10/3.jpg',
-      ],
+      images: ['https://i.dummyjson.com/data/products/10/2.jpg', 'https://i.dummyjson.com/data/products/10/3.jpg'],
     },
     {
       id: 11,
@@ -498,10 +498,7 @@ const catalog = {
       brand: 'luxury palace',
       category: 'home-decoration',
       thumbnail: 'https://i.dummyjson.com/data/products/29/2.jpg',
-      images: [
-        'https://i.dummyjson.com/data/products/29/1.jpg',        
-        'https://i.dummyjson.com/data/products/29/3.webp',        
-      ],
+      images: ['https://i.dummyjson.com/data/products/29/1.jpg', 'https://i.dummyjson.com/data/products/29/3.webp'],
     },
     {
       id: 30,
@@ -585,7 +582,7 @@ const catalog = {
       category: 'furniture',
       thumbnail: 'https://i.dummyjson.com/data/products/34/thumbnail.jpg',
       images: [
-        'https://i.dummyjson.com/data/products/34/1.jpg',        
+        'https://i.dummyjson.com/data/products/34/1.jpg',
         'https://i.dummyjson.com/data/products/34/3.jpg',
         'https://i.dummyjson.com/data/products/34/4.jpg',
       ],
@@ -1061,10 +1058,7 @@ const catalog = {
       brand: 'Naviforce',
       category: 'mens-watches',
       thumbnail: 'https://i.dummyjson.com/data/products/61/thumbnail.jpg',
-      images: [
-        'https://i.dummyjson.com/data/products/61/2.png',
-        'https://i.dummyjson.com/data/products/61/3.jpg',
-      ],
+      images: ['https://i.dummyjson.com/data/products/61/2.png', 'https://i.dummyjson.com/data/products/61/3.jpg'],
     },
     {
       id: 62,
@@ -1210,8 +1204,10 @@ const catalog = {
       brand: 'Bracelet',
       category: 'womens-watches',
       thumbnail: 'https://myravey.ru/image/cache/a02b08f425bc083e96f21398665a1bc3-800x800.jpg',
-      images: ['https://shop-of-watches.ru/wp-content/uploads/2017/02/CHasy-Geneva-Wavors01.jpg',
-        'https://sibtime.ru/upload/iblock/15e/1l3cs0hni6oxyi041u0b2ukkqimj87js.jpg'],
+      images: [
+        'https://shop-of-watches.ru/wp-content/uploads/2017/02/CHasy-Geneva-Wavors01.jpg',
+        'https://sibtime.ru/upload/iblock/15e/1l3cs0hni6oxyi041u0b2ukkqimj87js.jpg',
+      ],
     },
     {
       id: 71,
@@ -1379,7 +1375,8 @@ const catalog = {
     {
       id: 81,
       title: 'Round Silver Frame Sun Glasses',
-      description: 'A pair of sunglasses can protect your eyes from being hurt. For car driving, vacation travel, outdoor activities, social gatherings,',
+      description:
+        'A pair of sunglasses can protect your eyes from being hurt. For car driving, vacation travel, outdoor activities, social gatherings,',
       price: 19,
       discountPercentage: 10.1,
       rating: 4.94,

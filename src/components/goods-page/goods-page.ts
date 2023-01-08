@@ -9,10 +9,14 @@ export function renderGoodPage(el: types.IGoodsItem) {
   const goodCardContainer: HTMLElement | null = document.querySelector('.good-card-wr');
   mainSection?.classList.add('display-none');
   goodCardContainer?.classList.remove('display-none');
-  
   if (goodCardContainer) {
     goodCardContainer.innerHTML = '';
-    createElements('good-card__bread-crumbs', 'p', goodCardContainer, `store&nbsp;&nbsp;━&nbsp;&nbsp;${el.category.toLocaleLowerCase()}&nbsp;&nbsp;━&nbsp;&nbsp;${el.brand.toLocaleLowerCase()}&nbsp;&nbsp;━&nbsp;&nbsp;${el.title.toLocaleLowerCase()}`);
+    createElements(
+      'good-card__bread-crumbs',
+      'p',
+      goodCardContainer,
+      `store&nbsp;&nbsp;━&nbsp;&nbsp;${el.category.toLocaleLowerCase()}&nbsp;&nbsp;━&nbsp;&nbsp;${el.brand.toLocaleLowerCase()}&nbsp;&nbsp;━&nbsp;&nbsp;${el.title.toLocaleLowerCase()}`
+    );
     const goodCard = createElements('good-card', 'div', goodCardContainer, '');
     const goodCardLeftRow = createElements('good-card__left-row', 'div', goodCard, '');
     const goodCardSecondRow = createElements('good-card__second-row', 'div', goodCard, '');
@@ -41,13 +45,14 @@ export function renderGoodPage(el: types.IGoodsItem) {
     createElements('good-card__price', 'h2', goodCardThirdRow, `$ ${el.price}`);
     const goodCardBtnContainer = createElements('good-card__btns-container', 'div', goodCardThirdRow, '');
     createElements('good-card__btn buy-now-btn', 'button', goodCardBtnContainer, 'Buy now');
-    
     const addToCartBtn = createElements('good-card__btn add-to-cart-btn', 'button', goodCardBtnContainer, 'Buy');
     colorAddToCartButtons(addToCartBtn, Number(el.id));
-    addToCartBtn.addEventListener('click', () => { updateGoodsInCart(addToCartBtn, el.id)});
+    addToCartBtn.addEventListener('click', () => {
+      updateGoodsInCart(addToCartBtn, el.id);
+    });
   }
   changePhotosInGoodsCards();
-  getBuyNowBtns();  
+  getBuyNowBtns();
 }
 
 function changePhotosInGoodsCards() {
@@ -62,5 +67,3 @@ function changePhotosInGoodsCards() {
     })
   );
 }
-
-
