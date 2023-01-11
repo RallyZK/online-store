@@ -133,9 +133,10 @@ if (codeInput)
 
 function updatePromocodesList(): void {
   if (codeInput) {
-    if (codeInput.value.toLowerCase() === 'black' || codeInput.value.toLowerCase() === 'pink') {
-      if (!appliedPromocodes.includes(codeInput.value)) {
-        appliedPromocodes.push(codeInput.value);
+    const inputPromocode = codeInput.value.toLowerCase();
+    if (inputPromocode === 'black' || inputPromocode === 'pink') {
+      if (!appliedPromocodes.includes(inputPromocode)) {
+        appliedPromocodes.push(inputPromocode);
         setTimeout(() => (codeInput.value = ''), 300);
 
         if (appliedCodesErrorCont) {
@@ -146,7 +147,7 @@ function updatePromocodesList(): void {
           const appliedCodesCont = createElements('cart-summary__applied-codes__cont', 'div', appliedCodesList, '');
           createElements('cart-summary__applied-codes__code-name', 'p', appliedCodesCont, `${codeInput.value.toUpperCase()}`);
           const addPromoBtn = createElements('cart-summary__applied-codes__btn', 'button', appliedCodesCont, 'Drop');
-          addPromoBtn.setAttribute('promo', codeInput.value);
+          addPromoBtn.setAttribute('promo', codeInput.value.toLowerCase());
         }
       }
     }
@@ -176,6 +177,7 @@ function removePromocodes(): void {
     addPromoBtns.forEach((el) =>
       el.addEventListener('click', () => {
         console.log('el.getAttribute(promo)', el.getAttribute('promo'));
+         
         if (el.getAttribute('promo') === 'black') {
           appliedPromocodes = appliedPromocodes.filter((el) => el !== 'black');
           if (appliedCodesList) {
