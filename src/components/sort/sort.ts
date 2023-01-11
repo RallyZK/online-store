@@ -176,7 +176,8 @@ let searchFrase: string = filters.contains;
 
 if (searchInput) {
   searchInput.focus();
-  searchInput.addEventListener('keypress', () => getGoodsBySearchFrase());
+  //searchInput.addEventListener('keypress', () => getGoodsBySearchFrase());
+  searchInput.oninput = () => getGoodsBySearchFrase();
 }
 
 if (searchBtn) {
