@@ -147,7 +147,7 @@ function updatePromocodesList(): void {
           const appliedCodesCont = createElements('cart-summary__applied-codes__cont', 'div', appliedCodesList, '');
           createElements('cart-summary__applied-codes__code-name', 'p', appliedCodesCont, `${codeInput.value.toUpperCase()}`);
           const addPromoBtn = createElements('cart-summary__applied-codes__btn', 'button', appliedCodesCont, 'Drop');
-          addPromoBtn.setAttribute('promo', codeInput.value);
+          addPromoBtn.setAttribute('promo', codeInput.value.toLowerCase());
         }
       }
     }
@@ -177,6 +177,7 @@ function removePromocodes(): void {
     addPromoBtns.forEach((el) =>
       el.addEventListener('click', () => {
         console.log('el.getAttribute(promo)', el.getAttribute('promo'));
+         
         if (el.getAttribute('promo') === 'black') {
           appliedPromocodes = appliedPromocodes.filter((el) => el !== 'black');
           if (appliedCodesList) {
