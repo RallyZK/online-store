@@ -141,11 +141,11 @@ function checkCardNumber(cardNumber: string): Boolean {
 function changeCardImg(el: string): void {
   const num: number = +el;
   if (cardImg) {
-    if (num === 2) cardImg.src = '../../assets/icons/card-mir.png';
-    else if (num === 3) cardImg.src = '../../assets/icons/card-amex.png';
-    else if (num === 4) cardImg.src = '../../assets/icons/card-visa.png';
-    else if (num === 5) cardImg.src = '../../assets/icons/card-mastercard.png';
-    else cardImg.src = '../../assets/icons/card-default.png';
+    if (num === 2) cardImg.src = './assets/icons/card-mir.png';
+    else if (num === 3) cardImg.src = './assets/icons/card-amex.png';
+    else if (num === 4) cardImg.src = './assets/icons/card-visa.png';
+    else if (num === 5) cardImg.src = './assets/icons/card-mastercard.png';
+    else cardImg.src = './assets/icons/card-default.png';
   }
 }
 
