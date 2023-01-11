@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alata&family=Fugaz+One&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="./assets/icons/shopify.png">
+  <title>Shopify</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="wrapper header-wr">
+      <button class="burger-menu-btn"></button>
+      <h1 class="header__title">Shopify</h1>
+      <div class="header__cart-wrapper">
+        <span class="header__cart-wrapper__sum"></span>
+        <span class="header__cart-wrapper__items-count display-none"></span>
+        <!-- <button class="header__cart-wrapper__cart-btn"></button> -->
+        <a href="#cart" class="header__cart-wrapper__cart-link"><img class="header__cart-wrapper__cart-btn" src="./assets/icons/card2.png"></a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <div class="wrapper">
+      <section class="main-section" id="main-page">
+        <section class="filters">
+          <div class="filters__item">
+            <h5 class="filters__item__title">Categories</h5>
+            <ul class="filters__item__ul categories"></ul>
+          </div>
+          <div class="filters__item">
+            <h5 class="filters__item__title">Brands</h5>
+            <ul class="filters__item__ul brands"></ul>
+          </div>
+          <div class="filters__ranges-container">
+            <h5 class="filters__item__title">Price</h5>
+            <div class="filters__slider-track" id="sliderTrack-1"></div>
+            <input type="range" min="0" max="100" value="0" step="1" id="slider-1" onchange="slideOne()">
+            <input type="range" min="0" max="100" value="100" step="1" id="slider-2" onchange="slideTwo()">
+            <div class="filters__value">
+              <span id="rangeOneValue">0</span>
+              <span id="rangeTwoValue">100</span>
+            </div>
+          </div>
+          <div class="filters__ranges-container">
+            <h5 class="filters__item__title">Rating</h5>
+            <div class="filters__slider-track" id="sliderTrack-2"></div>
+            <input type="range" min="0" max="5" value="0" step="0.1" id="slider-3" onchange="slideThree()">
+            <input type="range" min="0" max="5" value="5" step="0.1" id="slider-4" onchange="slideFour()">
+            <div class="filters__value">
+              <span id="rangeThreeValue">0</span>
+              <span id="rangeFourValue">5</span>
+            </div>
+          </div>
+          <button class="filters__btn reset-filter-btn">Reset filters</button>
+          <button class="filters__btn copy-link-btn">Copy link</button>
+        </section>
+
+        <section class="goods">
+          <div class="goods__sort-wr">
+            <div class="goods__sort-wr__item">
+              <select class="goods__sort-wr__select">
+                <option class="goods__sort-wr__select-item" value="0">Sort by</option>
+                <option class="goods__sort-wr__select-item" value="1">price (low to hight)</option>
+                <option class="goods__sort-wr__select-item" value="2">price (hight to low)</option>
+                <option class="goods__sort-wr__select-item" value="3">rating (low to hight)</option>
+                <option class="goods__sort-wr__select-item" value="4">rating (hight to low)</option>
+                <option class="goods__sort-wr__select-item" value="5">alphabet (A - Z)</option>
+                <option class="goods__sort-wr__select-item" value="6">alphabet (Z - A)</option>
+               
+              </select>
+              <h4 class="goods__sort-wr__found-title">Found:&nbsp;<span class="items-count">0</span></h4>
+            </div>
+
+            <div class="goods__sort-wr__item">
+              <div class="goods__sort-wr__search-wr">
+                <input class="goods__sort-wr__search-wr__input" type="text" placeholder="Search">
+                <button class="goods__sort-wr__search-wr__btn"></button>
+              </div>
+              <div class="goods__sort-wr__view-wr">
+                <button class="goods__sort-wr__btn list-view"></button>
+                <button class="goods__sort-wr__btn grid-view"></button>
+              </div>
+            </div>
+
+          </div>
+          <div class="goods__goods-container cube-cont">
+          </div>
+        </section>
+      </section>
+      <section class="good-card-wr display-none" id="good-page">        
+      </section>
+      <section class="cart display-none" id="cart-page">
+        <div class="cart-list">
+          <div class="cart-list__first-row">
+            <h2 class="cart-list__title">Products in cart</h2>
+            <!-- <p>items: 0</p> -->
+          </div>
+          <ol class="cart-list__good-card"></ol>          
+        </div>
+        <div class="cart-summary">
+          <h2 class="cart-summary__title">Summary</h2>
+          <h3 class="cart-summary__prod-count">Products: 0</h3>
+          <h3 class="cart-summary__total-count">Total: $0</h3>
+          <h3 class="cart-summary__total-count-disc">Total: $0</h3>
+          <div class="cart-summary__applied-codes">
+            <h3 class="cart-summary__applied-codes__title">Applied codes</h3>
+            <div class="cart-summary__applied-codes__list"></div> 
+            <input class="cart-summary__code-input" type="text" placeholder="Enter promocode">
+            <p class="cart-summary__code-input-desc">Promocodes for test:<br>"Black" (-10%), "Pink" (-5%)</p>
+          </div>
+          <button class="cart-summary__buy-btn" disabled>Buy now</button>
+        </div>
+      </section>
+      <section class="payment-page-section display-none" id="payment-page">
+        <div class="payment-page">
+          <h2 class="payment-page__title">Personal details</h2>
+          <label title="Two words, each at least 3 characters long" class="payment-page__label">
+            <input class="payment-page__input name" type="text" id="name" placeholder="Name and Last name" name="name">
+            <span class="name-error display-none">! Error</span>
+          </label>
+          <label title="Must start with '+', contain only numbers and be at least 9 characters"
+            class="payment-page__label">
+            <input class="payment-page__input phone" type="number" id="phone" placeholder="Phone number">
+            <span class="phone-error display-none">! Error</span>
+          </label>
+          <label title="Must contain at least three words, each at least 5 characters long" class="payment-page__label">
+            <input class="payment-page__input adress" type="text" id="adress" placeholder="Delivery adress">
+            <span  class="adress-error display-none">! Error</span>
+          </label>
+          <label title="Must contain correct email adress" class="payment-page__label">
+            <input class="payment-page__input email" type="email" id="email" placeholder="E-mail">
+            <span  class="email-error display-none">! Error</span>
+          </label>
+          <h2 class="payment-page__title">Credit card details</h2>
+          <div class="payment-page__card">
+            <div class="payment-page__card__number-cont">
+              <img class="payment-page__card__number-cont__img" src="./assets/icons/card-default.png"  alt="card">
+              <label title="Must contain 16 characters, only numbers allowed" class="payment-page__label">
+                <input class="payment-page__input card-number" type="number" id="card-number" placeholder="Card number">
+              </label>
+            </div>
+            <div class="payment-page__card__number-cont bottom-row">
+              <label title="Must contain 4 characters, only numbers allowed" class="payment-page__label-card valid-date-wr">
+                <input class="payment-page__input valid-mounth" type="number" id="cardDateMM" placeholder="MM">
+                <span>/</span>
+                <input class="payment-page__input valid-year" type="number" id="cardDateYY" placeholder="YY">
+              </label>
+              <label title="Must contain 3 characters, only numbers allowed" class="payment-page__label-card">
+                <input class="payment-page__input cvv" type="number" id="cvv" placeholder="CVV">
+              </label>
+            </div>
+            <p class="checkCardValid"></p>
+          </div>
+          <button class="payment-page__confirm-btn">Confirm</button>
+        </div>
+      </section>
+      <div class="paid-page__wrapper display-none">
+        <div class="paid-page">
+          <h2 class="paid-page__title">Order is accepted</h2>
+          <h3 class="paid-page__info">Dear Customer, thank you for your purchase. In the near future, the courier will contact you and specify the delivery time</h3>
+        </div>
+      </div>
+      <section class="error-page display-none" id="error-page">
+        <h2 class="error-page__h2">404</h2>
+        <h3 class="error-page__h3">The page you are looking for can't be found</h3>
+        <button class="error-page__btn">Main page</button>
+      </section>
+    </div>
+  </main>
+  <footer class="footer footer-wr">
+    <div class="wrapper">
+      <ul class="footer__ul">
+        <li class="footer__li">
+          <a href="https://github.com/RallyZK" target="_blank">
+            <img class="footer__logo-gh" src="./assets/icons/github-white.png" alt="GitHub logo">
+          </a>
+          <a href="https://github.com/IliasovDamir" target="_blank">
+            <img class="footer__logo-gh" src="./assets/icons/github-white.png" alt="GitHub logo">
+          </a>
+        </li>
+        <li class="footer__li">Shopify・2022</li>
+        <li class="footer__li">
+          <a href="https://rs.school/js/" target="_blank">
+            <img class="footer__logo-rs" src="./assets/icons/rs_school_js_logo_White.png" alt="RSSchool logo">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <script src="./index.js"></script>
+</body>
+
+</html>

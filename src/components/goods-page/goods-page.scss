@@ -1,0 +1,169 @@
+@import '../../assets/styles/additionals.scss';
+
+.good-card-wr {
+  display: flex;
+  flex-direction: column;
+}
+
+.good-card__bread-crumbs {
+  width: 70%;
+  margin: 10px auto 20px auto;
+  color: $dark-grey;
+  font-weight: 200;
+}
+
+.good-card {
+  display: flex;
+  box-sizing: border-box;
+  padding: 25px;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 70%;
+  margin: 0 auto 40px auto;
+  box-shadow: 0 0 10px -6px;
+  border-radius: 15px;
+
+  &__left-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__second-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px;
+  }
+
+  &__photo-min {
+    display: block;
+    border: 1px solid rgb(221, 220, 220);
+    border-radius: 7px;
+    margin: 10px 0;
+    width: 100px;
+    height: 70px;
+    cursor: pointer;
+  }
+
+  &__photo-max {
+    display: block;
+    border: 1px solid rgb(221, 220, 220);
+    border-radius: 7px;
+    margin: 10px;
+    width: 250px;
+    height: 200px;
+    cursor: pointer;
+  }
+
+  & p {
+    margin: 5px 0;
+  }
+
+  &__btns-container {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__btn {
+    width: 120px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 20px 0;
+    height: 45px;
+    text-align: center;
+    border: none;
+    border-radius: 30px;
+    background-size: 300% 100%;
+    box-shadow: 4px 4px 5px rgba(122, 122, 122, 0.5);
+  }
+}
+
+.buy-now-btn {
+  background-color: $pink;
+}
+
+.add-to-cart-btn {
+  background-color: $purple;
+}
+
+@media (max-width: 1024px) {
+  .good-card-wr {
+    height: max-content;
+  }
+
+  .good-card {
+    box-sizing: border-box;
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+
+
+    &__title {
+      text-align: center;
+    }
+
+    &__price {
+      text-align: center;
+    }
+
+    &__left-row {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    &__photo-min {
+      margin: 5px 10px;
+    }
+
+    &__second-row {
+      order: -1;
+      margin: 0;
+    }
+
+    &__btns-container {
+      justify-content: center;
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+  .good-card {
+    box-sizing: border-box;
+    padding: 15px;
+    width: 100%;
+    
+    &__bread-crumbs {
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+
+  
+}
+
+@media (max-width: 425px) {
+
+
+  .good-card {
+    &__photo-min {
+      width: 80px;
+      height: 60px;
+    }
+
+    &__bread-crumbs {      
+      font-size: 12px;
+    }
+
+    &__photo-max {
+      width: 200px;
+      height: 170px;
+    }
+  }
+
+
+
+
+}

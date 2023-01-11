@@ -1,0 +1,20 @@
+$main-font: Roboto, sans-serif;
+$blue: #1A6DFF;
+$light-blue: #8AB4FF;
+$purple: #9900cc;
+$light-purple: #E492FF;
+$pink: #F942E6;
+$grey: #d6d5d5;
+$dark-grey: #8f8e8e;
+$light-grey: #f3f2f2;
+
+.display-none {
+  display: none;
+}
+
+.selected-filter {
+  color: $pink;
+  font-weight: 600;
+}
+
+
