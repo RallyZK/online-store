@@ -133,9 +133,10 @@ if (codeInput)
 
 function updatePromocodesList(): void {
   if (codeInput) {
-    if (codeInput.value.toLowerCase() === 'black' || codeInput.value.toLowerCase() === 'pink') {
-      if (!appliedPromocodes.includes(codeInput.value)) {
-        appliedPromocodes.push(codeInput.value);
+    const inputPromocode = codeInput.value.toLowerCase();
+    if (inputPromocode === 'black' || inputPromocode === 'pink') {
+      if (!appliedPromocodes.includes(inputPromocode)) {
+        appliedPromocodes.push(inputPromocode);
         setTimeout(() => (codeInput.value = ''), 300);
 
         if (appliedCodesErrorCont) {

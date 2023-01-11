@@ -32,14 +32,14 @@ module.exports = {
     //assetModuleFilename: 'assets/[name][ext]'
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js'],    
   },
   optimization: optimization(),
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'src'),
     },
-    port: 9000,
+    port: 3200,
     open: true,
   },
   plugins: [
@@ -48,14 +48,14 @@ module.exports = {
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
     new CleanWebpackPlugin(),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, 'src', 'assets'),
-    //       to: path.resolve(__dirname, 'dist', 'assets')
-    //     }
-    //   ]
-    // }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src', 'assets'),
+          to: path.resolve(__dirname, 'dist', 'assets'),
+        }
+      ]
+    }),
     new MiniCssExtractPlugin({
       filename: filename('css'),
     }),
@@ -82,7 +82,7 @@ module.exports = {
         test: /\.(png|jpeg|jpg|svg|gif|ico)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/images/[name][ext]',
+          filename: 'assets/icons/[name][ext]',
         },
       },
       {
